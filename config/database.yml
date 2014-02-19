@@ -1,0 +1,17 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: crm_development
+  pool: 15
+  username: root
+  password: mysqlsux!
+  reconnect: true
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: crm_test
+  pool: 15
+  username: root
+  password: mysqlsux!
+  reconnect: true
