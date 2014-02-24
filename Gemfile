@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'mysql2'
 gem 'rails', '4.0.0'
-gem 'twitter-bootstrap-rails'
 gem 'gibberish'
 gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
 gem 'bootstrap-sass', '~> 3.0.3.0'
@@ -21,6 +20,7 @@ gem 'newrelic_rpm'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'mail_form'
 gem 'selenium-webdriver'
+gem 'turbolinks'
 
 group :production do
   gem 'thin'
@@ -31,6 +31,7 @@ group :development do
   gem 'hpricot'
   gem 'pry-rails'
   gem 'guard-rspec', require: false
+  gem 'rails_layout'
 end
 
 group :test, :development do

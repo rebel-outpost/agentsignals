@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.create params[:task]
+    @task = Task.create(tasks_params)
     task_owner = User.where(email: @task.assigned_to).first
     if @task.save
       redirect_to tasks_path, flash: { notice: 'New Task Created'}
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find params[:id]
-    if @task.update_attributes params[:task]
+    if @task.update_attributes(tasks_params)
       task_owner = User.where(email: @task.assigned_to).first
       redirect_to tasks_path, flash: { notice: 'Task Updated'}
       TaskMailer.notify_updated_task(task_owner, @task).deliver
@@ -45,6 +45,10 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks
+  end
+
+  def tasks_params
+    params.require(:task).permit! if params[:task]
   end
 
 end

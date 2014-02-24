@@ -1,6 +1,5 @@
 .form-horizontal
-  .fieldset
-    .legend
+  .form-group
     = simple_form_for @opportunity, :html => { :class => 'form-horizontal' }  do |f|
       .left-column
         = f.input :opportunity_name, label: "Name"
@@ -14,7 +13,7 @@
         = f.input :probability
         = f.input :contact_name
         = f.input :comments, as: :text, :input_html => {rows: 5}
-
+      .clearfix
       .buttons
         = f.submit class: 'btn btn-primary'
         = link_to 'Cancel', leads_path, class: "btn btn-danger"

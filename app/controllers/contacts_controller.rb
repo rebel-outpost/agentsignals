@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = current_user.organization.contacts.new params[:contact]
+    @contact = current_user.organization.contacts.new(contacts_params)
     if @contact.save
       redirect_to contacts_path, flash: { notice: 'New Contact Created'}
     else
@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
   def update
     @contact = current_user.organization.contacts.find params[:id]
 
-    if @contact.update_attributes params[:contact]
+    if @contact.update_attributes(contacts_params)
       redirect_to contact_path @contact, flash[:notice] = 'Contact Updated'
     else
       render :edit
@@ -44,6 +44,10 @@ class ContactsController < ApplicationController
       flash[:error] = 'Contact could not be deleted'
       redirect_to :back
     end
+  end
+
+  def contacts_params
+    params.require(:contact).permit! if params[:contact]
   end
 
 

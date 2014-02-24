@@ -10,7 +10,7 @@ class LeadsController < ApplicationController
   end
 
   def create
-    @lead = current_user.organization.leads.new params[:lead]
+    @lead = current_user.organization.leads.new(leads_params)
     @lead.update_attributes(assigned_to: @lead.lead_owner)
     if @lead.save
       current_user.organization.leads << @lead
@@ -41,7 +41,7 @@ class LeadsController < ApplicationController
     if params[:commit] == 'Convert'
       convert_lead
     else
-      if @lead.update_attributes params[:lead]
+      if @lead.update_attributes(leads_params)
         LeadMailer.notify_updated_lead(@lead.lead_owner, @lead).deliver
         redirect_to lead_path @lead, flash[:notice] = 'Lead Updated'
       else
@@ -70,7 +70,7 @@ class LeadsController < ApplicationController
 
   def convert_lead
     @lead = current_user.organization.leads.find params[:id]
-    @lead.update_attributes params[:lead]
+    @lead.update_attributes(leads_params)
     @account = current_user.organization.accounts.where(name: params['account_name']).first
     @contacts = current_user.organization.contacts.all.map(&:email)
     unless @contacts.include? @lead.email
@@ -126,6 +126,10 @@ class LeadsController < ApplicationController
         redirect_to redirect_url
       end
     end
+  end
+
+  def leads_params
+    params.require(:lead).permit! if params[:lead]
   end
 
   private

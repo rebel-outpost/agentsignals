@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe "Leads" do
+describe "Leads", js: true do
 
   before do
     @user   = FactoryGirl.create :user
-    @user2  = FactoryGirl.create :user, email: 'test2@example.com', first_name: 'Jim Jones'
-    @user3  = FactoryGirl.create :user, email: 'test3@example.com', first_name: 'Jim Jones II'
+    @user2  = FactoryGirl.create :user, first_name: 'Jim Jones'
+    @user3  = FactoryGirl.create :user, first_name: 'Jim Jones II'
     @organization = FactoryGirl.create :organization
     @organization.users << @user
     @organization.users << @user2
@@ -16,7 +16,6 @@ describe "Leads" do
     click_link 'Leads'
     click_link 'Create Lead'
     current_path.should == new_lead_path
-
     fill_in 'lead_first_name',  with: 'Bill'
     fill_in 'lead_last_name',   with: 'Gates'
     fill_in 'lead_phone',       with: '8005551212'
@@ -80,7 +79,7 @@ describe "Leads" do
     before do
       @lead   = FactoryGirl.create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email, organization: @organization
       @lead2  = FactoryGirl.create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_owner: @user3.email, lead_source: 'referral', email: 'bob@marley.com'
-      @account = FactoryGirl.create :account, organization: @organization.id
+      @account = FactoryGirl.create :account, organization: @organization
     end
 
     it 'should edit a lead' do

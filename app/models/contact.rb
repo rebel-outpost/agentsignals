@@ -1,3 +1,15 @@
+# t.string   "first_name", null: false
+# t.string   "last_name",  null: false
+# t.string   "company"
+# t.string   "email",      null: false
+# t.string   "phone"
+# t.string   "address"
+# t.string   "city"
+# t.string   "state"
+# t.string   "zip"
+# t.datetime "created_at"
+# t.datetime "updated_at"
+
 class Contact < ActiveRecord::Base
 
   validates :email, uniqueness: true,

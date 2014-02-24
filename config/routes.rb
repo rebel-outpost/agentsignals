@@ -9,7 +9,7 @@ Simplecrm::Application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    put "logout" => "devise/sessions#destroy", as: "logout"
+    get "logout" => "devise/sessions#destroy", as: "logout"
     get "login" => "devise/sessions#new", as: "login"
     get "signup" => "devise/registrations#new", as: "signup"
     get "dashboard" => "users#dashboard", as: "dashboard"

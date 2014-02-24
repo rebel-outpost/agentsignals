@@ -1,5 +1,4 @@
 class Lead < Contact
-  self.table_name = 'leads'
 
   belongs_to :assigned_to, class_name: 'User'
   belongs_to :organization

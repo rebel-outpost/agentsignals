@@ -39,7 +39,7 @@ describe 'Contact requests' do
 
   context 'with existing contact' do
     before do
-      @contact = FactoryGirl.create :contact, organization: @organization.id
+      @contact = FactoryGirl.create :contact, organization: @organization
     end
 
     it 'deletes contact' do
@@ -65,9 +65,9 @@ describe 'Contact requests' do
 
   context 'with multiple organizations' do
     before do
-      @contact = FactoryGirl.create :contact, organization: @organization.id
+      @contact = FactoryGirl.create :contact, organization: @organization
       @another_organization = FactoryGirl.create :organization
-      @another_contact = FactoryGirl.create :contact, organization: @another_organization.id
+      @another_contact = FactoryGirl.create :contact, organization: @another_organization
     end
 
     it "should only show contacts that belong to its organization" do

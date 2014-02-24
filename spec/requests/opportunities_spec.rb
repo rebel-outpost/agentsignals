@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe "Opportunities", vcr: true do
+describe "Opportunities" do
 
   before do
-    @user     = FactoryGirl.create :user
-    @organization = FactoryGirl.create :organization
-    @account  = FactoryGirl.create :account, organization: @organization
+    @user           = FactoryGirl.create :user
+    @organization   = FactoryGirl.create :organization
+    @account        = FactoryGirl.create :account, organization: @organization
     @organization.users << @user
     login_as @user
   end

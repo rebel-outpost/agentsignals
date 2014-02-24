@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219060848) do
+ActiveRecord::Schema.define(version: 20140223220615) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                       null: false
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20140219060848) do
     t.string   "uid",             limit: 40
     t.integer  "organization_id"
   end
+
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -48,10 +63,10 @@ ActiveRecord::Schema.define(version: 20140219060848) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "contacts", force: true do |t|
-    t.string   "first_name", null: false
-    t.string   "last_name",  null: false
+    t.string   "first_name",                   null: false
+    t.string   "last_name",                    null: false
     t.string   "company"
-    t.string   "email",      null: false
+    t.string   "email",                        null: false
     t.string   "phone"
     t.string   "address"
     t.string   "city"
@@ -59,6 +74,17 @@ ActiveRecord::Schema.define(version: 20140219060848) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.string   "interested_in"
+    t.string   "comments"
+    t.string   "lead_status"
+    t.string   "lead_source"
+    t.string   "account_name"
+    t.string   "opportunity_name"
+    t.string   "opportunity_owner"
+    t.string   "lead_owner"
+    t.string   "uid",               limit: 40
+    t.integer  "organization_id"
   end
 
   create_table "leads", force: true do |t|
@@ -72,14 +98,18 @@ ActiveRecord::Schema.define(version: 20140219060848) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "lead_owner"
+    t.string   "uid",               limit: 40
+    t.integer  "organization_id"
   end
 
   create_table "notes", force: true do |t|
     t.string   "content"
-    t.string   "note_type",  null: false
-    t.datetime "due_date",   null: false
+    t.string   "note_type",             null: false
+    t.datetime "due_date",              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uid",        limit: 40
+    t.integer  "lead_id"
   end
 
   create_table "opportunities", force: true do |t|
@@ -112,14 +142,16 @@ ActiveRecord::Schema.define(version: 20140219060848) do
   end
 
   create_table "tasks", force: true do |t|
-    t.string   "task_name",     null: false
-    t.datetime "due_date",      null: false
-    t.string   "assigned_to",   null: false
-    t.string   "task_type",     null: false
-    t.string   "lead_for_task", null: false
+    t.string   "task_name",                  null: false
+    t.datetime "due_date",                   null: false
+    t.string   "assigned_to",                null: false
+    t.string   "task_type",                  null: false
+    t.string   "lead_for_task",              null: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uid",             limit: 40
+    t.integer  "organization_id"
   end
 
   create_table "users", force: true do |t|

@@ -7,7 +7,7 @@ class NotesController < ApplicationController
 
   def create
     @lead = Lead.find(params[:lead_id])
-    @note = @lead.notes.create(params[:note])
+    @note = @lead.notes.create(notes_params)
     if @note.save
       flash[:notice] = 'Note was successfully created'
       redirect_to @lead
@@ -33,6 +33,10 @@ class NotesController < ApplicationController
       flash[:error] = 'Unable to delete note'
       redirect_to @lead
     end
+  end
+
+  def notes_params
+    params.require(:note).permit! if params[:note]
   end
 
 end

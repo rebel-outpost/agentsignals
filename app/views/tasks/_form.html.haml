@@ -1,6 +1,5 @@
 .form-horizontal
-  .fieldset
-    .legend
+  .form-group
     = simple_form_for @task, :html => { :class => 'form-horizontal' } do |f|
       .left-column
         = f.input :task_name, label: "Name"
