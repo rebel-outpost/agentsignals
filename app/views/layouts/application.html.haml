@@ -7,18 +7,47 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
+  %body.contrast-dark.fixed-header
     %header
       = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      .container
-        .row
-          - if user_signed_in? && current_user.organization
-            .col-sm-2
-              = render 'layouts/sidebar'
-            .col-sm-10
-              = yield
-          - else
-            .col-sm-12
-              = yield
+    #wrapper
+      - if user_signed_in?
+        #main-nav-bg
+        %nav#main-nav
+          .navigation
+            %ul.nav.nav-stacked
+              %li
+                %a{href: "/dashboard"}
+                  %i.icon-dashboard
+                  %span Dashboard
+              %li
+                %a{href: "/leads/new"}
+                  %i.icon-male
+                  %span Create Lead
+              %li
+                %a{href: "/tasks/new"}
+                  %i.icon-tasks
+                  %span Create Task
+              %li
+                %a{href: "/contacts/new"}
+                  %i.icon-book
+                  %span Create Contact
+              %li
+                %a{href: "/accounts/new"}
+                  %i.icon-home
+                  %span Create Account
+              %li
+                %a{href: "/opportunities/new"}
+                  %i.icon-dollar
+                  %span Create Opportunity
+
+
+        %section#content
+          .container
+            #content-wrapper.row
+              .col-xs-12
+                = yield
+
+      - else
+        %section#content
+          = yield

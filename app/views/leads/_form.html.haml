@@ -1,30 +1,43 @@
-.form-horizontal
+.fieldset
   = simple_form_for @lead, :html => { :class => 'form-horizontal' }  do |f|
-    .form-group
-      %legend Lead Info
-      .left-column
-        = f.input :first_name
-        = f.input :last_name
-        = f.input :email, as: :email
-        = f.input :phone
-        = f.input :company
-        = f.input :comments, as: :text, :input_html => {rows: 5}
-      .right-column
-        = f.input :lead_owner,      collection:(@lead_owner)
-        = f.input :interested_in,   collection:(@lead_interests)
-        = f.input :lead_status,     collection:(@lead_status)
-        = f.input :lead_source,     collection:(@lead_sources)
+    .col-sm-4
+      .form-group
+        = f.input :first_name, class: 'form-control'
+      .form-group
+        = f.input :last_name, class: 'form-control'
+      .form-group
+        = f.input :email, as: :email, class: 'form-control'
+      .form-group
+        = f.input :phone, class: 'form-control'
+      .form-group
+        = f.input :company, class: 'form-control'
+      .form-group
+        = f.input :comments, as: :text, :input_html => {rows: 5}, class: 'form-control'
+    .col-sm-4.col-sm-offset-1
+      .form-group
+        = f.input :lead_owner, collection:(@lead_owner), class: 'form-control'
+      .form-group
+        = f.input :interested_in, collection:(@lead_interests), class: 'form-control'
+      .form-group
+        = f.input :lead_status, collection:(@lead_status), class: 'form-control'
+      .form-group
+        = f.input :lead_source, collection:(@lead_sources), class: 'form-control'
 
-    .form-group
-      %legend Address Info
-      .left-column
-        = f.input :address
-        = f.input :city
-      .right-column
-        = f.input :state
-        = f.input :zip
+    .row
+      .col-sm-10
+        %h2 Address Info
+        .col-sm-4
+          .form-group
+            = f.input :address
+          .form-group
+            = f.input :city
+        .col-sm-4.col-sm-offset-1
+          .form-group
+            = f.input :state
+          .form-group
+            = f.input :zip
 
-      .buttons
-        = f.submit class: 'btn btn-primary'
-        = link_to 'Cancel', leads_path, class: "btn btn-danger"
+    .row
+      = f.submit class: 'btn btn-primary'
+      = link_to 'Cancel', leads_path, class: "btn btn-danger"
 

@@ -21,6 +21,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'mail_form'
 gem 'selenium-webdriver'
 gem 'turbolinks'
+gem "compass-rails", "~> 1.1.2"
 
 group :production do
   gem 'thin'
@@ -32,6 +33,7 @@ group :development do
   gem 'pry-rails'
   gem 'guard-rspec', require: false
   gem 'rails_layout'
+  gem 'puma'
 end
 
 group :test, :development do

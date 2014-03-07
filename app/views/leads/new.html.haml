@@ -1,5 +1,15 @@
-.form
-  %h2
-    Create New Lead
-  %br
-    = render partial: 'form'
+.group-header
+  .row
+    .col-sm-6
+      .text-center
+        %h2 New Lead
+.row
+  .col-sm-10
+    .box.bordered-box.dark-blue-border
+      .box-header.dark-blue-background
+        .title
+          Create New Lead
+      .box-content.box-double-padding
+        .form
+          = render partial: 'form'
+
