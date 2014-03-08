@@ -13,14 +13,12 @@ set :deploy_via, :copy
 set :keep_releases, 2
 set :use_sudo, false
 set :ssh_options, {:forward_agent => true}
-set :copy_local_tar, "/usr/bin/gnutar" if `uname` =~ /Darwin/
 set :rails_env, "production"
 
 namespace :deploy do
   desc "symlink shared files"
   task :symlink_shared, :roles => :app do
-    run "ln -nfs #{shared_path}/system/mongoid.yml #{release_path}/config/mongoid.yml"
-    run "ln -nfs #{shared_path}/system/application.yml #{release_path}/config/application.yml"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"

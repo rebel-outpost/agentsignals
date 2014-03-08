@@ -1,45 +1,34 @@
-# ------------------------------------------------------------------------------
-# Sample rails 3 config
-# ------------------------------------------------------------------------------
-
-# Set your full path to application.
-app_path = "/var/www/simplecrm/"
-
-# Set unicorn options
-worker_processes 4
-preload_app true
-timeout 180
-listen "127.0.0.1:9000"
-
-# Spawn unicorn master worker for user apps (group: apps)
-user 'apps', 'apps'
-
-# Fill path to your app
-working_directory app_path
-
-# Should be 'production' by default, otherwise use other env
 rails_env = ENV['RAILS_ENV'] || 'production'
 
-# Log everything to one file
-stderr_path "log/unicorn.log"
-stdout_path "log/unicorn.log"
+worker_processes 4
 
-# Set master PID location
-pid "#{app_path}/tmp/pids/unicorn.pid"
+working_directory "/var/www/simplecrm/current"
+
+listen "/var/www/simplecrm/shared/pids/simplecrm.sock", :backlog => 64
+listen 8080, :tcp_nopush => true
+
+timeout 30
+
+pid "/var/www/simplecrm/shared/pids/unicorn.pid"
+
+stderr_path "/var/www/simplecrm/shared/log/unicorn.stderr.log"
+stdout_path "/var/www/simplecrm/shared/log/unicorn.stdout.log"
+
+preload_app true
+
+GC.respond_to?(:copy_on_write_friendly=) and
+  GC.copy_on_write_friendly = true
+
+check_client_connection false
 
 before_fork do |server, worker|
-  ActiveRecord::Base.connection.disconnect!
-
-  old_pid = "#{server.config[:pid]}.oldbin"
-  if File.exists?(old_pid) && server.pid != old_pid
-    begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
-    rescue Errno::ENOENT, Errno::ESRCH
-      # someone else did our job for us
-    end
-  end
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
 end
 
 after_fork do |server, worker|
-  ActiveRecord::Base.establish_connection
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
+end
+veRecord::Base.establish_connection
 end
