@@ -22,6 +22,7 @@ gem 'mail_form'
 gem 'selenium-webdriver'
 gem 'turbolinks'
 gem "compass-rails", "~> 1.1.2"
+gem 'capistrano', '~> 3.1.0'
 
 group :production do
   gem 'thin'
@@ -34,6 +35,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'rails_layout'
   gem 'puma'
+  gem 'sepastian-capistrano3-unicorn', :require => false
 end
 
 group :test, :development do
@@ -47,7 +49,6 @@ group :test, :development do
   gem 'email_spec'
   gem 'pry'
   gem 'pry-nav'
-  gem 'puma'
 
   # Pretty printed test output
   gem 'turn', require: false

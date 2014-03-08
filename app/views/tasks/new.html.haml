@@ -1,5 +1,14 @@
-.form
-  %h2
-    Create New Task
-  %br
-    = render partial: 'form'
+.group-header
+  .row
+    .col-sm-6
+      .text-center
+        %h2 New Task
+.row
+  .col-sm-10
+    .box.bordered-box.blue-border
+      .box-header.blue-background
+        .title
+          Create New Task
+      .box-content.box-double-padding
+        .form
+          = render partial: 'form'

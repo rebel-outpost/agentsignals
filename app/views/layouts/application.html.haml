@@ -7,11 +7,11 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body.contrast-dark.fixed-header
-    %header
-      = render 'layouts/navigation'
-    #wrapper
-      - if user_signed_in?
+  - if user_signed_in?
+    %body.contrast-blue.fixed-header
+      %header
+        = render 'layouts/navigation'
+      #wrapper
         #main-nav-bg
         %nav#main-nav
           .navigation
@@ -48,6 +48,5 @@
               .col-xs-12
                 = yield
 
-      - else
-        %section#content
-          = yield
+  - else
+    = yield

@@ -1,41 +1,52 @@
-.span10.well
-  .functions.pull-right
-    = link_to 'Create Contact', new_contact_path, class: 'btn'
+.group-header
+  .row
+    .col-sm-6.col-sm-offset-2
+      .text-center
+        %h2 Accounts
 
-  %table.table.table-striped
-    %thead
-      %tr
-        %th
-          First
-        %th
-          Last
-        %th
-          Company
-        %th
-          E-mail
-        %th
-          Phone
-        %th
-          Address
-        %th
-          Actions
+.row
+  .col-sm-10
+    .box.bordered-box.blue-border{style: "margin-bottom:0;"}
+      .box-header.blue-background
+        .title
+          Current Accounts
+      .box-content.box-no-padding
+        .responsive-table
+          .scrollable-area
+            %table.data-table.table.table-bordered.table-striped.dataTable
+              %thead
+                %tr
+                  %th
+                    First
+                  %th
+                    Last
+                  %th
+                    Company
+                  %th
+                    E-mail
+                  %th
+                    Phone
+                  %th
+                    Address
+                  %th
+                    Actions
 
-    %tbody
-      - if @contacts.present?
-        - @contacts.each do |f|
-          %tr
-            %td
-              = f.first_name
-            %td
-              = f.last_name
-            %td
-              = f.company
-            %td
-              =f.email
-            %td
-              =f.phone
-            %td
-              =f.address
-            %td
-              = link_to '', contact_path(f), class: 'icon-edit', id: 'edit'
-              = link_to '', contact_path(f), method: 'delete', class: 'icon-trash', data: {confirm: 'Are you sure that you want to delete this contact?'}, id: 'delete'
+              %tbody
+                - if @contacts.present?
+                  - @contacts.each do |f|
+                    %tr
+                      %td
+                        = f.first_name
+                      %td
+                        = f.last_name
+                      %td
+                        = f.company
+                      %td
+                        =f.email
+                      %td
+                        =f.phone
+                      %td
+                        =f.address
+                      %td
+                        = link_to '', contact_path(f), class: 'icon-edit', id: 'edit'
+                        = link_to '', contact_path(f), method: 'delete', class: 'icon-trash', data: {confirm: 'Are you sure that you want to delete this contact?'}, id: 'delete'

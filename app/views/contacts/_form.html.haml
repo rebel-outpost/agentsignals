@@ -1,18 +1,28 @@
-.form-horizontal
-  .form-group
-    = simple_form_for @contact, :html => { :class => 'form-horizontal' }  do |f|
-      .left-column
+.fieldset
+  = simple_form_for @contact, :html => { :class => 'form-horizontal' }  do |f|
+    .col-sm-4
+      .form-group
         = f.input :first_name
+      .form-group
         = f.input :last_name
+      .form-group
         = f.input :email
+      .form-group
         = f.input :phone
+      .form-group
         = f.input :company
-      .right-column
+    .col-sm-4.col-sm-offset-1
+      .form-group
         = f.input :address
+      .form-group
         = f.input :city
+      .form-group
         = f.input :state
+      .form-group
         = f.input :zip
-      .clearfix
-      .buttons
+
+
+    .row
+      .col-sm-8
         = f.submit class: 'btn btn-primary'
         = link_to 'Cancel', contacts_path, class: "btn btn-danger"
