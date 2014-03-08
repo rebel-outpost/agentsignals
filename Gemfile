@@ -22,11 +22,8 @@ gem 'mail_form'
 gem 'selenium-webdriver'
 gem 'turbolinks'
 gem "compass-rails", "~> 1.1.2"
-gem 'capistrano', '~> 3.1.0'
-
-group :production do
-  gem "unicorn-rails"
-end
+gem 'capistrano',  '2.15.5'
+gem "unicorn-rails"
 
 group :development do
   gem 'unicorn'
@@ -35,7 +32,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'rails_layout'
   gem 'puma'
-  gem 'sepastian-capistrano3-unicorn', :require => false
+  gem 'capistrano-unicorn', :require => false
 end
 
 group :test, :development do
