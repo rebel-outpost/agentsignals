@@ -25,7 +25,7 @@ gem "compass-rails", "~> 1.1.2"
 gem 'capistrano', '~> 3.1.0'
 
 group :production do
-  gem 'thin'
+  gem "unicorn-rails"
 end
 
 group :development do
