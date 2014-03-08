@@ -13,7 +13,6 @@
 //= require flatty/plugins/tabdrop/bootstrap-tabdrop
 //= require flatty/plugins/jgrowl/jquery.jgrowl.min
 //= require flatty/plugins/bootbox/bootbox.min
-//= require flatty/plugins/ckeditor/ckeditor
 //= require flatty/plugins/dynatree/jquery.dynatree.min
 //= require flatty/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker
 //= require flatty/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker
