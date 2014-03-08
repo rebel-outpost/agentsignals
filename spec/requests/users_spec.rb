@@ -16,35 +16,35 @@ describe "User Dashboard" do
   end
 
   it 'has quick links' do
-    page.should have_content 'New Lead'
-    page.should have_content 'New Task'
-    page.should have_content 'New Contact'
-    page.should have_content 'New Account'
-    page.should have_content 'New Opportunity'
+    page.should have_content 'Create Lead'
+    page.should have_content 'Create Task'
+    page.should have_content 'Create Contact'
+    page.should have_content 'Create Account'
+    page.should have_content 'Create Opportunity'
   end
 
   it 'links to new lead' do
-    click_link 'New Lead'
+    click_link 'Create Lead'
     page.should have_content 'Lead Info'
   end
 
   it 'links to new task' do
-    click_link 'New Task'
+    click_link 'Create Task'
     page.should have_content 'Create New Task'
   end
 
   it 'links to new contact' do
-    click_link 'New Contact'
+    click_link 'Create Contact'
     page.should have_content 'First name'
   end
 
   it 'links to new account' do
-    click_link 'New Account'
+    click_link 'Create Account'
     page.should have_content 'Name'
   end
 
   it 'links to new opportunity' do
-    click_link 'New Opportunity'
+    click_link 'Create Opportunity'
     page.should have_content 'Create New Opportunity'
   end
 
