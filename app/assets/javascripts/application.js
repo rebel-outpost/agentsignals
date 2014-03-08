@@ -6,8 +6,3 @@
 //= require flatty/bootstrap/bootstrap.min
 //= require flatty/theme
 
-
-:javascript
-  $(document).ready(function() {
-   $(".jquery-ui-date").datepicker();
-  });
