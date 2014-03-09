@@ -68,8 +68,8 @@ Simplecrm::Application.configure do
     domain: "gmail.com",
     authentication: :login,
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: "simplcrm.us@gmail.com",
+    password: "un4given"
   }
 
 end
