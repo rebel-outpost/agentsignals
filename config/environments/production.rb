@@ -45,8 +45,8 @@ Simplecrm::Application.configure do
     domain: "rebel-outpost.com",
     authentication: :login,
     enable_starttls_auto: true,
-    user_name: "simplecrm.us@rebel-outpost.com",
-    password: "un4given"
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
   }
 
 end

@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
 
   def notify_approval(user)
     @user = user
-    mail(to: @user.email, subject: 'RailsCRM Approval')
+    mail(to: @user.email, subject: 'SimpleCRM Approval')
   end
 
 end
