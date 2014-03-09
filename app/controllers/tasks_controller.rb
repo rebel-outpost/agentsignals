@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @task.user = User.where(email: @task.assigned_to).first
     if @task.save
       redirect_to tasks_path, flash: { notice: 'New Task Created'}
-      TaskMailer.notify_new_task(@task.user, @task).deliver
+      # TaskMailer.notify_new_task(@task.user, @task).deliver
     else
       render :new
     end
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
     if @task.update_attributes(tasks_params)
       task_owner = User.where(email: @task.assigned_to).first
       redirect_to tasks_path, flash: { notice: 'Task Updated'}
-      TaskMailer.notify_updated_task(task_owner, @task).deliver
+      # TaskMailer.notify_updated_task(task_owner, @task).deliver
     else
       redirect_to task_path, flash: { notice: 'Unable to update task.'}
     end

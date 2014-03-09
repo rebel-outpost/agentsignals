@@ -14,7 +14,7 @@ class LeadsController < ApplicationController
     @lead.user = User.where(email: @lead.lead_owner).first
     if @lead.save
       current_user.organization.leads << @lead
-      LeadMailer.notify_new_lead(@lead.lead_owner, @lead).deliver
+      # LeadMailer.notify_new_lead(@lead.lead_owner, @lead).deliver
       redirect_to lead_path @lead, flash[:notice] = 'New Lead Created'
     else
       render :new
@@ -42,7 +42,7 @@ class LeadsController < ApplicationController
       convert_lead
     else
       if @lead.update_attributes(leads_params)
-        LeadMailer.notify_updated_lead(@lead.lead_owner, @lead).deliver
+        # LeadMailer.notify_updated_lead(@lead.lead_owner, @lead).deliver
         redirect_to lead_path @lead, flash[:notice] = 'Lead Updated'
       else
         render :edit
@@ -122,7 +122,7 @@ class LeadsController < ApplicationController
       end
       @lead.update_attributes(:lead_owner => email,:lead_source => requestor)
       if @lead.save!
-        LeadMailer.notify_web_form_lead(@lead.lead_owner, @lead).deliver
+        # LeadMailer.notify_web_form_lead(@lead.lead_owner, @lead).deliver
         redirect_to redirect_url
       end
     end
