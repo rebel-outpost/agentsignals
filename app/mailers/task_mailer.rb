@@ -1,5 +1,5 @@
 class TaskMailer < ActionMailer::Base
-  default from: 'no-reply@railscrm.com'
+  default from: 'no-reply@simplecrm.us'
 
   def notify_new_task(user, task)
     @user = user

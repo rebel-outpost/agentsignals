@@ -1,5 +1,5 @@
 class LeadMailer < ActionMailer::Base
-  default from: 'no-reply@railscrm.com'
+  default from: 'no-reply@simplecrm.us'
 
   def notify_new_lead(user, lead)
     @user = user

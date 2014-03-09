@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'no-reply@railscrm.com'
+  default from: 'no-reply@simplecrm.us'
 
   def reset_password(user)
     @user = user

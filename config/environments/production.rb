@@ -64,11 +64,11 @@ Simplecrm::Application.configure do
   config.action_mailer.default_url_options = { :host => "simplecrm.us" }
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
-    port: 587,
+    port: 465,
     domain: "gmail.com",
     authentication: :login,
     enable_starttls_auto: true,
-    user_name: "simplcrm.us",
+    user_name: "simplcrm.us@gmail.com",
     password: "un4given"
   }
 
