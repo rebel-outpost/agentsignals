@@ -1,6 +1,16 @@
-.well
-  %h3 Web Form
-  Copy the form below and use it anywhere in your website.
-  =text_area_tag "web_form",(render file: 'leads/convert_form'), readonly: true, style: "width:850px; height:400px"
-  %br
-  =link_to "Back", dashboard_path, class: 'btn btn-primary'
+%section#content{style: "margin-left:10px"}
+  .container
+    #content-wrapper.row
+      .col-xs-10
+        .row
+          .col-sm-10
+            .page-header
+              %h1.pull-left
+                %i.icon-user
+                %span New Web Form
+            %p
+              Copy the form below and use it anywhere in your website.
+            %p
+              =text_area_tag "web_form",(render file: 'leads/convert_form'), readonly: true, style: "width:850px; height:400px"
+            %br
+              = link_to "Back", dashboard_path, class: 'btn btn-primary'

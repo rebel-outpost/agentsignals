@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223220615) do
+ActiveRecord::Schema.define(version: 20140309055827) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                       null: false
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(version: 20140223220615) do
     t.string   "lead_owner"
     t.string   "uid",               limit: 40
     t.integer  "organization_id"
+    t.integer  "assignee_id"
+    t.integer  "user_id"
   end
 
   create_table "leads", force: true do |t|
@@ -100,6 +102,8 @@ ActiveRecord::Schema.define(version: 20140223220615) do
     t.string   "lead_owner"
     t.string   "uid",               limit: 40
     t.integer  "organization_id"
+    t.integer  "assignee_id"
+    t.integer  "user_id"
   end
 
   create_table "notes", force: true do |t|

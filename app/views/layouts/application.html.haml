@@ -12,35 +12,7 @@
       %header
         = render 'layouts/navigation'
       #wrapper
-        #main-nav-bg
-        %nav#main-nav
-          .navigation
-            %ul.nav.nav-stacked
-              %li
-                %a{href: "/dashboard"}
-                  %i.icon-dashboard
-                  %span Dashboard
-              %li
-                %a{href: "/leads/new"}
-                  %i.icon-male
-                  %span Create Lead
-              %li
-                %a{href: "/tasks/new"}
-                  %i.icon-tasks
-                  %span Create Task
-              %li
-                %a{href: "/contacts/new"}
-                  %i.icon-book
-                  %span Create Contact
-              %li
-                %a{href: "/accounts/new"}
-                  %i.icon-home
-                  %span Create Account
-              %li
-                %a{href: "/opportunities/new"}
-                  %i.icon-dollar
-                  %span Create Opportunity
-
+        = render 'layouts/side_nav'
 
         %section#content
           .container

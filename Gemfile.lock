@@ -44,6 +44,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    american_date (1.1.0)
     ansi (1.4.3)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
@@ -310,6 +311,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  american_date
   bcrypt-ruby
   bootstrap-sass (~> 3.0.3.0)
   capistrano (= 2.15.5)

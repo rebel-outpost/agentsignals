@@ -24,32 +24,33 @@ describe "User Dashboard" do
   end
 
   it 'links to new lead' do
+    click_link 'Leads'
     click_link 'Create Lead'
-    page.should have_content 'Lead Info'
+    page.should have_content 'Create New Lead'
   end
 
   it 'links to new task' do
+    click_link 'Tasks'
     click_link 'Create Task'
     page.should have_content 'Create New Task'
   end
 
   it 'links to new contact' do
+    click_link 'Contacts'
     click_link 'Create Contact'
     page.should have_content 'First name'
   end
 
   it 'links to new account' do
+    click_link 'Accounts'
     click_link 'Create Account'
     page.should have_content 'Name'
   end
 
   it 'links to new opportunity' do
+    click_link 'Opportunities'
     click_link 'Create Opportunity'
     page.should have_content 'Create New Opportunity'
-  end
-
-  it 'has additional settings'do
-    page.should have_content 'Settings'
   end
 
   it 'shows leads assigned' do
@@ -67,14 +68,13 @@ describe "User Dashboard" do
   end
 
   it 'can create its profile' do
-    click_link 'Profile'
+    visit edit_user_path(@user)
     fill_in 'user_first_name', with: 'Bill'
     fill_in 'user_last_name', with: 'Gates'
     fill_in 'user_phone', with: '8001231234'
-    click_button 'Save'
+    click_button 'Update'
     page.should have_content 'User has been successfully updated'
   end
 
-  it 'can set notification settings'
 
 end

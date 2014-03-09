@@ -1,11 +1,31 @@
-.container.user-profile
-  .content
-    .profile-form
-      %h2 User Profile
-      %form
-        = simple_form_for @user do |f|
-          = f.input :first_name, label: false, placeholder: 'First name'
-          = f.input :last_name, label: false, placeholder: 'Last name'
-          = f.input :phone, label: false, placeholder: '800 555-1212'
-          = f.submit "Save", class: 'btn'
-
+%section#content{style: "margin-left:10px"}
+  .container
+    #content-wrapper.row
+      .col-xs-12
+        .row
+          .col-sm-12
+            .page-header
+              %h1.pull-left
+                %i.icon-user
+                %span User profile
+        .row
+          .col-sm-9.col-lg-10
+            .box
+              .box-content.box-double-padding
+                = simple_form_for @user do |f|
+                  %fieldset
+                    .col-sm-4
+                      .lead
+                        %i.icon-user.text-contrast
+                        Personal info
+                      %small.text-muted Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisl est, vulputate at porttitor non, interdum a mauris. Phasellus imperdiet gravida pulvinar.
+                    .col-sm-7.col-sm-offset-1
+                      .form-group
+                        = f.input :first_name, label: false, placeholder: 'First name'
+                      .form-group
+                        = f.input :last_name, label: false, placeholder: 'Last name'
+                      .form-group
+                        = f.input :phone, label: false, placeholder: '800 555-1212'
+                      %hr.hr-normal
+                      .text-right
+                        = f.submit 'Update', class: "btn btn-primary"

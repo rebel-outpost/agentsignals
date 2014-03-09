@@ -22,7 +22,7 @@ describe "Leads", js: true do
     fill_in 'lead_email',       with: 'bill@ms.com'
     fill_in 'lead_company',     with: 'Microsoft'
     fill_in 'lead_comments',    with: 'Needs ASAP'
-    select "#{@user2.email}",  from: 'Lead owner'
+    select  "#{@user2.email}",  from: 'Lead owner'
     select 'Web Application',  from: 'Interested in'
     select 'New',              from: 'Lead status'
     select 'Web Lead',         from: 'Lead source'
@@ -153,7 +153,8 @@ describe "Leads", js: true do
 
   context 'web-to-lead' do
     it 'creates web-to-lead form' do
-      click_link 'Web-to-Lead Form'
+      click_link 'Leads'
+      click_link 'Create Web-to-Lead'
       fill_in 'redirect_url',   with: '/index.html'
       check 'first_name'
       check 'last_name'

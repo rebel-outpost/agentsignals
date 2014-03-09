@@ -56,11 +56,11 @@ describe 'Tasks' do
 
   context 'edit' do
     before do
-      @task = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user
+      @task = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
     end
 
     it 'edits task' do
-      click_link 'Tasks'
+      visit tasks_path
       within '.table-striped' do
         click_link 'edit'
       end
@@ -78,7 +78,7 @@ describe 'Tasks' do
 
 
     it 'notifies the user their task has changed' do
-      click_link 'Tasks'
+      visit tasks_path
       within '.table-striped' do
         click_link 'edit'
       end
@@ -97,12 +97,13 @@ describe 'Tasks' do
 
   context 'delete' do
     before do
-      @task   = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user
+      @task   = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
     end
 
     it 'deletes task' do
-      click_link 'Tasks'
+      visit tasks_path
       click_link 'delete'
+      page.driver.browser.switch_to.alert.accept
       page.should have_content 'Task Deleted'
     end
 

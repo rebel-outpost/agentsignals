@@ -17,11 +17,12 @@ class TasksController < ApplicationController
   end
 
   def create
+    tasks_params[:due_date] = Date.strptime(tasks_params[:due_date], "%m/%d/%Y")
     @task = Task.create(tasks_params)
-    task_owner = User.where(email: @task.assigned_to).first
+    @task.user = User.where(email: @task.assigned_to).first
     if @task.save
       redirect_to tasks_path, flash: { notice: 'New Task Created'}
-      TaskMailer.notify_new_task(task_owner, @task).deliver
+      TaskMailer.notify_new_task(@task.user, @task).deliver
     else
       render :new
     end

@@ -18,7 +18,7 @@ Simplecrm::Application.routes.draw do
   end
 
   get "web_to_lead" => "leads#new_web_lead", as: "web_to_lead"
-  put "create_lead" => "leads#create_web_lead", as: "create_lead"
+  put "create_web_lead" => "leads#create_web_lead", as: "create_web_lead"
   put "generate" => "leads#external_form"
 
   get 'contact_us' => 'contact_forms#new', as: 'contact_us'

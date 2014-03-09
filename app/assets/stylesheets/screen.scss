@@ -10,3 +10,29 @@
 .alert {
   width: 100%;
 }
+
+.select2-search {
+  input[type="text"] {
+    width: 290px !important;
+  }
+}
+
+.chosen-select {
+  width: 300px;
+}
+
+.group-header {
+  margin: 0 -15px 20px -15px;
+}
+
+.user-menu {
+  .dropdown-menu {
+    width: 150px !important;
+    .icon-signout::before {
+      margin-right: 10px;
+    }
+    .icon-user::before {
+      margin-right: 10px;
+    }
+  }
+}

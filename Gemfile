@@ -19,11 +19,12 @@ gem 'font-awesome-rails'
 gem 'newrelic_rpm'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'mail_form'
-gem 'selenium-webdriver'
+gem "selenium-webdriver"
 gem 'turbolinks'
 gem "compass-rails", "~> 1.1.2"
 gem 'capistrano',  '2.15.5'
 gem "unicorn-rails"
+gem "american_date"
 
 group :development do
   gem 'unicorn'

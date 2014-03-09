@@ -1,13 +1,18 @@
 - if user_signed_in?
-  %li= link_to "Leads", :leads
-  %li= link_to "Accounts", :accounts
-  %li= link_to "Contacts", :contacts
-  %li= link_to "Tasks", :tasks
-  %li= link_to "Opportunities", :opportunities
-  %li= link_to 'Sign Out', :logout
-  %li= link_to 'Profile', edit_user_path(current_user)
-- else
-  / %li= link_to 'Pricing', :pricing
-  / %li= link_to 'Contact Us', :contact_us
-  / %li= link_to 'Sign In', :login
+  .navbar
+    %ul.nav
+      %li.dropdown.dark.user-menu
+        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+          %span.user-name
+            = current_user.email
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Profile", edit_user_path(current_user), class: 'icon-user'
+          %li
+            = link_to "Sign out", :logout, class: 'icon-signout'
+
+
+
+
 

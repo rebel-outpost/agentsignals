@@ -32,7 +32,6 @@ describe 'Contact requests' do
     fill_in "contact_phone",      with: '480-555-1212'
     fill_in "contact_address",    with: '123 Fake St. Fakerton, AZ 12345'
     click_button 'Create Contact'
-    page.should have_content "can't be blank"
     page.should_not have_content 'New Contact Created'
     Contact.count.should == 0
   end
@@ -43,20 +42,20 @@ describe 'Contact requests' do
     end
 
     it 'deletes contact' do
-      click_link 'Contacts'
+      visit contacts_path
       click_link 'delete'
+      page.driver.browser.switch_to.alert.accept
       page.should have_content 'Contact Deleted'
       Contact.all.count.should == 0
     end
 
     it 'edits contact' do
-      click_link 'Contacts'
+      visit contacts_path
       within '.table-striped' do
         click_link 'edit'
       end
       fill_in "contact_first_name", with: 'John'
       click_button 'Update Contact'
-      page.should_not have_content "can't be blank"
       page.should have_content 'Contact Updated'
       @contact.reload
       @contact.first_name.should == 'John'

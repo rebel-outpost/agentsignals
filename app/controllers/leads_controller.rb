@@ -11,7 +11,7 @@ class LeadsController < ApplicationController
 
   def create
     @lead = current_user.organization.leads.new(leads_params)
-    @lead.update_attributes(assigned_to: @lead.lead_owner)
+    @lead.user = User.where(email: @lead.lead_owner).first
     if @lead.save
       current_user.organization.leads << @lead
       LeadMailer.notify_new_lead(@lead.lead_owner, @lead).deliver
@@ -64,7 +64,7 @@ class LeadsController < ApplicationController
 
   def convert
     @lead               = current_user.organization.leads.find params[:id]
-    @accounts           = current_user.organization.accounts.all.map(&:name)
+    @accounts           = current_user.organization.accounts.to_a.map(&:name)
     @opportunity_owner  = current_user.organization.users.map(&:email)
   end
 
@@ -72,7 +72,7 @@ class LeadsController < ApplicationController
     @lead = current_user.organization.leads.find params[:id]
     @lead.update_attributes(leads_params)
     @account = current_user.organization.accounts.where(name: params['account_name']).first
-    @contacts = current_user.organization.contacts.all.map(&:email)
+    @contacts = current_user.organization.contacts.to_a.map(&:email)
     unless @contacts.include? @lead.email
       @contact = current_user.organization.contact.create params['lead']
     end

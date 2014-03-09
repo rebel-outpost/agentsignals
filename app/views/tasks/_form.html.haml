@@ -4,7 +4,7 @@
       .form-group
         = f.input :task_name, label: "Name"
       .form-group
-        = f.input :due_date, :as => :string, :input_html => { :class => 'jquery-ui-date'}
+        = f.input :due_date, as: :string, :input_html => { class: 'datepicker'}
       .form-group
         = f.input :assigned_to, collection: (@task_owners)
     .col-sm-4.col-sm-offset-1

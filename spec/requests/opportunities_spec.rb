@@ -12,18 +12,17 @@ describe "Opportunities" do
 
   it 'creates an opportunity' do
     click_link 'Opportunities'
-    click_link 'Create New Opportunity'
-    fill_in 'opportunity_opportunity_name', 		  with: 'Next Big Deal'
-    select 'Big Money', 					                from: 'Account name'
-    select 'New Customer', 					              from: 'Type'
-    fill_in 'opportunity_amount', 	              with: '10,000'
-    select 'Proposal', 							              from: 'Stage'
-    select "#{@user.email}",				              from: 'Owner'
-    fill_in 'opportunity_closing_date',           with: '09/11/2012'
-    fill_in 'opportunity_probability', 	          with: '50%'
-    fill_in 'opportunity_contact_name',	          with: 'Mister Smith'
-    fill_in 'opportunity_comments', 		          with: 'Lets nail this one'
-    sleep 2
+    click_link 'Create Opportunity'
+    fill_in 'opportunity_opportunity_name',   with: 'Next Big Deal'
+    select 'Big Money', 					            from: 'Account name'
+    select 'New Customer', 					          from: 'Type'
+    fill_in 'opportunity_amount', 	          with: '10,000'
+    select 'Proposal', 							          from: 'Stage'
+    select "#{@user.email}",				          from: 'Owner'
+    fill_in 'opportunity_closing_date',       with: '09/11/2012'
+    fill_in 'opportunity_probability', 	      with: '50%'
+    fill_in 'opportunity_contact_name',	      with: 'Mister Smith'
+    fill_in 'opportunity_comments', 		      with: 'Lets nail this one'
     click_button 'Create Opportunity'
     page.should have_content 'New Opportunity Created'
   end
@@ -35,7 +34,7 @@ describe "Opportunities" do
     end
 
     it 'edits opportunity' do
-      click_link 'Opportunities'
+      visit opportunities_path
       within '.table-striped' do
         click_link 'edit'
       end
@@ -47,8 +46,9 @@ describe "Opportunities" do
     end
 
     it 'deletes an opportunity' do
-      click_link 'Opportunities'
+      visit opportunities_path
       click_link 'delete'
+      page.driver.browser.switch_to.alert.accept
       page.should have_content 'Opportunity Deleted'
     end
   end

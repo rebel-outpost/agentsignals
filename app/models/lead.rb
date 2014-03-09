@@ -1,6 +1,6 @@
 class Lead < Contact
 
-  belongs_to :assigned_to, class_name: 'User'
+  belongs_to :user
   belongs_to :organization
   has_many :notes
 

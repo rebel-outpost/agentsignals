@@ -29,7 +29,6 @@ describe 'Accounts' do
     fill_in 'account_email',      with: 'famouspotatos@yahoo.com'
     fill_in 'account_address',    with: '123 W. Main St. Eloy, AZ'
     click_button 'Create Account'
-    page.should have_content "can't be blank"
     page.should_not have_content 'New Account Created'
     Account.count.should == 0
   end
@@ -40,13 +39,14 @@ describe 'Accounts' do
     end
 
     it 'deletes account' do
-      click_link 'Accounts'
+      visit accounts_path
       click_link 'delete'
+      page.driver.browser.switch_to.alert.accept
       page.should have_content 'Account Deleted'
     end
 
     it 'edits account' do
-      click_link 'Accounts'
+      visit accounts_path
       within '.table-striped' do
         click_link 'edit'
       end
