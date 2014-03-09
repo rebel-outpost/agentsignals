@@ -41,11 +41,11 @@ Simplecrm::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
-    port: 465,
+    port: 587,
     domain: "rebel-outpost.com",
     authentication: :login,
     enable_starttls_auto: true,
-    user_name: "simplcrm.us@rebel-outpost.com",
+    user_name: "simplecrm.us@rebel-outpost.com",
     password: "un4given"
   }
 
