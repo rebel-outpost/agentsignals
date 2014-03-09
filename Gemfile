@@ -33,6 +33,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'rails_layout'
   gem 'puma'
+  gem "letter_opener"
   gem 'capistrano-unicorn', :require => false
 end
 
