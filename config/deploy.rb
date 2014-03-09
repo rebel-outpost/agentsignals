@@ -26,7 +26,7 @@ namespace :deploy do
 end
 
 after "deploy:update_code", "deploy:symlink_shared"
-after "deploy:symlink_shared", 'deploy:migrate'
+after "deploy:update_code", 'deploy:migrate'
 before "deploy:assets:precompile", "deploy:symlink_shared"
 
 # Unicorn tasks
