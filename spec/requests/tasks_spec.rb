@@ -61,7 +61,7 @@ describe 'Tasks' do
 
     it 'edits task' do
       visit tasks_path
-      within '.table-striped' do
+      within '.table' do
         click_link 'edit'
       end
       fill_in "task_task_name",         with: 'test task 2 updated'
@@ -79,7 +79,7 @@ describe 'Tasks' do
 
     it 'notifies the user their task has changed' do
       visit tasks_path
-      within '.table-striped' do
+      within '.table' do
         click_link 'edit'
       end
       fill_in "task_task_name",         with: 'test task 2 updated'

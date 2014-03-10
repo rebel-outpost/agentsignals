@@ -51,7 +51,7 @@ describe 'Contact requests' do
 
     it 'edits contact' do
       visit contacts_path
-      within '.table-striped' do
+      within '.table' do
         click_link 'edit'
       end
       fill_in "contact_first_name", with: 'John'

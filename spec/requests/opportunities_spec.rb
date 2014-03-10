@@ -15,7 +15,7 @@ describe "Opportunities" do
     click_link 'Create Opportunity'
     fill_in 'opportunity_opportunity_name',   with: 'Next Big Deal'
     select 'Big Money', 					            from: 'Account name'
-    select 'New Customer', 					          from: 'Type'
+    select 'New Customer', 					          from: 'Opportunity type'
     fill_in 'opportunity_amount', 	          with: '10,000'
     select 'Proposal', 							          from: 'Stage'
     select "#{@user.email}",				          from: 'Owner'
@@ -35,7 +35,7 @@ describe "Opportunities" do
 
     it 'edits opportunity' do
       visit opportunities_path
-      within '.table-striped' do
+      within '.table' do
         click_link 'edit'
       end
 

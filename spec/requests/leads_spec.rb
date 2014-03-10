@@ -153,8 +153,7 @@ describe "Leads", js: true do
 
   context 'web-to-lead' do
     it 'creates web-to-lead form' do
-      click_link 'Leads'
-      click_link 'Create Web-to-Lead'
+      visit web_to_lead_path
       fill_in 'redirect_url',   with: '/index.html'
       check 'first_name'
       check 'last_name'

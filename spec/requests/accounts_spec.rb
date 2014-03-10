@@ -47,7 +47,7 @@ describe 'Accounts' do
 
     it 'edits account' do
       visit accounts_path
-      within '.table-striped' do
+      within '.table' do
         click_link 'edit'
       end
       fill_in 'account_name', with: 'Potato Factory'

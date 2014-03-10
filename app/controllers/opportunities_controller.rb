@@ -53,7 +53,7 @@ class OpportunitiesController < ApplicationController
   end
 
   def opportunities_params
-    params.require(:opportunities).permit! if params[:opportunities]
+    params.require(:opportunity).permit! if params[:opportunity]
   end
 
 end

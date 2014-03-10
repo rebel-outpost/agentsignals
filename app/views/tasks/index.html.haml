@@ -5,15 +5,17 @@
         %h2 Tasks
 
 .row
-  .col-sm-10
+  .col-sm-12
     .box.bordered-box.blue-border{style: "margin-bottom:0;"}
       .box-header.blue-background
         .title
           Current Tasks
+        .add-new
+          = link_to 'New Task', new_task_path, class: 'btn'
       .box-content.box-no-padding
         .responsive-table
           .scrollable-area
-            %table.data-table.table.table-bordered.table-striped.dataTable
+            %table.data-table.table.table-bordered.dataTable
               %thead
                 %tr
                   %th

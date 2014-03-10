@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309055827) do
+ActiveRecord::Schema.define(version: 20140310000639) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                       null: false
@@ -119,7 +119,6 @@ ActiveRecord::Schema.define(version: 20140309055827) do
   create_table "opportunities", force: true do |t|
     t.string   "opportunity_name",            null: false
     t.string   "account_name",                null: false
-    t.string   "type"
     t.string   "amount"
     t.string   "stage"
     t.string   "owner",                       null: false
@@ -131,6 +130,7 @@ ActiveRecord::Schema.define(version: 20140309055827) do
     t.datetime "updated_at"
     t.string   "uid",              limit: 40
     t.integer  "organization_id"
+    t.string   "opportunity_type"
   end
 
   create_table "organizations", force: true do |t|
