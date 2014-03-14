@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'Accounts' do
   before do
-    @user   = FactoryGirl.create :user
-    @organization = FactoryGirl.create :organization
+    @user   = create :user
+    @organization = create :organization
     @organization.users << @user
     login_as @user
   end
@@ -17,7 +17,7 @@ describe 'Accounts' do
     fill_in 'account_email',      with: 'famouspotatos@yahoo.com'
     fill_in 'account_address',    with: '123 W. Main St. Eloy, AZ'
     click_button 'Create Account'
-    page.should have_content 'New Account Created'
+    expect(page).to have_content 'New Account Created'
     Account.count.should == 1
   end
 
@@ -35,14 +35,14 @@ describe 'Accounts' do
 
   context 'with an existing account' do
     before do
-      @account = FactoryGirl.create :account, organization: @organization
+      @account = create :account, organization: @organization
     end
 
     it 'deletes account' do
       visit accounts_path
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept
-      page.should have_content 'Account Deleted'
+      expect(page).to have_content 'Account Deleted'
     end
 
     it 'edits account' do
@@ -52,7 +52,7 @@ describe 'Accounts' do
       end
       fill_in 'account_name', with: 'Potato Factory'
       click_button 'Update Account'
-      page.should have_content 'Account Updated'
+      expect(page).to have_content 'Account Updated'
       @account.reload
       @account.name.should == 'Potato Factory'
     end
@@ -60,14 +60,14 @@ describe 'Accounts' do
 
   context 'with multiple organizations' do
     before do
-      @account = FactoryGirl.create :account, name: 'My Account', organization: @organization
-      @another_organization = FactoryGirl.create :organization
-      @another_account = FactoryGirl.create :account, name: 'Not My Account', organization: @another_organization
+      @account = create :account, name: 'My Account', organization: @organization
+      @another_organization = create :organization
+      @another_account = create :account, name: 'Not My Account', organization: @another_organization
     end
 
     it "should only show accounts that belong to its organization" do
       visit accounts_path
-      page.should have_content 'My Account'
+      expect(page).to have_content 'My Account'
       page.should_not have_content 'Not My Account'
     end
   end

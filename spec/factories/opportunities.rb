@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :opportunity do
-  	opportunity_name  'Next Big Deal'
-    account_name      'My Company'
-    owner             'me@example.com'
+  	opportunity_name  { Faker::Company.bs }
+    account_name      { Faker::Company.name }
+    owner             { Faker::Internet.email }
   end
 end

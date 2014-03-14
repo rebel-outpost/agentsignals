@@ -22,7 +22,6 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    page.driver.browser.manage.window.resize_to(1000, 600)
     DatabaseCleaner.start
   end
 

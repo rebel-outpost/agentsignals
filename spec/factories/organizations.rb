@@ -1,15 +1,12 @@
 FactoryGirl.define do
-  sequence :name do |n|
-    "New Org#{n}"
-  end
 
   factory :organization do
-    name
-    phone     '8005551212'
-    address   '123 Sesame st'
-    city      'New York'
-    state     'NY'
-    zip       '12345'
-    max_users 5
+    name        { Faker::Company.name }
+    phone       { Faker::PhoneNumber.phone_number }
+    address     { Faker::Address.street_address }
+    city        { Faker::Address.city }
+    state       { Faker::Address.state }
+    zip         { Faker::Address.zip }
+    max_users   5
   end
 end

@@ -25,7 +25,7 @@ describe "Admin" do
       fill_in 'Phone', with: '8005551212'
       fill_in 'Max users', with: 5
       click_button 'Create Organization'
-      page.should have_content 'Organization was successfully created.'
+      expect(page).to have_content 'Organization was successfully created.'
     end
 
     # TODO Make the role a selection
@@ -42,7 +42,7 @@ describe "Admin" do
       fill_in 'Phone', with: '9991231234'
       fill_in 'Organization role', with: 'Admin'
       click_button 'Create User'
-      page.should have_content 'User was successfully created.'
+      expect(page).to have_content 'User was successfully created.'
     end
 
     it 'cancels organization'

@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "Opportunities" do
 
   before do
-    @user           = FactoryGirl.create :user
-    @organization   = FactoryGirl.create :organization
-    @account        = FactoryGirl.create :account, organization: @organization
+    @user           = create :user
+    @organization   = create :organization
+    @account        = create :account, organization: @organization
     @organization.users << @user
     login_as @user
   end
@@ -14,7 +14,7 @@ describe "Opportunities" do
     click_link 'Opportunities'
     click_link 'Create Opportunity'
     fill_in 'opportunity_opportunity_name',   with: 'Next Big Deal'
-    select 'Big Money', 					            from: 'Account name'
+    select @account.name, 					          from: 'Account name'
     select 'New Customer', 					          from: 'Opportunity type'
     fill_in 'opportunity_amount', 	          with: '10,000'
     select 'Proposal', 							          from: 'Stage'
@@ -24,13 +24,13 @@ describe "Opportunities" do
     fill_in 'opportunity_contact_name',	      with: 'Mister Smith'
     fill_in 'opportunity_comments', 		      with: 'Lets nail this one'
     click_button 'Create Opportunity'
-    page.should have_content 'New Opportunity Created'
+    expect(page).to have_content 'New Opportunity Created'
   end
 
   context 'with created opportunity' do
 
     before do
-      @opportunity = FactoryGirl.create :opportunity, owner: @user.email, account_name: @account.name, organization: @organization
+      @opportunity = create :opportunity, owner: @user.email, account_name: @account.name, organization: @organization
     end
 
     it 'edits opportunity' do
@@ -42,14 +42,14 @@ describe "Opportunities" do
       fill_in 'opportunity_opportunity_name',   with: 'New Deal Name'
       fill_in 'opportunity_amount',             with: '20,000'
       click_button 'Update'
-      page.should have_content 'Opportunity Successfully Updated'
+      expect(page).to have_content 'Opportunity Successfully Updated'
     end
 
     it 'deletes an opportunity' do
       visit opportunities_path
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept
-      page.should have_content 'Opportunity Deleted'
+      expect(page).to have_content 'Opportunity Deleted'
     end
   end
 

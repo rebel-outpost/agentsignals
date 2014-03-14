@@ -3,10 +3,10 @@ require 'spec_helper'
 describe "Leads", js: true do
 
   before do
-    @user   = FactoryGirl.create :user
-    @user2  = FactoryGirl.create :user, first_name: 'Jim Jones'
-    @user3  = FactoryGirl.create :user, first_name: 'Jim Jones II'
-    @organization = FactoryGirl.create :organization
+    @user   = create :user
+    @user2  = create :user, first_name: 'Jim Jones'
+    @user3  = create :user, first_name: 'Jim Jones II'
+    @organization = create :organization
     @organization.users << @user
     @organization.users << @user2
     login_as @user
@@ -29,7 +29,7 @@ describe "Leads", js: true do
     sleep 1
     click_button 'Create Lead'
     Lead.last.last_name.should == 'Gates'
-    page.should have_content 'New Lead Created'
+    expect(page).to have_content'New Lead Created'
   end
 
   it 'adds new lead to org on creation' do
@@ -50,7 +50,7 @@ describe "Leads", js: true do
     sleep 1
     click_button 'Create Lead'
     Lead.last.last_name.should == 'Goats'
-    page.should have_content 'New Lead Created'
+    expect(page).to have_content'New Lead Created'
     @organization.leads.last.should == Lead.last
   end
 
@@ -77,9 +77,9 @@ describe "Leads", js: true do
   context 'with created lead' do
 
     before do
-      @lead   = FactoryGirl.create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email, organization: @organization
-      @lead2  = FactoryGirl.create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_owner: @user3.email, lead_source: 'referral', email: 'bob@marley.com'
-      @account = FactoryGirl.create :account, organization: @organization
+      @lead   = create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email, organization: @organization
+      @lead2  = create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_owner: @user3.email, lead_source: 'referral', email: 'bob@marley.com'
+      @account = create :account, organization: @organization
     end
 
     it 'should edit a lead' do
@@ -88,12 +88,12 @@ describe "Leads", js: true do
       select  'Contacted', from: 'Lead status'
       sleep 2
       click_button 'Update'
-      page.should have_content 'Lead Updated'
+      expect(page).to have_content'Lead Updated'
     end
 
     it 'should show all leads belonging to org' do
       visit leads_path
-      page.should have_content 'Bill Gates'
+      expect(page).to have_content'Bill Gates'
       page.should_not have_content 'Bob Marley'
     end
 
@@ -102,9 +102,9 @@ describe "Leads", js: true do
       select  "#{@user2.email}", from: 'Lead owner'
       sleep 2
       click_button 'Update'
-      page.should have_content 'Lead Updated'
+      expect(page).to have_content'Lead Updated'
       visit leads_path
-      page.should have_content @user2.email
+      expect(page).to have_content@user2.email
     end
 
     it 'reassigns lead' do
@@ -112,17 +112,17 @@ describe "Leads", js: true do
       select  "#{@user.email}", from: 'Lead owner'
       sleep 2
       click_button 'Update'
-      page.should have_content 'Lead Updated'
+      expect(page).to have_content'Lead Updated'
       visit leads_path
-      page.should have_content @user.email
+      expect(page).to have_content@user.email
     end
 
     it 'deletes a lead', js: true do
       visit leads_path
-      page.should have_content 'Bill Gates'
+      expect(page).to have_content'Bill Gates'
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept
-      page.should have_content 'Lead Deleted'
+      expect(page).to have_content'Lead Deleted'
       page.should_not have_content 'Bill Gates'
     end
 
@@ -132,8 +132,8 @@ describe "Leads", js: true do
       select "Follow Up", from: "Note type"
       fill_in 'Due date', with: '12/25/2012'
       click_button 'Add new Note'
-      page.should have_content 'Note was successfully created'
-      page.should have_content 'this is a note'
+      expect(page).to have_content'Note was successfully created'
+      expect(page).to have_content'this is a note'
     end
 
     it 'converts a lead' do
@@ -147,7 +147,7 @@ describe "Leads", js: true do
       click_button 'Convert'
       Opportunity.count.should == count_before + 1
       Opportunity.last.opportunity_name.should == 'New Opportunity'
-      page.should have_content 'Lead has been converted'
+      expect(page).to have_content'Lead has been converted'
     end
   end
 
@@ -166,7 +166,7 @@ describe "Leads", js: true do
       check 'zip'
       check 'comments'
       click_button 'Create Form'
-      page.should have_content 'Copy the form below and use it anywhere in your website.'
+      expect(page).to have_content'Copy the form below and use it anywhere in your website.'
     end
   end
 

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "Sessions" do
   before do
-    @user   = FactoryGirl.create :user
-    @organization = FactoryGirl.create :organization
+    @user   = create :user
+    @organization = create :organization
     @organization.users << @user
   end
 
@@ -12,7 +12,7 @@ describe "Sessions" do
     fill_in 'user_email', with: @user.email
     fill_in 'user_password', with: @user.password
     click_button 'Sign in'
-    page.should have_content "Welcome to your Dashboard"
+    expect(page).to have_content "Welcome to your Dashboard"
   end
 
 end

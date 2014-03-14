@@ -3,10 +3,10 @@ require 'spec_helper'
 describe 'Tasks' do
 
   before do
-    @user   = FactoryGirl.create :user
-    @user2  = FactoryGirl.create :user, email: 'test2@example.com', first_name: 'Jim'
-    @lead   = FactoryGirl.create :lead, email: 'test@test.com', first_name: 'Jenny', last_name: 'Smith'
-    @organization = FactoryGirl.create :organization
+    @user   = create :user
+    @user2  = create :user, email: 'test2@example.com', first_name: 'Jim'
+    @lead   = create :lead, email: 'test@test.com', first_name: 'Jenny', last_name: 'Smith'
+    @organization = create :organization
     @organization.users << @user
     @organization.users << @user2
     login_as @user
@@ -22,7 +22,7 @@ describe 'Tasks' do
     fill_in "task_task_name",       with: 'test task'
     click_button 'Create Task'
     Task.count.should == 1
-    page.should have_content 'New Task Created'
+    expect(page).to have_content 'New Task Created'
   end
 
   it 'has required fields' do
@@ -47,7 +47,7 @@ describe 'Tasks' do
     select  "#{@lead.email}",        from: 'For Lead'
     sleep 2
     click_button 'Create Task'
-    page.should have_content 'New Task Created'
+    expect(page).to have_content 'New Task Created'
     ActionMailer::Base.deliveries.last.to.should include @user2.email
     ActionMailer::Base.deliveries.last.body.should include 'call' && @lead.email
   end
@@ -56,7 +56,7 @@ describe 'Tasks' do
 
   context 'edit' do
     before do
-      @task = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
+      @task = create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
     end
 
     it 'edits task' do
@@ -71,7 +71,7 @@ describe 'Tasks' do
       select  "#{@lead.email}",          from: 'For Lead'
       sleep 2
       click_button 'Update Task'
-      page.should have_content 'Task Updated'
+      expect(page).to have_content 'Task Updated'
       @task.reload
       @task.task_name.should == 'test task 2 updated'
     end
@@ -97,14 +97,14 @@ describe 'Tasks' do
 
   context 'delete' do
     before do
-      @task   = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
+      @task   = create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
     end
 
     it 'deletes task' do
       visit tasks_path
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept
-      page.should have_content 'Task Deleted'
+      expect(page).to have_content 'Task Deleted'
     end
 
   end

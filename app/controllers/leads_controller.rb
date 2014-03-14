@@ -76,7 +76,7 @@ class LeadsController < ApplicationController
     unless @contacts.include? @lead.email
       @contact = current_user.organization.contact.create params['lead']
     end
-    @opportunities = current_user.organization.opportunities.all.map(&:opportunity_name)
+    @opportunities = current_user.organization.opportunities.to_a.map(&:opportunity_name)
     unless @opportunities.include? @lead.opportunity_name
       @opportunity = current_user.organization.opportunities.create(opportunity_name: @lead.opportunity_name, account_name: @lead.account_name, owner: @lead.opportunity_owner)
     end

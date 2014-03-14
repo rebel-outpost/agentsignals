@@ -45,6 +45,7 @@ group :test, :development do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'fakeweb'
+  gem 'faker'
   gem 'email_spec'
   gem 'pry'
   gem 'pry-nav'
