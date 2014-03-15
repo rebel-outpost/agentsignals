@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310000639) do
+ActiveRecord::Schema.define(version: 20140315011625) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                       null: false
@@ -144,6 +144,30 @@ ActiveRecord::Schema.define(version: 20140310000639) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "plans", force: true do |t|
+    t.string   "name",                               null: false
+    t.decimal  "price",      precision: 8, scale: 2, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plans", ["price"], name: "index_plans_on_price", using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id",               null: false
+    t.integer  "plan_id",               null: false
+    t.string   "stripe_customer_token"
+    t.string   "card_zip"
+    t.string   "last_four"
+    t.string   "card_type"
+    t.date     "next_bill_on"
+    t.string   "card_expiration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", unique: true, using: :btree
 
   create_table "tasks", force: true do |t|
     t.string   "task_name",                  null: false

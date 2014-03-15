@@ -25,6 +25,7 @@ gem "compass-rails", "~> 1.1.2"
 gem 'capistrano',  '2.15.5'
 gem "unicorn-rails"
 gem "american_date"
+gem 'stripe'
 
 group :development do
   gem 'unicorn'
