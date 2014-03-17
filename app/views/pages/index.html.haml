@@ -1,42 +1,18 @@
-.container
-  .row
-    .span12
-      %section
-        .page-header
-          %br
+#wrapper
+  %section
+    .container
+      #content-wrapper.row
+        .col-xs-12
           %h1.text-center{style: 'font-size:32px;'}
             Welcome to Simple CRM - Customer Relations Management
-          %br
-          %p
-            Welcome to RailsCRM.  RailsCRM is available on Github and soon will be avalable as a software as a service.  I have been torn between offering a SaaS or not but this will not change the fact that all versions of RailsCRM are open sourced and will remain so.
-          %p
-            What does RailsCRM do?  A Customer Relations Management system is used to track leads and opportunities for your company.  RailsCRM can be used to connect to your websites contact us form and create a lead when your form is filled out.
-          %p
-            I want to make RailsCRM something that is easy to use and something that people want to use.  In order to do that, I need feedback from the few of you that are using it or thinking of using it.  If you have ideas that you would like to see implemented, please let me know.  I will be adding a contact form shortly to make this easier to do.
-          %p
-            Parden the changes as I make this transition...
-          %br
-          .well.trial
-            %h2 Try it  out
-            %p
-              Click on the 'Sign in' link at the top and login with 'test@example.com' and 'password'.
 
-          %h2 Open Source
-          %p
-            Rails CRM is totally opensourced.  All code is available on github. Select from the original basic version
-            %a{href: "https://github.com/brobertsaz/railscrm"}
-              RailsCRM
-            or the new advanced version
-            %a{href: "https://github.com/brobertsaz/railscrm-advanced"}
-              RailsCRM-advanced
-          %br
-          %h2 Want to learn more?
-          %p
-            If you would like to learn more about Rails CRM or have any questions, feel free to
-            %a{:href => "mailto:broberts_az@yahoo.com", :target => "_blank"} send me an email
-            or fill out our
-            %a{href: "/contact_us"} info form.
-          %p
-            I am interested in hearing your comments/suggestions or if there is interest for a hosted solution.
+        .col-xs-12
+          #slider
+            .slide1
+              %img{:src => "assets/dashboard.png", :alt => "user dashboard"}
+            .slide2
+              %img{:src => "assets/new_lead.png", :alt => "New Lead" }
+
+
 
 

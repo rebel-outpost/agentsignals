@@ -1,17 +1,29 @@
-.contact-us-form
-  %h2
-    Request more information
-  %p
-    If you would like to know more about RailsCRM or if you have any comments or questions, feel free to either
-    %a{href: 'mailto:broberts_az@yahoo.com'}>
-      email us,
-    or fill out our form.
-  .contact-us
-    = simple_form_for @contact_form do |f|
-      = f.input :name, required: false
-      = f.input :email, required: false
-      = f.input :request_type, collection: @request_types
-      = f.input :message, :as => :text, :required => false, input_html: {rows: '5', cols: '90'}
-      .hidden
-        = f.input :nickname, :hint => 'Leave this field blank!'
-      = f.button :submit, 'Send message', class: 'btn btn-primary'
+.container
+  .row
+    .col-sm-4.col-sm-offset-4
+      %h2.text-center.title Request more information
+      %p
+        If you would like to know more about RailsCRM or if you have any comments or questions, feel free to either
+        %a{href: 'mailto:broberts_az@yahoo.com'}>
+          email us,
+        or fill out our form.
+  .row
+    .col-sm-4.col-sm-offset-4
+      = simple_form_for @contact_form do |f|
+        .form-group
+          .controls
+            = f.input :name, required: false, class: 'form-control'
+        .form-group
+          .controls
+            = f.input :email, required: false, class: 'form-control'
+        .form-group
+          .controls
+            = f.input :request_type, collection: @request_types, class: 'form-control'
+        .form-group
+          .controls
+            = f.input :message, :as => :text, :required => false, input_html: {rows: '5', cols: '90'}, class: 'form-control'
+          .hidden
+            = f.input :nickname, :hint => 'Leave this field blank!'
+        .form-group
+          .controls
+            = f.button :submit, 'Send message', class: 'btn btn-primary'

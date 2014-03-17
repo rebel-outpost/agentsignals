@@ -1,7 +1,10 @@
 %nav.navbar.navbar-fixed-top{role: "navigation"}
-  .navbar-brand{href: "/dashboard"} Simple CRM
-  %a.toggle-nav.btn.pull-left{href: "#"}
-    %i.icon-reorder
+  - if current_user
+    .navbar-brand{href: "/dashboard"} Simple CRM
+    %a.toggle-nav.btn.pull-left{href: "#"}
+      %i.icon-reorder
+  - else
+    %a.navbar-brand{href: "/"} Simple CRM
 
   %ul.nav
     = render 'layouts/navigation_links'

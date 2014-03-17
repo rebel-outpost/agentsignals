@@ -12,6 +12,15 @@
           %li
             = link_to "Sign out", :logout, class: 'icon-signout'
 
+- else
+  .navbar
+    %ul.nav
+      %li
+        = link_to 'Pricing', :pricing
+      %li
+        = link_to 'Contact Us', :contact_us
+      %li
+        = link_to 'Login', :login
 
 
 

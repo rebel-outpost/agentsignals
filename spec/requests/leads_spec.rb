@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Leads", js: true do
+describe "Leads" do
 
   before do
     @user   = create :user

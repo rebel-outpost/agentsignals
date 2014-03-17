@@ -40,3 +40,22 @@
 .add-new {
   float: right;
 }
+
+.login-container {
+  margin-left: 30px !important;
+  i {
+    float: right;
+    position: relative;
+    right: 10px;
+    bottom: 23px;
+  }
+}
+#contact_form_email {
+  width: 300px;
+}
+.new-registration-form {
+
+  #user_email {
+    width: 300px;
+  }
+}

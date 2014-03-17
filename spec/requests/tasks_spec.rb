@@ -52,8 +52,6 @@ describe 'Tasks' do
     ActionMailer::Base.deliveries.last.body.should include 'call' && @lead.email
   end
 
-  it "should allow assigning task to multiple users"
-
   context 'edit' do
     before do
       @task = create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
@@ -100,7 +98,7 @@ describe 'Tasks' do
       @task   = create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
     end
 
-    it 'deletes task' do
+    it 'deletes task', js: true do
       visit tasks_path
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept

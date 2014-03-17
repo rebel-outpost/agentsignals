@@ -45,14 +45,24 @@ describe "Opportunities" do
       expect(page).to have_content 'Opportunity Successfully Updated'
     end
 
-    it 'deletes an opportunity' do
+    it 'deletes an opportunity', js: true do
       visit opportunities_path
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_content 'Opportunity Deleted'
     end
+
+    it "should only show opportunities that belong to its organization" do
+      @user2           = build :user
+      @organization2   = build :organization
+      @account2        = build :account, organization: @organization
+      @organization2.users << @user2
+      @opportunity2 = build :opportunity, owner: @user2.email, account_name: @account2.name, organization: @organization2
+      visit opportunities_path
+      expect(page).to have_content @opportunity.opportunity_name
+      expect(page).to_not have_content @opportunity2.opportunity_name
+    end
   end
 
-  it "should only show opportunities that belong to its organization"
 
 end

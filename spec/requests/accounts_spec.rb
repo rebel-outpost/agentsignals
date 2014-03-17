@@ -38,7 +38,7 @@ describe 'Accounts' do
       @account = create :account, organization: @organization
     end
 
-    it 'deletes account' do
+    it 'deletes account', js: true do
       visit accounts_path
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept

@@ -41,7 +41,7 @@ describe 'Contact requests' do
       @contact = create :contact, organization: @organization
     end
 
-    it 'deletes contact' do
+    it 'deletes contact', js: true do
       visit contacts_path
       click_link 'delete'
       page.driver.browser.switch_to.alert.accept

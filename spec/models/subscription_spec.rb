@@ -38,7 +38,6 @@ describe Subscription do
 
       @subscription = build(:subscription, user: @user, plan: @plan, stripe_card_token: card)
       @subscription.save_with_payment
-
       @customer    = Stripe::Customer.retrieve @subscription.stripe_customer_token
       @active_card = @customer.cards.first
     end
@@ -51,12 +50,39 @@ describe Subscription do
       expect(@subscription.card_type).to eq @active_card.type
     end
 
-    it "should have next_bill_on"do
-      expect(@subscription.next_bill_on).to eq Date.parse(@customer.next_recurring_charge.date)
-    end
-
     it "should have card_expiration"do
       expect(@subscription.card_expiration).to eq "#{ @active_card.exp_month }-#{ @active_card.exp_year }"
+    end
+
+  end
+
+  context 'subscription info' do
+
+    before do
+      card = { number: '4242424242424242', exp_month: '12', exp_year: '2014'}
+      @user = create(:user)
+      @plan = create(:plan)
+
+      @subscription = create(:subscription, user: @user, plan: @plan, stripe_card_token: card)
+      @subscription.save_with_payment
+      @customer    = Stripe::Customer.retrieve @subscription.stripe_customer_token
+      @active_card = @customer.cards.first
+    end
+
+    it "should have plan" do
+      expect(@customer.subscriptions.first.plan).to be
+    end
+
+    it 'should have plan name' do
+      expect(@customer.subscriptions.first.plan.name).to eq @plan.name
+    end
+
+    it "should have plan cost"do
+      expect(@customer.subscriptions.first.plan.amount).to eq 599
+    end
+
+    it "should have plan interval"do
+      expect(@customer.subscriptions.first.plan.interval).to eq "month"
     end
 
   end

@@ -1,15 +1,29 @@
-.container.login-page
-  .content
-    .login-form
-      %h2 Register a new account
-      %form
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = f.error_notification
-        %fieldset
-          .control-group
-            = f.input :email, required: true, autofocus: true
-          .control-group
-            = f.input :password, required: true
-          .control-group
-            = f.input :password_confirmation, required: true
-          %button.btn.primary{type: "submit"} Sign up
+%section#content
+  .container
+    #content-wrapper.row
+      .col-xs-12
+        .row
+          .col-sm-9.col-sm-offset-1
+            .page-header
+              %h1.pull-left
+                %i.icon-user
+                %span New USer Registration
+
+        .row.login-container
+          .col-sm-3.col-sm-offset-3
+            %h2.text-center.title Create User
+            .new-registration-form
+              = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+                = f.error_notification
+                .form-group
+                  .controls
+                    = f.input :email, required: true, autofocus: true
+                .form-group
+                  .controls
+                    = f.input :password, required: true
+                .form-group
+                  .controls
+                    = f.input :password_confirmation, required: true
+                .form-group
+                  .controls
+                  %button.btn.btn-block.btn-primary{type: "submit"} Sign up
