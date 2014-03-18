@@ -3,7 +3,7 @@
 //= require flatty/jquery/jquery-migrate.min
 //= require flatty/jquery/jquery-ui.min
 //= require jquery_ujs
-//= require lean-slider
+//= require bjqs-1.3
 //= require flatty/plugins/plugins
 //= require flatty/bootstrap/bootstrap.min
 //= require flatty/theme
@@ -15,5 +15,11 @@ $(function() {
 });
 
 $(document).ready(function() {
-    $('#slider').leanSlider();
+    $('#banner-fade').bjqs({
+      height        : 320,
+      width         : 620,
+      responsive    : true,
+      randomstart   : true,
+      showcontrols  : false
+    });
 });
