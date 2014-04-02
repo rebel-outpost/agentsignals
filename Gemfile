@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 gem 'gibberish'
 gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
 gem 'bootstrap-sass', '~> 3.0.3.0'
+gem 'sass', '3.2.14'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-ui-rails'
@@ -21,7 +22,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'mail_form'
 gem "selenium-webdriver"
 gem 'turbolinks'
-gem "compass-rails", "~> 1.1.2"
+gem "compass-rails", "1.1.2"
 gem 'capistrano',  '2.15.5'
 gem "unicorn-rails"
 gem "american_date"
@@ -55,3 +56,4 @@ group :test, :development do
   gem 'turn', require: false
 end
 
+gem 'rails_12factor', group: :production

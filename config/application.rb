@@ -9,7 +9,7 @@ if defined?(Bundler)
   Bundler.require(:default, :assets, Rails.env)
 end
 
-module Simplecrm
+module AgentSignals
   class Application < Rails::Application
 
     config.generators do |g|

@@ -1,10 +1,10 @@
 %nav.navbar.navbar-fixed-top{role: "navigation"}
   - if current_user
-    .navbar-brand{href: "/dashboard"} Simple CRM
+    .navbar-brand{href: "/dashboard"} Agent Signals
     %a.toggle-nav.btn.pull-left{href: "#"}
       %i.icon-reorder
   - else
-    %a.navbar-brand{href: "/"} Simple CRM
+    %a.navbar-brand{href: "/"} Agent Signals
 
   %ul.nav
     = render 'layouts/navigation_links'

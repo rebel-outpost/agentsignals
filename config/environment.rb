@@ -4,5 +4,5 @@ require 'gibberish'
 
 ::KEY = Gibberish::AES.new("awerwrREWdfER1645")
 # Initialize the rails application
-Simplecrm::Application.initialize!
+AgentSignals::Application.initialize!
 

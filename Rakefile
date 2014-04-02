@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Simplecrm::Application.load_tasks
+AgentSignals::Application.load_tasks

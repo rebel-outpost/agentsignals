@@ -1,16 +1,16 @@
-Simplecrm::Application.routes.draw do
+AgentSignals::Application.routes.draw do
 
   get "contact_form/new"
   get "contact_form/create"
 
-  root to: "pages#index"
+  # root to: "pages#index"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
 
   devise_scope :user do
-    # root to: "devise/sessions#new"
+    root to: "devise/sessions#new"
     get "logout" => "devise/sessions#destroy", as: "logout"
     get "login" => "devise/sessions#new", as: "login"
     get "signup" => "devise/registrations#new", as: "signup"
