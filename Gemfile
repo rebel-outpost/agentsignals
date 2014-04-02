@@ -27,6 +27,7 @@ gem 'capistrano',  '2.15.5'
 gem "unicorn-rails"
 gem "american_date"
 gem 'stripe'
+gem 'thinking-sphinx', '3.0.0'
 
 group :development do
   gem 'unicorn'
