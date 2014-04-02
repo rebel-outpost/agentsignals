@@ -3,9 +3,9 @@ set :stages, %w(production staging development)
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 
-set :application, "simplecrm"
-set :repository,  "git@github.com:rebel-outpost/simplecrm.git"
-set :deploy_to, '/var/www/simplecrm/'
+set :application, "agent_signals"
+set :repository,  "git@github.com:rebel-outpost/agent_signals.git"
+set :deploy_to, '/var/www/agent_signals/'
 set :scm, :git
 set :branch, 'master'
 set :user, 'deploy'
