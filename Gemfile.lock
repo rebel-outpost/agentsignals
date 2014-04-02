@@ -151,6 +151,7 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    innertube (1.1.0)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -178,6 +179,7 @@ GEM
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
     method_source (0.8.2)
+    middleware (0.1.0)
     mime-types (1.25.1)
     mini_portile (0.5.3)
     minitest (4.7.5)
@@ -248,6 +250,7 @@ GEM
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    riddle (1.5.10)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -293,6 +296,12 @@ GEM
       json (~> 1.8.1)
       mime-types (~> 1.25)
       rest-client (~> 1.4)
+    thinking-sphinx (3.0.0)
+      activerecord (>= 3.1.0)
+      builder (>= 2.1.2)
+      innertube (>= 1.0.2)
+      middleware (>= 0.1.0)
+      riddle (>= 1.5.4)
     thor (0.19.1)
     thread_safe (0.3.1)
       atomic (>= 1.1.7, < 2)
@@ -370,6 +379,7 @@ DEPENDENCIES
   selenium-webdriver
   simple_form
   stripe
+  thinking-sphinx (= 3.0.0)
   turbolinks
   turn
   uglifier
