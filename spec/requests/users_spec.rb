@@ -19,7 +19,7 @@ describe "User Dashboard" do
     expect(page).to have_content 'Create Lead'
     expect(page).to have_content 'Create Task'
     expect(page).to have_content 'Create Contact'
-    expect(page).to have_content 'Create Account'
+    expect(page).to have_content 'Create Listing'
     expect(page).to have_content 'Create Opportunity'
   end
 
@@ -41,11 +41,11 @@ describe "User Dashboard" do
     expect(page).to have_content 'First name'
   end
 
-  it 'links to new account' do
-    click_link 'Accounts'
-    click_link 'Create Account'
-    expect(page).to have_content 'Name'
-  end
+  # it 'links to new account' do
+  #   click_link 'Accounts'
+  #   click_link 'Create Account'
+  #   expect(page).to have_content 'Name'
+  # end
 
   it 'links to new opportunity' do
     click_link 'Opportunities'

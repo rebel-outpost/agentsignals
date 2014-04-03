@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315011625) do
+ActiveRecord::Schema.define(version: 20140403045259) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                       null: false
@@ -105,6 +105,20 @@ ActiveRecord::Schema.define(version: 20140315011625) do
     t.integer  "assignee_id"
     t.integer  "user_id"
   end
+
+  create_table "listings", force: true do |t|
+    t.string   "title"
+    t.decimal  "price",        precision: 10, scale: 0
+    t.integer  "house_number"
+    t.string   "street_name"
+    t.string   "city_name"
+    t.string   "zipcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listings", ["price"], name: "index_listings_on_price", using: :btree
+  add_index "listings", ["zipcode"], name: "index_listings_on_zipcode", using: :btree
 
   create_table "notes", force: true do |t|
     t.string   "content"

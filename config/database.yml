@@ -1,7 +1,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: crm_development
+  database: agent_signals_development
   pool: 15
   username: root
   password: mysqlsux!
@@ -10,7 +10,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: crm_test
+  database: agent_signals_test
   pool: 15
   username: root
   password: mysqlsux!

@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe "ContactForm" do
+
   it "delivers a valid message" do
+  	pending 'not using the contact form yet'
     visit root_path
     click_link "Contact Us"
     fill_in 'Name', :with => 'Test User'
@@ -14,6 +16,7 @@ describe "ContactForm" do
   end
 
   it "does not deliver a message with a missing email" do
+  	pending 'not using the contact form yet'
     visit root_path
     click_link "Contact Us"
     fill_in 'Name', :with => 'Test User'
