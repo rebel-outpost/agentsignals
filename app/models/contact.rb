@@ -27,5 +27,4 @@ class Contact < ActiveRecord::Base
       self.first_name
     end
   end
-
 end
