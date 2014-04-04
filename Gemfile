@@ -57,4 +57,3 @@ group :test, :development do
   gem 'turn', require: false
 end
 
-gem 'rails_12factor', group: :production
