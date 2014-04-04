@@ -2,12 +2,10 @@ require "spec_helper"
 
 describe 'User Account' do
 
-  it 'creates organization on user creation' do
-    # Organization.count.should == 0
-    # @user = FactoryGirl.create :user, company: 'XYZ'
-    # Organization.count.should == 1
+  it 'creates account on user creation' do
+
   end
 
-  it 'does not create organization if one exists with same name'
+  it 'does not create account if one exists with same name'
 
 end

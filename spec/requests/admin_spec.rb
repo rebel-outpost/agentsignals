@@ -18,19 +18,19 @@ describe "Admin" do
       login_admin @admin_user
     end
 
-    it 'creates an organization' do
-      click_link 'Organizations'
-      click_link 'New Organization'
-      fill_in 'Name', with: 'New Organization'
+    it 'creates an account' do
+      click_link 'Accounts'
+      click_link 'New Account'
+      fill_in 'Name', with: 'New Account'
       fill_in 'Phone', with: '8005551212'
       fill_in 'Max users', with: 5
-      click_button 'Create Organization'
-      expect(page).to have_content 'Organization was successfully created.'
+      click_button 'Create Account'
+      expect(page).to have_content 'Account was successfully created.'
     end
 
     # TODO Make the role a selection
-    it 'creates an organization admin' do
-      @test_org = FactoryGirl.create :organization
+    it 'creates an account admin' do
+      @test_account = FactoryGirl.create :account
       click_link 'Users'
       click_link 'New User'
       fill_in 'Email', with: 'newadmin@example.com'
@@ -38,14 +38,14 @@ describe "Admin" do
       fill_in 'Password confirmation', with: 'password'
       fill_in 'First name', with: 'New'
       fill_in 'Last name', with: 'Admin'
-      select @test_org.name, from: 'Organization'
+      select @test_account.name, from: 'Account'
       fill_in 'Phone', with: '9991231234'
-      fill_in 'Organization role', with: 'Admin'
+      fill_in 'Account role', with: 'Admin'
       click_button 'Create User'
       expect(page).to have_content 'User was successfully created.'
     end
 
-    it 'cancels organization'
+    it 'cancels account'
     it 'bans user'
 
   end

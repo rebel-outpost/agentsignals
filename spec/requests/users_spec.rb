@@ -6,8 +6,8 @@ describe "User Dashboard" do
     @user   = create :user
     @lead   = create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email
     @task = create :task, lead_for_task: @lead.first_name, assigned_to: @user.email
-    @organization = create :organization
-    @organization.users << @user
+    @account = create :account
+    @account.users << @user
     login_as @user
   end
 

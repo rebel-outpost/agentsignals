@@ -1,15 +1,15 @@
 class OpportunitiesController < ApplicationController
 
 	def new
-		@opportunity 						= current_user.organization.opportunities.new
-		@opportunity_owner  	  = current_user.organization.users.map(&:email)
+		@opportunity 						= current_user.account.opportunities.new
+		@opportunity_owner  	  = current_user.account.users.map(&:email)
     @opportunity_type		   	= Opportunity.types
     @opportunity_stage  		= Opportunity.stages
-    @opportunity_account		= Account.all.map(&:name)
+    @opportunity_contact		= current_user.account.contacts.map(&:full_name)
 	end
 
 	def create
-    @opportunity = current_user.organization.opportunities.new(opportunities_params)
+    @opportunity = current_user.account.opportunities.new(opportunities_params)
     if @opportunity.save
       redirect_to opportunity_path @opportunity, flash[:notice] = 'New Opportunity Created'
     else
@@ -18,30 +18,30 @@ class OpportunitiesController < ApplicationController
   end
 
   def index
-    @opportunities = current_user.organization.opportunities
+    @opportunities = current_user.account.opportunities
   end
 
   def show
-		@opportunity 						= current_user.organization.opportunities.find params['id']
-		@opportunity_owner  	  = current_user.organization.users.map(&:email)
+		@opportunity 						= current_user.account.opportunities.find params['id']
+		@opportunity_owner  	  = current_user.account.users.map(&:email)
     @opportunity_type		   	= Opportunity.types
     @opportunity_stage  		= Opportunity.stages
-    @opportunity_account		= Account.all.map(&:name)
+    @opportunity_contact		= current_user.account.contacts.map(&:full_name)
 	end
 
 	def update
-    @opportunity = current_user.organization.opportunities.find params[:id]
-
+    @opportunity = current_user.account.opportunities.find params[:id]
     if @opportunity.update_attributes(opportunities_params)
       redirect_to opportunity_path @opportunity, flash[:notice] = 'Opportunity Successfully Updated'
     else
-      render :edit
+      flash[:error] = 'Opportunity could not be updated'
+      redirect_to :back
     end
   end
 
 
   def destroy
-    @opportunity = current_user.organization.opportunities.find params[:id]
+    @opportunity = current_user.account.opportunities.find params[:id]
 
     if @opportunity.destroy
       flash[:notice] = 'Opportunity Deleted'

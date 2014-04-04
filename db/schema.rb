@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403045259) do
+ActiveRecord::Schema.define(version: 20140404034828) do
 
   create_table "accounts", force: true do |t|
-    t.string   "name",                       null: false
+    t.string   "name",                                   null: false
     t.string   "email"
     t.string   "assigned_to"
     t.string   "website"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140403045259) do
     t.datetime "updated_at"
     t.string   "uid",             limit: 40
     t.integer  "organization_id"
+    t.integer  "max_users",                  default: 1, null: false
   end
 
   create_table "active_admin_comments", force: true do |t|
@@ -84,7 +85,7 @@ ActiveRecord::Schema.define(version: 20140403045259) do
     t.string   "opportunity_owner"
     t.string   "lead_owner"
     t.string   "uid",               limit: 40
-    t.integer  "organization_id"
+    t.integer  "account_id"
     t.integer  "assignee_id"
     t.integer  "user_id"
   end
@@ -101,7 +102,7 @@ ActiveRecord::Schema.define(version: 20140403045259) do
     t.datetime "updated_at"
     t.string   "lead_owner"
     t.string   "uid",               limit: 40
-    t.integer  "organization_id"
+    t.integer  "account_id"
     t.integer  "assignee_id"
     t.integer  "user_id"
   end
@@ -131,19 +132,19 @@ ActiveRecord::Schema.define(version: 20140403045259) do
   end
 
   create_table "opportunities", force: true do |t|
-    t.string   "opportunity_name",            null: false
-    t.string   "account_name",                null: false
+    t.string   "opportunity_name",               null: false
+    t.string   "contact_person_name"
     t.string   "amount"
     t.string   "stage"
-    t.string   "owner",                       null: false
+    t.string   "owner",                          null: false
     t.string   "probability"
-    t.string   "contact_name"
+    t.string   "contact_name",                   null: false
     t.string   "comments"
     t.datetime "closing_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "uid",              limit: 40
-    t.integer  "organization_id"
+    t.string   "uid",                 limit: 40
+    t.integer  "account_id"
     t.string   "opportunity_type"
   end
 
@@ -213,9 +214,9 @@ ActiveRecord::Schema.define(version: 20140403045259) do
     t.string   "last_name"
     t.string   "company"
     t.string   "phone"
-    t.string   "organization_role"
+    t.string   "account_role"
     t.string   "uid",                    limit: 40
-    t.integer  "organization_id"
+    t.integer  "account_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

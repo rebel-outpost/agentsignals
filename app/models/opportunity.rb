@@ -1,8 +1,8 @@
 class Opportunity < ActiveRecord::Base
 
-  validates_presence_of :opportunity_name, :account_name, :owner
+  validates_presence_of :opportunity_name, :contact_name, :owner
 
-  belongs_to :organization
+  belongs_to :account
 
 
   TYPES  = [['New Customer', 'new_customer'], ['Existing Customer', 'existing_customer']]

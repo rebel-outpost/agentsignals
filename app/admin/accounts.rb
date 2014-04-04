@@ -1,4 +1,4 @@
-ActiveAdmin.register Organization do
+ActiveAdmin.register Account do
   index do
     column :name
     column :phone
@@ -7,13 +7,14 @@ ActiveAdmin.register Organization do
     column :state
     column :zip
     column :max_users
+
     default_actions
   end
 
   filter :name
 
   form do |f|
-    f.inputs "Organization Details" do
+    f.inputs "Account Details" do
       f.input :name
       f.input :phone
       f.input :address
@@ -21,6 +22,7 @@ ActiveAdmin.register Organization do
       f.input :state
       f.input :zip
       f.input :max_users
+
     end
     f.actions
   end

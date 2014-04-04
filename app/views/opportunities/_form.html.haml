@@ -4,7 +4,7 @@
       .form-group
         = f.input :opportunity_name, label: "Name"
       .form-group
-        = f.input :account_name,  collection:(@opportunity_account)
+        = f.input :contact_name,  collection:(@opportunity_contact)
       .form-group
         = f.input :opportunity_type, collection:(@opportunity_type)
       .form-group
@@ -18,7 +18,7 @@
       .form-group
         = f.input :probability
       .form-group
-        = f.input :contact_name
+        = f.input :contact_person_name
       .form-group
         = f.input :comments, as: :text, :input_html => {rows: 5}
 

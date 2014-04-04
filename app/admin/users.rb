@@ -3,9 +3,10 @@ ActiveAdmin.register User do
     column :email
     column :first_name
     column :last_name
-    column :organization
+    column :account
     column :phone
-    column :organization_role
+    column :account_role
+
     default_actions
   end
 
@@ -18,9 +19,9 @@ ActiveAdmin.register User do
       f.input :password_confirmation
       f.input :first_name
       f.input :last_name
-      f.input :organization
+      f.input :account
       f.input :phone
-      f.input :organization_role
+      f.input :account_role
     end
     f.actions
   end

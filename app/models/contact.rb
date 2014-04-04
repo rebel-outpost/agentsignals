@@ -18,7 +18,7 @@ class Contact < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name, :email
 
-  belongs_to :organization
+  belongs_to :account
 
 
   def full_name

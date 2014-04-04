@@ -2,18 +2,18 @@ class LeadsController < ApplicationController
   before_filter :authenticate_user!, :except => ['external_form']
 
   def new
-    @lead           = current_user.organization.leads.new
-    @lead_owner     = current_user.organization.users.map(&:email)
+    @lead           = current_user.account.leads.new
+    @lead_owner     = current_user.account.users.map(&:email)
     @lead_status    = Lead.status
     @lead_sources   = Lead.sources
     @lead_interests = Lead.interests
   end
 
   def create
-    @lead = current_user.organization.leads.new(leads_params)
+    @lead = current_user.account.leads.new(leads_params)
     @lead.user = User.where(email: @lead.lead_owner).first
     if @lead.save
-      current_user.organization.leads << @lead
+      current_user.account.leads << @lead
       LeadMailer.notify_new_lead(@lead.lead_owner, @lead).deliver
       redirect_to lead_path @lead, flash[:notice] = 'New Lead Created'
     else
@@ -22,12 +22,12 @@ class LeadsController < ApplicationController
   end
 
   def index
-    @leads = current_user.organization.leads
+    @leads = current_user.account.leads
   end
 
   def show
-    @lead           = current_user.organization.leads.find params[:id]
-    @lead_owner     = current_user.organization.users.map(&:email)
+    @lead           = current_user.account.leads.find params[:id]
+    @lead_owner     = current_user.account.users.map(&:email)
     @lead_status    = Lead.status
     @lead_sources   = Lead.sources
     @lead_interests = Lead.interests
@@ -37,7 +37,7 @@ class LeadsController < ApplicationController
   end
 
   def update
-    @lead = current_user.organization.leads.find params[:id]
+    @lead = current_user.account.leads.find params[:id]
     if params[:commit] == 'Convert'
       convert_lead
     else
@@ -63,22 +63,22 @@ class LeadsController < ApplicationController
   end
 
   def convert
-    @lead               = current_user.organization.leads.find params[:id]
-    @accounts           = current_user.organization.accounts.to_a.map(&:name)
-    @opportunity_owner  = current_user.organization.users.map(&:email)
+    @lead               = current_user.account.leads.find params[:id]
+    @accounts           = current_user.account.accounts.to_a.map(&:name)
+    @opportunity_owner  = current_user.account.users.map(&:email)
   end
 
   def convert_lead
-    @lead = current_user.organization.leads.find params[:id]
+    @lead = current_user.account.leads.find params[:id]
     @lead.update_attributes(leads_params)
-    @account = current_user.organization.accounts.where(name: params['account_name']).first
-    @contacts = current_user.organization.contacts.to_a.map(&:email)
+    @account = current_user.account.accounts.where(name: params['account_name']).first
+    @contacts = current_user.account.contacts.to_a.map(&:email)
     unless @contacts.include? @lead.email
-      @contact = current_user.organization.contact.create params['lead']
+      @contact = current_user.account.contact.create params['lead']
     end
-    @opportunities = current_user.organization.opportunities.to_a.map(&:opportunity_name)
+    @opportunities = current_user.account.opportunities.to_a.map(&:opportunity_name)
     unless @opportunities.include? @lead.opportunity_name
-      @opportunity = current_user.organization.opportunities.create(opportunity_name: @lead.opportunity_name, account_name: @lead.account_name, owner: @lead.opportunity_owner)
+      @opportunity = current_user.account.opportunities.create(opportunity_name: @lead.opportunity_name, account_name: @lead.account_name, owner: @lead.opportunity_owner)
     end
     flash[:notice] = 'Lead has been converted'
     redirect_to opportunity_path(@opportunity)

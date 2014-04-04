@@ -6,9 +6,9 @@ describe 'Tasks' do
     @user   = create :user
     @user2  = create :user, email: 'test2@example.com', first_name: 'Jim'
     @lead   = create :lead, email: 'test@test.com', first_name: 'Jenny', last_name: 'Smith'
-    @organization = create :organization
-    @organization.users << @user
-    @organization.users << @user2
+    @account = create :account
+    @account.users << @user
+    @account.users << @user2
     login_as @user
   end
 

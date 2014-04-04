@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Sessions" do
   before do
     @user   = create :user
-    @organization = create :organization
-    @organization.users << @user
+    @account = create :account
+    @account.users << @user
   end
 
   it 'logins in user' do

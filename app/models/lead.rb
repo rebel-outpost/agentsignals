@@ -1,7 +1,7 @@
 class Lead < Contact
 
   belongs_to :user
-  belongs_to :organization
+  belongs_to :account
   has_many :notes
 
   accepts_nested_attributes_for :notes, allow_destroy: true

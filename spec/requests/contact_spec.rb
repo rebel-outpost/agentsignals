@@ -4,8 +4,8 @@ describe 'Contact requests' do
 
   before do
     @user   = create :user
-    @organization = create :organization
-    @organization.users << @user
+    @account = create :account
+    @account.users << @user
     login_as @user
   end
 
@@ -38,7 +38,7 @@ describe 'Contact requests' do
 
   context 'with existing contact' do
     before do
-      @contact = create :contact, organization: @organization
+      @contact = create :contact, account: @account
     end
 
     it 'deletes contact', js: true do
@@ -62,14 +62,14 @@ describe 'Contact requests' do
     end
   end
 
-  context 'with multiple organizations' do
+  context 'with multiple accounts' do
     before do
-      @contact = create :contact, organization: @organization
-      @another_organization = create :organization
-      @another_contact = create :contact, organization: @another_organization
+      @contact = create :contact, account: @account
+      @another_account = create :account
+      @another_contact = create :contact, account: @another_account
     end
 
-    it "should only show contacts that belong to its organization" do
+    it "should only show contacts that belong to its account" do
       visit contacts_path
       expect(page).to have_content @contact.email
       page.should_not have_content @another_contact.email

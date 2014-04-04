@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_one  :subscription
   has_one  :plan, :through => :subscription
 
-  belongs_to :organization
+  belongs_to :account
 
   def full_name
     first_name + " " + last_name

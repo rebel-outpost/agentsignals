@@ -8,8 +8,8 @@ FactoryGirl.define do
     password              'password'
     password_confirmation 'password'
 
-    factory :org_admin do
-      organization_role 'Admin'
+    factory :account_admin do
+      account_role 'Admin'
     end
 
   end

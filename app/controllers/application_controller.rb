@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
     if resource.class == AdminUser
       admin_root_path
     else
-      if resource.organization
+      if resource.account
         dashboard_path
       else
-        new_organization_path
+        new_account_path
       end
     end
   end

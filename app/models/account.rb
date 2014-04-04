@@ -3,5 +3,8 @@ class Account < ActiveRecord::Base
   validates_presence_of :name, :phone
   validates :name, uniqueness: true
 
-  belongs_to :organization
+  has_many :leads
+  has_many :users
+  has_many :contacts
+  has_many :opportunities
 end

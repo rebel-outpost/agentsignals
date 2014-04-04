@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :lead do
     association :user
-    association :organization
+    association :account
 
     email            { Faker::Internet.email }
   	first_name       { Faker::Name.first_name }
