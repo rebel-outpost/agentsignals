@@ -20,7 +20,6 @@ class Contact < ActiveRecord::Base
 
   belongs_to :account
 
-
   def full_name
     if self.last_name != nil
       self.first_name + " " + self.last_name
