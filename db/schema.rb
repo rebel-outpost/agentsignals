@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404034828) do
+ActiveRecord::Schema.define(version: 20140404220832) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                   null: false
@@ -90,23 +90,6 @@ ActiveRecord::Schema.define(version: 20140404034828) do
     t.integer  "user_id"
   end
 
-  create_table "leads", force: true do |t|
-    t.string   "interested_in"
-    t.string   "comments"
-    t.string   "lead_status"
-    t.string   "lead_source"
-    t.string   "account_name"
-    t.string   "opportunity_name"
-    t.string   "opportunity_owner"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "lead_owner"
-    t.string   "uid",               limit: 40
-    t.integer  "account_id"
-    t.integer  "assignee_id"
-    t.integer  "user_id"
-  end
-
   create_table "listings", force: true do |t|
     t.string   "title"
     t.decimal  "price",        precision: 10, scale: 0
@@ -146,18 +129,6 @@ ActiveRecord::Schema.define(version: 20140404034828) do
     t.string   "uid",                 limit: 40
     t.integer  "account_id"
     t.string   "opportunity_type"
-  end
-
-  create_table "organizations", force: true do |t|
-    t.string   "name",                   null: false
-    t.string   "phone",                  null: false
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.integer  "max_users",  default: 1, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "plans", force: true do |t|
