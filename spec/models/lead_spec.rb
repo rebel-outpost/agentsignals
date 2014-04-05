@@ -34,5 +34,12 @@ describe 'Lead' do
       expect(lead.full_name).to eq 'Test User'
     end
 
+    it 'is taggable' do
+      lead = create(:lead)
+      lead.tag_list.add("buyer", "renter")
+      expect(lead.tags).to be
+      expect(lead.tag_list.count).to eq 2
+    end
+
   end
 end

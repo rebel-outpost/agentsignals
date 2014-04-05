@@ -1,4 +1,5 @@
 class Lead < Contact
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
 
   belongs_to :user
   belongs_to :account
@@ -9,7 +10,7 @@ class Lead < Contact
 
   STATUS      = [['New', 'new'], ['Contacted', 'contacted'], ['Qualified', 'qualified'], ['Disqualified', 'disqualified']]
   SOURCES     = [['Web Lead', 'web'], ['Phone', 'phone'], ['Referral', 'referral'], ['Conference', 'conference']]
-  INTERESTS   = [['Web Application', 'web_app'], ['IOS', 'ios']]
+  INTERESTS   = [['Buyer', 'buyer'], ['Seller', 'seller'], ['Renter', 'renter'], ['Past Client', 'past_client']]
 
   class << self
 

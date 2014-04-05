@@ -8,10 +8,10 @@
 # system, you should be using db:schema:load, not running all the migrations
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
-# omg omg
+#
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404220832) do
+ActiveRecord::Schema.define(version: 20140405003030) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                   null: false
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140404220832) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
-    t.string   "interested_in"
+    t.string   "lead_type"
     t.string   "comments"
     t.string   "lead_status"
     t.string   "lead_source"
@@ -154,6 +154,25 @@ ActiveRecord::Schema.define(version: 20140404220832) do
   end
 
   add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", unique: true, using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "tasks", force: true do |t|
     t.string   "task_name",                  null: false

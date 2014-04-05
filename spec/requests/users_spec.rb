@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "User Dashboard" do
 
   before do
-    @user   = create :user
-    @lead   = create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email
-    @task = create :task, lead_for_task: @lead.first_name, assigned_to: @user.email
+    @user    = create :user
+    @lead    = create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', lead_status: 'new', lead_source: 'web', lead_owner: @user.email
+    @task    = create :task, lead_for_task: @lead.first_name, assigned_to: @user.email
     @account = create :account
     @account.users << @user
     login_as @user
@@ -20,6 +20,7 @@ describe "User Dashboard" do
     expect(page).to have_content 'Create Task'
     expect(page).to have_content 'Create Contact'
     expect(page).to have_content 'Create Listing'
+    expect(page).to have_content 'Create Offer'
     expect(page).to have_content 'Create Opportunity'
   end
 
@@ -41,16 +42,17 @@ describe "User Dashboard" do
     expect(page).to have_content 'First name'
   end
 
-  # it 'links to new account' do
-  #   click_link 'Accounts'
-  #   click_link 'Create Account'
-  #   expect(page).to have_content 'Name'
-  # end
-
   it 'links to new opportunity' do
     click_link 'Opportunities'
     click_link 'Create Opportunity'
     expect(page).to have_content 'Create New Opportunity'
+  end
+
+  it 'links to new offer' do
+    pending 'come to after the model is done'
+    click_link 'Offers'
+    click_link 'Create Offer'
+    expect(page).to have_content 'Create New Offer'
   end
 
   it 'shows leads assigned' do

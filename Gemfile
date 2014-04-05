@@ -28,6 +28,7 @@ gem "unicorn-rails"
 gem "american_date"
 gem 'stripe'
 gem 'thinking-sphinx', '3.0.0'
+gem 'acts-as-taggable-on'
 
 group :development do
   gem 'unicorn'

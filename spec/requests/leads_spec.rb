@@ -20,10 +20,9 @@ describe "Leads" do
     fill_in 'lead_last_name',   with: 'Gates'
     fill_in 'lead_phone',       with: '8005551212'
     fill_in 'lead_email',       with: 'bill@ms.com'
-    fill_in 'lead_company',     with: 'Microsoft'
     fill_in 'lead_comments',    with: 'Needs ASAP'
     select  "#{@user2.email}",  from: 'Lead owner'
-    select 'Web Application',  from: 'Interested in'
+    select 'Buyer',            from: 'Lead type'
     select 'New',              from: 'Lead status'
     select 'Web Lead',         from: 'Lead source'
     sleep 1
@@ -41,10 +40,9 @@ describe "Leads" do
     fill_in 'lead_last_name',   with: 'Goats'
     fill_in 'lead_phone',       with: '8005551212'
     fill_in 'lead_email',       with: 'bill@ms.com'
-    fill_in 'lead_company',     with: 'Microsoft'
     fill_in 'lead_comments',    with: 'Needs ASAP'
     select  "#{@user2.email}",  from: 'Lead owner'
-    select  'Web Application',  from: 'Interested in'
+    select  'Buyer',            from: 'Lead type'
     select  'New',              from: 'Lead status'
     select  'Web Lead',         from: 'Lead source'
     sleep 1
@@ -62,10 +60,9 @@ describe "Leads" do
     fill_in 'lead_last_name',   with: 'Gates'
     fill_in 'lead_phone',       with: '8005551212'
     fill_in 'lead_email',       with: 'bill2@ms.com'
-    fill_in 'lead_company',     with: 'Microsoft'
     fill_in 'lead_comments',    with: 'Needs ASAP'
     select  "#{@user2.email}",  from: 'Lead owner'
-    select  'Web Application',  from: 'Interested in'
+    select  'Buyer',            from: 'Lead type'
     select  'New',              from: 'Lead status'
     select  'Web Lead',         from: 'Lead source'
     sleep 1
@@ -77,13 +74,12 @@ describe "Leads" do
   context 'with created lead' do
 
     before do
-      @lead   = create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email, account: @account
-      @lead2  = create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_owner: @user3.email, lead_source: 'referral', email: 'bob@marley.com'
+      @lead   = create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', lead_status: 'new', lead_source: 'web', lead_owner: @user.email, account: @account
+      @lead2  = create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', lead_status: 'contacted', lead_owner: @user3.email, lead_source: 'referral', email: 'bob@marley.com'
     end
 
     it 'should edit a lead' do
       visit lead_path @lead
-      fill_in 'lead_company', with: 'XYZ'
       select  'Contacted', from: 'Lead status'
       sleep 2
       click_button 'Update'

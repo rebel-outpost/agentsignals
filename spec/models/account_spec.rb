@@ -24,5 +24,11 @@ describe 'Account' do
       expect(account).to have(1).errors_on(:name)
     end
 
+    it 'is valid with subscription'
+    it 'is invalid without a subscription'
+    it 'has max users count'
+    it 'will not add users past the max users'
+    it 'has an account admin'
+
   end
 end

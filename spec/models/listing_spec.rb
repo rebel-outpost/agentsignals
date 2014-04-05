@@ -52,5 +52,9 @@ describe 'Listing' do
       expect(listing).to have(0).errors
     end
 
+    it 'is valid with a listing number'
+    it 'is valid with a listing owner'
+    it 'has a contact'
+
   end
 end
