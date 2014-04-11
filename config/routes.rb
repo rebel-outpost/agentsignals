@@ -23,6 +23,7 @@ AgentSignals::Application.routes.draw do
 
   get 'contact_us' => 'contact_forms#new', as: 'contact_us'
   get 'pricing' => 'pages#pricing', as: 'pricing'
+  get 'calendar' => 'pages#calendar', as: 'calendar'
 
   resources :users
   resources :leads do

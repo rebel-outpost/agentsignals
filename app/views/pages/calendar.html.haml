@@ -1,0 +1,152 @@
+.container
+  #content-wrapper.row
+    .col-xs-12
+      .row
+        .col-sm-12
+          .page-header
+            %h1.pull-left
+              %i.icon-calendar
+              %span Calendar
+      .row
+        #events.col-sm-3
+          .box
+            .box-header
+              .title Draggable events
+            .box-content
+              .label.label-important.external-event{"data-event-class" => "label-important"} Jane meetup
+              .label.label-warning.external-event{"data-event-class" => "label-warning"} Shopping
+              .label.label-success.external-event{"data-event-class" => "label-success"} Dentist
+              %hr.hr-normal/
+              %label.checkbox
+                %input#calendar-remove-after-drop{type: "checkbox", value: "option1"}/
+                Remove after drop?
+              %hr.hr-normal/
+              %form#new-event{"accept-charset" => "UTF-8", action: "#", method: "post", style: "margin-bottom:0;"}
+                %input{name: "authenticity_token", type: "hidden"}/
+                .form-group
+                  %input#new-event-input.form-control{placeholder: "Event name", type: "text"}/
+                %button.btn.btn-primary.btn-block
+                  %i.icon-plus
+                  Create event
+        .col-sm-9
+          .box
+            .box-header
+              .title Home and work
+            .box-content
+              .full-calendar-demo
+
+:javascript
+(function() {
+  var cal, calendarDate, d, m, y;
+
+  this.setDraggableEvents = function() {
+    return $("#events .external-event").each(function() {
+      var eventObject;
+      eventObject = {
+        title: $.trim($(this).text())
+      };
+      $(this).data("eventObject", eventObject);
+      return $(this).draggable({
+        zIndex: 999,
+        revert: true,
+        revertDuration: 0
+      });
+    });
+  };
+
+  setDraggableEvents();
+
+  calendarDate = new Date();
+
+  d = calendarDate.getDate();
+
+  m = calendarDate.getMonth();
+
+  y = calendarDate.getFullYear();
+
+  cal = $(".full-calendar-demo").fullCalendar({
+    header: {
+      center: "title",
+      left: "basicDay,basicWeek,month",
+      right: "prev,today,next"
+    },
+    buttonText: {
+      prev: "<span class=\"icon-chevron-left\"></span>",
+      next: "<span class=\"icon-chevron-right\"></span>",
+      today: "Today",
+      basicDay: "Day",
+      basicWeek: "Week",
+      month: "Month"
+    },
+    droppable: true,
+    editable: true,
+    selectable: true,
+    select: function(start, end, allDay) {
+      return bootbox.prompt("Event title", function(title) {
+        if (title !== null) {
+          cal.fullCalendar("renderEvent", {
+            title: title,
+            start: start,
+            end: end,
+            allDay: allDay
+          }, true);
+          return cal.fullCalendar('unselect');
+        }
+      });
+    },
+    eventClick: function(calEvent, jsEvent, view) {
+      return bootbox.dialog({
+        message: $("<form class='form'><label>Change event name</label></form><input id='new-event-title' class='form-control' type='text' value='" + calEvent.title + "' /> "),
+        buttons: {
+          "delete": {
+            label: "<i class='icon-trash'></i> Delete Event",
+            className: "pull-left",
+            callback: function() {
+              return cal.fullCalendar("removeEvents", function(ev) {
+                return ev._id === calEvent._id;
+              });
+            }
+          },
+          success: {
+            label: "<i class='icon-save'></i> Save",
+            className: "btn-success",
+            callback: function() {
+              calEvent.title = $("#new-event-title").val();
+              return cal.fullCalendar('updateEvent', calEvent);
+            }
+          }
+        }
+      });
+    },
+    drop: function(date, allDay) {
+      var copiedEventObject, eventClass, originalEventObject;
+      originalEventObject = $(this).data("eventObject");
+      originalEventObject.id = Math.floor(Math.random() * 99999);
+      eventClass = $(this).attr('data-event-class');
+      console.log(originalEventObject);
+      copiedEventObject = $.extend({}, originalEventObject);
+      copiedEventObject.start = date;
+      copiedEventObject.allDay = allDay;
+      if (eventClass) {
+        copiedEventObject["className"] = [eventClass];
+      }
+      $(".full-calendar-demo").fullCalendar("renderEvent", copiedEventObject, true);
+      if ($("#calendar-remove-after-drop").is(":checked")) {
+        return $(this).remove();
+      }
+    },
+  });
+
+}).call(this);
+:javascript
+$("#new-event").live('submit', function(e) {
+  var value;
+  e.preventDefault();
+  value = $("#new-event-input").val();
+  if (value.length > 0) {
+    $("#events .box-content").prepend("<div class='label label-important external-event'>" + value + "</div>");
+    $("#new-event-input").val("");
+    return setDraggableEvents();
+  }
+});
+/ / END - page related files and scripts [optional]
