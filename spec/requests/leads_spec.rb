@@ -31,7 +31,7 @@ describe "Leads" do
     expect(page).to have_content'New Lead Created'
   end
 
-  it 'adds new lead to org on creation' do
+  it 'adds new lead to account on creation' do
     click_link 'Leads'
     click_link 'Create Lead'
     current_path.should == new_lead_path
@@ -86,7 +86,7 @@ describe "Leads" do
       expect(page).to have_content'Lead Updated'
     end
 
-    it 'should show all leads belonging to org' do
+    it 'should show all leads belonging to account' do
       visit leads_path
       expect(page).to have_content'Bill Gates'
       page.should_not have_content 'Bob Marley'

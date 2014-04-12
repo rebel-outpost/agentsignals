@@ -1,5 +1,6 @@
 ActiveAdmin.register Account do
   index do
+    column :subscription_plan
     column :name
     column :phone
     column :address
@@ -15,6 +16,7 @@ ActiveAdmin.register Account do
 
   form do |f|
     f.inputs "Account Details" do
+      f.input :subscription_plan
       f.input :name
       f.input :phone
       f.input :address

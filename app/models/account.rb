@@ -1,6 +1,6 @@
 class Account < ActiveRecord::Base
 
-  validates_presence_of :name, :phone
+  validates_presence_of :name, :phone, :subscription_plan, :max_users
   validates :name, uniqueness: true
 
   has_many :leads

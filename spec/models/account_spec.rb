@@ -24,10 +24,34 @@ describe 'Account' do
       expect(account).to have(1).errors_on(:name)
     end
 
-    it 'is valid with subscription'
-    it 'is invalid without a subscription'
-    it 'has max users count'
-    it 'will not add users past the max users'
+    it 'is valid with subscription' do
+      account = build(:account)
+      expect(account).to have(0).errors_on(:subscription_plan)
+    end
+
+    it 'is invalid without a subscription' do
+      account = build(:account, subscription_plan: nil)
+      expect(account).to have(1).errors_on(:subscription_plan)
+    end
+
+    it 'has max users count' do
+      account = build(:account)
+      expect(account.max_users).to eq 1
+    end
+
+    it 'is invalid without max users count' do
+      account = build(:account, max_users: nil)
+      expect(account).to have(1).errors_on(:max_users)
+    end
+
+    it 'will not add users past the max users' do
+      pending 'going to have to rethink this one ... membershipable??'
+      account = build(:account)
+      account.users << build(:user)
+      account.users << build(:user)
+      expect(account.users.length).to eq 1
+    end
+
     it 'has an account admin'
 
   end

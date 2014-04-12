@@ -2,18 +2,20 @@
   = simple_form_for @account, :html => { :class => 'form-horizontal' }  do |f|
     .col-sm-4
       .form-group
-        = f.input :name
+        = f.input :subscription_plan, collection:([['Basic', '1']]), label: 'Plan type', required: true
       .form-group
-        = f.input :email
-      .form-group
-        = f.input :assigned_to, collection:(@lead_owner)
-      .form-group
-        = f.input :website
-    .col-sm-4.col-sm-offset-1
+        = f.input :name, label: 'Account name'
       .form-group
         = f.input :phone
+    .col-sm-4.col-sm-offset-1
       .form-group
         = f.input :address
+      .form-group
+        = f.input :city
+      .form-group
+        = f.input :state, collection: (us_states)
+      .form-group
+        = f.input :zip
 
     .row
       .col-sm-8

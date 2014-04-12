@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405003030) do
+ActiveRecord::Schema.define(version: 20140412021346) do
 
   create_table "accounts", force: true do |t|
-    t.string   "name",                                   null: false
+    t.string   "name",                                     null: false
     t.string   "email"
     t.string   "assigned_to"
     t.string   "website"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20140405003030) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "uid",             limit: 40
+    t.string   "uid",               limit: 40
     t.integer  "organization_id"
-    t.integer  "max_users",                  default: 1, null: false
+    t.integer  "max_users",                    default: 1, null: false
+    t.integer  "subscription_plan",                        null: false
   end
 
   create_table "active_admin_comments", force: true do |t|

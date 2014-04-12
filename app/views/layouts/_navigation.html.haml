@@ -1,10 +1,10 @@
 %nav.navbar.navbar-fixed-top{role: "navigation"}
   - if current_user
-    .navbar-brand{href: "/dashboard"} Agent Signals
+    = link_to image_tag('agentsignals-white.png'), dashboard_path, class: 'nav-logo'
     %a.toggle-nav.btn.pull-left{href: "#"}
       %i.icon-reorder
   - else
-    %a.navbar-brand{href: "/"} Agent Signals
+    = link_to image_tag('agentsignals-white.png'), root_path, class: 'nav-logo'
 
   %ul.nav
     = render 'layouts/navigation_links'

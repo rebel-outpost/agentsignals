@@ -8,16 +8,6 @@ describe 'User' do
       expect(user).to have(0).errors
     end
 
-    it "is invalid without a firstname" do
-      user = build(:user, first_name: nil)
-      expect(user).to have(1).errors_on(:first_name)
-    end
-
-    it "is invalid without a lastname" do
-      user = build(:user, last_name: nil)
-      expect(user).to have(1).errors_on(:last_name)
-    end
-
     it "is invalid without an email address" do
       user = build(:user, email: nil)
       expect(user).to have(1).errors_on(:email)

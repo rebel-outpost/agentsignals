@@ -18,12 +18,14 @@ describe "Admin" do
       login_admin @admin_user
     end
 
+    # TODO Make the plan a selection
     it 'creates an account' do
       click_link 'Accounts'
       click_link 'New Account'
       fill_in 'Name', with: 'New Account'
       fill_in 'Phone', with: '8005551212'
       fill_in 'Max users', with: 5
+      fill_in "Subscription plan", with: 1
       click_button 'Create Account'
       expect(page).to have_content 'Account was successfully created.'
     end
