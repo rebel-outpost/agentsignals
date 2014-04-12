@@ -16,10 +16,4 @@ describe "Sessions" do
     expect(page).to have_content "Welcome to your Dashboard"
   end
 
-  context 'Registration' do
-    it 'registers a new user'
-    it 'requires a subscription plan'
-    it 'creates a new account'
-  end
-
 end

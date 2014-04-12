@@ -22,9 +22,9 @@ describe "Leads" do
     fill_in 'lead_email',       with: 'bill@ms.com'
     fill_in 'lead_comments',    with: 'Needs ASAP'
     select  "#{@user2.email}",  from: 'Lead owner'
-    select 'Buyer',            from: 'Lead type'
-    select 'New',              from: 'Lead status'
-    select 'Web Lead',         from: 'Lead source'
+    select 'Buyer',             from: 'Lead type'
+    select 'New',               from: 'Lead status'
+    select 'Web Lead',          from: 'Lead source'
     sleep 1
     click_button 'Create Lead'
     Lead.last.last_name.should == 'Gates'

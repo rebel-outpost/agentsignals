@@ -8,11 +8,9 @@ describe "Accounts" do
           @admin_user = FactoryGirl.create :account_admin, account: @account
         end
 
-        it 'has account dashboard' do
-
-        end
-
+        it 'has account dashboard'
         it "can edit account settings"
+
       end
 
       describe 'with paid account' do
