@@ -44,14 +44,6 @@ describe 'Account' do
       expect(account).to have(1).errors_on(:max_users)
     end
 
-    it 'will not add users past the max users' do
-      pending 'going to have to rethink this one ... membershipable??'
-      account = build(:account)
-      account.users << build(:user)
-      account.users << build(:user)
-      expect(account.users.length).to eq 1
-    end
-
     it 'has an account admin'
 
   end

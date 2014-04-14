@@ -55,7 +55,7 @@
                 %span View Listings
         %li
           %a.dropdown-collapse{href: "#"}
-            %i.icon-home
+            %i.icon-pencil
             %span Offers
             %i.icon-angle-down.angle-down
           %ul.nav.nav-stacked
@@ -100,3 +100,8 @@
           %a{href: "/calendar"}
             %i.icon-calendar
             %span Calendar
+
+        %li
+          %a{href: settings_account_path(current_user.account)}
+            %i.icon-cog
+            %span Account Settings

@@ -7,6 +7,7 @@
 //= require flatty/plugins/plugins
 //= require flatty/bootstrap/bootstrap.min
 //= require flatty/theme
+//= require account.js.coffeescript
 
 
 $(function() {

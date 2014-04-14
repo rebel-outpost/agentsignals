@@ -46,7 +46,13 @@ AgentSignals::Application.routes.draw do
   resources :contact_forms
   resources :tasks
   resources :contacts
-  resources :accounts
+  resources :accounts do
+    member do
+      get :settings
+      post :add_user
+    end
+  end
+
   resources :opportunities
 end
 
