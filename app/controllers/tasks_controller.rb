@@ -1,5 +1,12 @@
 class TasksController < ApplicationController
 
+  def index
+    @tasks = current_user.tasks
+    respond_to do |format|
+      format.json
+    end
+  end
+
   def new
     @task = Task.new
     @task_due_dates = Task.due_dates
@@ -44,9 +51,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def index
-    @tasks = current_user.tasks
-  end
+
 
   def tasks_params
     params.require(:task).permit! if params[:task]

@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'mysql2'
 gem 'rails', '4.0.0'
+gem 'mysql2'
+
 gem 'gibberish'
 gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
 gem 'bootstrap-sass', '~> 3.0.3.0'
@@ -10,25 +11,32 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
+gem "compass-rails", "1.1.2"
+
 gem 'rails3-generators'
 gem 'simple_form'
 gem 'haml'
 gem 'haml-rails'
-gem 'devise'
-gem 'bcrypt-ruby'
 gem 'font-awesome-rails'
-gem 'newrelic_rpm'
+
+gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'bcrypt-ruby'
+
+gem 'newrelic_rpm'
+
 gem 'mail_form'
 gem "selenium-webdriver"
 gem 'turbolinks'
-gem "compass-rails", "1.1.2"
+gem 'jbuilder'
+
 gem 'capistrano',  '2.15.5'
 gem "unicorn-rails"
 gem "american_date"
 gem 'stripe'
 gem 'thinking-sphinx', '3.0.0'
 gem 'acts-as-taggable-on'
+gem 'wicked'
 
 group :development do
   gem 'unicorn'
