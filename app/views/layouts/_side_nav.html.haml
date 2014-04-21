@@ -1,107 +1,161 @@
-- if current_user.account
-  #main-nav-bg
-  %nav#main-nav
-    .navigation
-      %ul.nav.nav-stacked
+%nav#sidebar.sidebar.nav-collapse.collapse
+  %ul#side-nav.side-nav
+    %li.active
+      %a{href: "index.html"}
+        %i.icon-home
+        %span.name Dashboard
+    %li
+      %a{href: "index.html"}
+        %i.eicon-suitcase
+        %span.name Leads
+    %li
+      %a{href: "index.html"}
+        %i.eicon-users
+        %span.name Contacts
+    %li
+      %a{href: "index.html"}
+        %i.eicon-suitcase
+        %span.name Accounts
+    %li
+      %a{href: "index.html"}
+        %i.eicon-suitcase
+        %span.name Campaigns
+    %li
+      %a{href: "index.html"}
+        %i.eicon-suitcase
+        %span.name Opportunities
+    %li
+      %a{href: "index.html"}
+        %i.icon-envelope-alt
+        %span.name Email
+    %li.panel
+      %a.accordion-toggle.collapsed{"data-parent" => "#side-nav", "data-toggle" => "collapse", href: "#stats-collapse"}
+        %i.eicon-chart-area
+        %span.name Statistics
+      %ul#stats-collapse.panel-collapse.collapse
         %li
-          %a{href: "/dashboard"}
-            %i.icon-dashboard
-            %span Dashboard
+          %a{href: "contact-stats.html"} Contacts
         %li
-          %a.dropdown-collapse{href: "#"}
-            %i.icon-male
-            %span Leads
-            %i.icon-angle-down.angle-down
-          %ul.nav.nav-stacked
-            %li
-              %a{href: "/leads/new"}
-                %i.icon-caret-right
-                %span Create Lead
-            %li
-              %a{href: "/leads/"}
-                %i.icon-caret-right
-                %span View Leads
-            %li
-              %a{href: "/web_to_lead/"}
-                %i.icon-caret-right
-                %span Create Web-to-Lead
+          %a{href: "listing-stats.html"} Listings
         %li
-          %a.dropdown-collapse{href: "#"}
-            %i.icon-book
-            %span Contacts
-            %i.icon-angle-down.angle-down
-          %ul.nav.nav-stacked
-            %li
-              %a{href: "/contacts/new"}
-                %i.icon-caret-right
-                %span Create Contact
-            %li
-              %a{href: "/contacts/"}
-                %i.icon-caret-right
-                %span View Contacts
-        %li
-          %a.dropdown-collapse{href: "#"}
-            %i.icon-home
-            %span Listings
-            %i.icon-angle-down.angle-down
-          %ul.nav.nav-stacked
-            %li
-              %a{href: "#"}
-                %i.icon-caret-right
-                %span Create Listing
-            %li
-              %a{href: "#"}
-                %i.icon-caret-right
-                %span View Listings
-        %li
-          %a.dropdown-collapse{href: "#"}
-            %i.icon-pencil
-            %span Offers
-            %i.icon-angle-down.angle-down
-          %ul.nav.nav-stacked
-            %li
-              %a{href: "#"}
-                %i.icon-caret-right
-                %span Create Offer
-            %li
-              %a{href: "#"}
-                %i.icon-caret-right
-                %span View Offers
-        %li
-          %a.dropdown-collapse{href: "#"}
-            %i.icon-tasks
-            %span Tasks
-            %i.icon-angle-down.angle-down
-          %ul.nav.nav-stacked
-            %li
-              %a{href: "/tasks/new"}
-                %i.icon-caret-right
-                %span Create Task
-            %li
-              %a{href: "/tasks/"}
-                %i.icon-caret-right
-                %span View Tasks
-        %li
-          %a.dropdown-collapse{href: "#"}
-            %i.icon-dollar
-            %span Opportunities
-            %i.icon-angle-down.angle-down
-          %ul.nav.nav-stacked
-            %li
-              %a{href: "/opportunities/new"}
-                %i.icon-caret-right
-                %span Create Opportunity
-            %li
-              %a{href: "/opportunities/"}
-                %i.icon-caret-right
-                %span View Opportunities
+          %a{href: "deal-stats.html"} Accounts
+    %li
+      %a{href: "index.html"}
+        %i.icon-cog
+        %span.name Settings
+    %li.visible-xs
+      %a{href: "login.html"}
+        %i.icon-signout
+        %span.name Sign Out
+  #sidebar-settings.settings
+    %button.btn-icons.btn.btn-inverse.btn-sm{"data-value" => "icons", type: "button"} Icons
+    %button.btn-auto.btn.btn-inverse.btn-sm{"data-value" => "auto", type: "button"} Auto
 
-        %li
-          %a{href: "/calendar"}
-            %i.icon-calendar
-            %span Calendar
+/ - if current_user.account
+/   #main-nav-bg
+/   %nav#main-nav
+/     .navigation
+/       %ul.nav.nav-stacked
+/         %li
+/           %a{href: "/dashboard"}
+/             %i.icon-dashboard
+/             %span Dashboard
+/         %li
+/           %a.dropdown-collapse{href: "#"}
+/             %i.icon-male
+/             %span Leads
+/             %i.icon-angle-down.angle-down
+/           %ul.nav.nav-stacked
+/             %li
+/               %a{href: "/leads/new"}
+/                 %i.icon-caret-right
+/                 %span Create Lead
 
-        %li
-          %a{href: settings_account_path(current_user.account)}
-            %i.icon-cog
-            %span Account Settings
+/             %li
+/               %a{href: "/leads/"}
+/                 %i.icon-caret-right
+/                 %span View Leads
+/             %li
+/               %a{href: "/web_to_lead/"}
+/                 %i.icon-caret-right
+/                 %span Create Web-to-Lead
+/         %li
+/           %a.dropdown-collapse{href: "#"}
+/             %i.icon-book
+/             %span Contacts
+/             %i.icon-angle-down.angle-down
+/           %ul.nav.nav-stacked
+/             %li
+/               %a{href: "/contacts/new"}
+/                 %i.icon-caret-right
+/                 %span Create Contact
+/             %li
+/               %a{href: "/contacts/"}
+/                 %i.icon-caret-right
+/                 %span View Contacts
+/         %li
+/           %a.dropdown-collapse{href: "#"}
+/             %i.icon-home
+/             %span Listings
+/             %i.icon-angle-down.angle-down
+/           %ul.nav.nav-stacked
+/             %li
+/               %a{href: "#"}
+/                 %i.icon-caret-right
+/                 %span Create Listing
+/             %li
+/               %a{href: "#"}
+/                 %i.icon-caret-right
+/                 %span View Listings
+/         %li
+/           %a.dropdown-collapse{href: "#"}
+/             %i.icon-pencil
+/             %span Offers
+/             %i.icon-angle-down.angle-down
+/           %ul.nav.nav-stacked
+/             %li
+/               %a{href: "#"}
+/                 %i.icon-caret-right
+/                 %span Create Offer
+/             %li
+/               %a{href: "#"}
+/                 %i.icon-caret-right
+/                 %span View Offers
+/         %li
+/           %a.dropdown-collapse{href: "#"}
+/             %i.icon-tasks
+/             %span Tasks
+/             %i.icon-angle-down.angle-down
+/           %ul.nav.nav-stacked
+/             %li
+/               %a{href: "/tasks/new"}
+/                 %i.icon-caret-right
+/                 %span Create Task
+/             %li
+/               %a{href: "/tasks/"}
+/                 %i.icon-caret-right
+/                 %span View Tasks
+/         %li
+/           %a.dropdown-collapse{href: "#"}
+/             %i.icon-dollar
+/             %span Opportunities
+/             %i.icon-angle-down.angle-down
+/           %ul.nav.nav-stacked
+/             %li
+/               %a{href: "/opportunities/new"}
+/                 %i.icon-caret-right
+/                 %span Create Opportunity
+/             %li
+/               %a{href: "/opportunities/"}
+/                 %i.icon-caret-right
+/                 %span View Opportunities
+
+/         %li
+/           %a{href: "/calendar"}
+/             %i.icon-calendar
+/             %span Calendar
+
+/         %li
+/           %a{href: settings_account_path(current_user.account)}
+/             %i.icon-cog
+/             %span Account Settings

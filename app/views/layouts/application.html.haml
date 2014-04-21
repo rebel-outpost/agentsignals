@@ -8,21 +8,518 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag 'https://js.stripe.com/v1/', "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body.contrast-blue.fixed-header
-    %header
-      = render 'layouts/navigation'
-    #wrapper
-      = render 'layouts/side_nav' unless current_user.nil?
 
-      - if current_user
-        %section#content
-          .container
-            #content-wrapper.row
-              .col-xs-12
-                = render 'layouts/messages'
-                = yield
-
-      - else
-        = render 'layouts/messages'
-        = yield
-
+  %body
+    .logo
+      %h4
+        %a{href: "index.html"}
+          Agent
+          %strong Signals
+    %nav#sidebar.sidebar.nav-collapse.collapse
+      %ul#side-nav.side-nav
+        %li.active
+          %a{href: "index.html"}
+            %i.icon-home
+            %span.name Dashboard
+        %li
+          %a{href: "index.html"}
+            %i.eicon-suitcase
+            %span.name Leads
+        %li
+          %a{href: "index.html"}
+            %i.eicon-users
+            %span.name Contacts
+        %li
+          %a{href: "index.html"}
+            %i.eicon-suitcase
+            %span.name Accounts
+        %li
+          %a{href: "index.html"}
+            %i.eicon-suitcase
+            %span.name Campaigns
+        %li
+          %a{href: "index.html"}
+            %i.eicon-suitcase
+            %span.name Opportunities
+        %li
+          %a{href: "index.html"}
+            %i.icon-envelope-alt
+            %span.name Email
+        %li.panel
+          %a.accordion-toggle.collapsed{"data-parent" => "#side-nav", "data-toggle" => "collapse", href: "#stats-collapse"}
+            %i.eicon-chart-area
+            %span.name Statistics
+          %ul#stats-collapse.panel-collapse.collapse
+            %li
+              %a{href: "contact-stats.html"} Contacts
+            %li
+              %a{href: "listing-stats.html"} Listings
+            %li
+              %a{href: "deal-stats.html"} Accounts
+        %li
+          %a{href: "index.html"}
+            %i.icon-cog
+            %span.name Settings
+        %li.visible-xs
+          %a{href: "login.html"}
+            %i.icon-signout
+            %span.name Sign Out
+      #sidebar-settings.settings
+        %button.btn-icons.btn.btn-inverse.btn-sm{"data-value" => "icons", type: "button"} Icons
+        %button.btn-auto.btn.btn-inverse.btn-sm{"data-value" => "auto", type: "button"} Auto
+    .wrap
+      %header.page-header
+        .navbar
+          %ul.nav.navbar-nav.navbar-right.pull-right
+            %li.visible-phone-landscape
+              %a#search-toggle{href: "#"}
+                %i.icon-search
+            %li.dropdown
+              %a#messages.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: "Messages"}
+                %i.icon-comments
+              %ul#messages-menu.dropdown-menu.messages{role: "menu"}
+                %li{role: "presentation"}
+                  %a.message{href: "#"}
+                    %img{alt: "", src: "img/1.jpg"}/
+                    .details
+                      .sender Jane Hew
+                      .text
+                        Hey, John! How is it going? ...
+                %li{role: "presentation"}
+                  %a.message{href: "#"}
+                    %img{alt: "", src: "img/2.jpg"}/
+                    .details
+                      .sender Alies Rumiancau
+                      .text
+                        I'll definitely buy this CRM
+                %li{role: "presentation"}
+                  %a.message{href: "#"}
+                    %img{alt: "", src: "img/3.jpg"}/
+                    .details
+                      .sender Michal Rumiancau
+                      .text
+                        Is it really Lore ipsum? Lore ...
+                %li{role: "presentation"}
+                  %a.text-align-center.see-all{href: "#"}
+                    See all messages
+                    %i.icon-arrow-right
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: "8 support tickets"}
+                %i.icon-group
+                %span.count 8
+              %ul#support-menu.dropdown-menu.support{role: "menu"}
+                %li{role: "presentation"}
+                  %a.support-ticket{href: "#"}
+                    .picture
+                      %span.label.label-important
+                        %i.icon-bell-alt
+                    .details
+                      Check out this awesome ticket
+                %li{role: "presentation"}
+                  %a.support-ticket{href: "#"}
+                    .picture
+                      %span.label.label-warning
+                        %i.icon-question-sign
+                    .details
+                      "What is the best way to get ...
+                %li{role: "presentation"}
+                  %a.support-ticket{href: "#"}
+                    .picture
+                      %span.label.label-success
+                        %i.icon-tag
+                    .details
+                      This is just a simple notification
+                %li{role: "presentation"}
+                  %a.support-ticket{href: "#"}
+                    .picture
+                      %span.label.label-info
+                        %i.icon-info-sign
+                    .details
+                      12 new orders has arrived today
+                %li{role: "presentation"}
+                  %a.support-ticket{href: "#"}
+                    .picture
+                      %span.label.label-important
+                        %i.icon-plus
+                    .details
+                      One more thing that just happened
+                %li{role: "presentation"}
+                  %a.text-align-center.see-all{href: "#"}
+                    See all tickets
+                    %i.icon-arrow-right
+            %li.divider
+            %li.hidden-xs
+              %a#settings{"data-placement" => "bottom", "data-toggle" => "popover", href: "#", title: "Settings"}
+                %i.icon-cog
+            %li.hidden-xs.dropdown
+              %a#account.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: "Account"}
+                %i.icon-user
+              %ul#account-menu.dropdown-menu.account{role: "menu"}
+                %li.account-picture{role: "presentation"}
+                  %img{alt: "", src: "img/2.jpg"}/
+                  Johnny Realtor
+                %li{role: "presentation"}
+                  %a.link{href: "form_account.html"}
+                    %i.icon-user
+                    Profile
+                %li{role: "presentation"}
+                  %a.link{href: "component_calendar.html"}
+                    %i.icon-calendar
+                    Calendar
+                %li{role: "presentation"}
+                  %a.link{href: "#"}
+                    %i.icon-inbox
+                    Inbox
+            %li.visible-xs
+              %a.btn-navbar{"data-target" => ".sidebar", "data-toggle" => "collapse", href: "#", title: ""}
+                %i.icon-reorder
+            %li.hidden-xs
+              %a{href: "login.html"}
+                %i.icon-signout
+          %form#search-form.navbar-form.pull-right{role: "search"}
+            %input.search-query{placeholder: "Search...", type: "search"}/
+          .notifications.pull-right
+            .alert.pull-right
+              %a.close{"data-dismiss" => "alert", href: "#"} ×
+              %i.icon-info-sign
+              Check out AgentSignals
+              %a#notification-link{href: "#"} settings
+              on the right!
+      .content.container
+        .row
+          .col-md-12
+            %h2.page-title
+              Dashboard
+              %small Statistics and more
+        .row
+          .col-md-8
+            %section.widget
+              %header
+                %h4
+                  %i.icon-group
+                  The big picture
+                  %small
+                    Based on a three months data
+              .body.no-margin
+                #visits-chart.chart.visits-chart
+                  %svg
+                .visits-info.well.well-sm
+                  .row
+                    .col-sm-3.col-xs-6
+                      .key
+                        %i.eicon-users
+                        Total Contacts
+                      .value
+                        24 541
+                        %i.icon-caret-up.color-green
+                    .col-sm-3.col-xs-6
+                      .key
+                        %i.eicon-user
+                        Closes
+                      .value
+                        14 778
+                        %i.icon-caret-down.color-red
+                    .col-sm-3.col-xs-6
+                      .key
+                        %i.icon-plus-sign-alt
+                        Commissions
+                      .value
+                        $3 583.18
+                        %i.icon-caret-up.color-green
+                    .col-sm-3.col-xs-6
+                      .key
+                        %i.icon-user
+                        Total Sales
+                      .value
+                        $59 871.12
+                        %i.icon-caret-down.color-red
+            %section.widget
+              %header
+                %h4
+                  %i.icon-shopping-cart
+                  Contact summary
+                  %small
+                    One month tracking
+              .body
+                %table.table.table-striped.no-margin.sources-table
+                  %thead
+                    %tr
+                      %th.source-col-header Status
+                      %th Amount
+                      %th Change
+                      %th.hidden-xs Percent.,%
+                      %th Target
+                      %th.chart-col-header.hidden-xs Trend
+                  %tbody
+                    %tr
+                      %td
+                        %span.label.label-important Buyers
+                      %td 713
+                      %td
+                        %strong.color-green +53
+                      %td.hidden-xs +12
+                      %td 900
+                      %td.chart-cell.hidden-xs
+                        #direct-trend
+                    %tr
+                      %td
+                        %span.label.label-warning Sellers
+                      %td 562
+                      %td
+                        %strong +84
+                      %td.hidden-xs +64
+                      %td 500
+                      %td.chart-cell.hidden-xs
+                        #refer-trend
+                    %tr
+                      %td
+                        %span.label.label-success Renters
+                      %td 148
+                      %td
+                        %strong.color-red -12
+                      %td.hidden-xs +3
+                      %td 180
+                      %td.chart-cell.hidden-xs
+                        #social-trend
+                    %tr
+                      %td
+                        %span.label.label-info Prospects
+                      %td 653
+                      %td
+                        %strong.color-green +23
+                      %td.hidden-xs +43
+                      %td 876
+                      %td.chart-cell.hidden-xs
+                        #search-trend
+                    %tr
+                      %td
+                        %span.label.label-inverse Past clients
+                      %td 976
+                      %td
+                        %strong +101
+                      %td.hidden-xs -7
+                      %td 844
+                      %td.chart-cell.hidden-xs
+                        #internal-trend
+          .col-md-4
+            %section.widget.large
+              %header
+                %h4
+                  %i.eicon-share
+                  Recent Activity
+                .actions
+                  %button.btn.btn-transparent.btn-xs
+                    Show All
+                    %i.icon-arrow-down
+              .body
+                #feed.feed
+                  .wrapper
+                    .vertical-line
+                    %section.feed-item
+                      .icon.pull-left
+                        %i.icon-comment
+                      .feed-item-body
+                        .text
+                          %a{href: "#"} Johnny Realtor
+                          made a note on
+                          = succeed "." do
+                            %a{href: "#"} 15-2202 Iceboat Terrace
+                        .time.pull-left
+                          3 h
+                    %section.feed-item
+                      .icon.pull-left
+                        %i.icon-ok.color-green
+                      .feed-item-body
+                        .text
+                          %a{href: "#"} 15-2202 Iceboat Terrace
+                          deal has been closed by
+                          = succeed "!" do
+                            %a{href: "#"} Jessica Lori
+                        .time.pull-left
+                          10 h
+                    %section.feed-item
+                      .icon.pull-left
+                        %img.img-circle{alt: "", src: "img/14.jpg"}/
+                      .feed-item-body
+                        .text
+                          New contact
+                          %a{href: "#"} Keira Knightley
+                          added.
+                        .time.pull-left
+                          Today
+                    %section.feed-item
+                      .icon.pull-left
+                        %i.icon-shopping-cart
+                      .feed-item-body
+                        .text
+                          %a{href: "#"} Commission report
+                          generated for October.
+                        .time.pull-left
+                          Wednesday
+                    %section.feed-item
+                      .icon.pull-left
+                        %i.icon-arrow-down
+                      .feed-item-body
+                        .text
+                          %a{href: "#"} Load more...
+            %section.widget.widget-tabs
+              %header
+                %ul.nav.nav-tabs
+                  %li.active
+                    %a{"data-toggle" => "tab", href: "#stats"} Contacts
+                  %li
+                    %a{"data-toggle" => "tab", href: "#report"} Accounts
+                  %li
+                    %a{"data-toggle" => "tab", href: "#dropdown1"} Campaigns
+              .body.tab-content
+                #stats.tab-pane.active.clearfix
+                  %h5.tab-header
+                    %i.icon-group
+                    Most recently added Contacts
+                  %ul.users-list
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/1.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} Keira Knightley
+                        .position Prospect
+                        .time Added: Mar 20, 18:46
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/3.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} Fernando Alonso
+                        .position Buyer
+                        .time Added: Mar 23, 9:02
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/2.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} Alain Prost
+                        .position Past client
+                        .time Added: Jun 6, 15:34
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/13.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} Felipe Massa
+                        .position Renter
+                        .time Added: Jun 8, 17:20
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/14.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} Danika Patrick
+                        .position Seller
+                        .time Added: Jun 8, 9:13
+                #report.tab-pane
+                  %h5.tab-header
+                    %i.icon-star
+                    Recent accounts
+                  %ul.users-list.user-list-no-hover
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l5.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 15-2202 Iceboat Terrace
+                        .options
+                          %button.btn.btn-xs.btn-success
+                            %i.icon-lock
+                            Close
+                          %button.btn.btn-xs.btn-warning
+                            %i.icon-search
+                            View
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l4.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 60 Grouse Lane
+                        .options
+                          %button.btn.btn-xs.btn-success
+                            %i.icon-lock
+                            Close
+                          %button.btn.btn-xs.btn-warning
+                            %i.icon-search
+                            View
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l3.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 6984 Tassel Cres.
+                        .options
+                          %button.btn.btn-xs.btn-success
+                            %i.icon-lock
+                            Close
+                          %button.btn.btn-xs.btn-warning
+                            %i.icon-search
+                            View
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l2.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 15 Steen Drive
+                        .options
+                          %button.btn.btn-xs.btn-success
+                            %i.icon-lock
+                            Close
+                          %button.btn.btn-xs.btn-warning
+                            %i.icon-search
+                            View
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l1.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 264 Roncesvalles Ave
+                        .options
+                          %button.btn.btn-xs.btn-success
+                            %i.icon-lock
+                            Close
+                          %button.btn.btn-xs.btn-warning
+                            %i.icon-search
+                            View
+                #dropdown1.tab-pane
+                  %h5.tab-header
+                    %i.icon-comments
+                    Recent campaigns
+                  %ul.users-list
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l1.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 264 Roncesvalles Ave
+                        .comment
+                          Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                          sed quia
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l2.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 60 Grouse Lane
+                        .comment
+                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                          eu fugiat.
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l3.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 15-2202 Iceboat Terrace
+                        .comment
+                          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                          deserunt.
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l4.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 6984 Tassel Crescent
+                        .comment
+                          Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
+                          doloremque.
+                    %li
+                      %img.pull-left.img-circle{alt: "", src: "img/l5.jpg"}/
+                      .user-info
+                        .name
+                          %a{href: "#"} 144 Front St. W
+                        .comment
+                          Laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis
+                          et quasi.
+    
