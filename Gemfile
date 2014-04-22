@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem "compass-rails", "1.1.2"
 gem 'simple-navigation'
 gem 'simple-navigation-bootstrap'
+gem 'fontello-rails'
 
 gem 'rails3-generators'
 gem 'simple_form'

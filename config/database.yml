@@ -2,14 +2,11 @@ development:
   adapter: mysql2
   encoding: utf8
   database: agent_signals_development
-  username: root
-  password: mysqlsux!
-  pool: 15
+
 
 test:
   adapter: mysql2
   encoding: utf8
   database: agent_signals_test
-  username: root
-  password: mysqlsux!
-  pool: 15
+
+

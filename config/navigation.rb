@@ -53,7 +53,10 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-    primary.item :dashboard, 'Dashboard', root_path
+    primary.item :dashboard_icon, "", class: "fa fa-home"
+    primary.item :dashboard, 'Dashboard', dashboard_path
+
+    primary.item :leads_icon, "", class: "fa fa-users"
     primary.item :leads, 'Leads', '#leads-collapse', {
       link: {
         data: {
@@ -71,7 +74,7 @@ SimpleNavigation::Configuration.run do |navigation|
     end
 
 
-
+    primary.item :contacts_icon, "", class: "fa fa-user"
     primary.item :contacts, 'Contacts', '#contacts-collapse', {
       link: {
         data: {
@@ -87,7 +90,7 @@ SimpleNavigation::Configuration.run do |navigation|
       contact.item :view_contacts, 'View Contacts', contacts_path
     end
 
-
+    primary.item :listings_icon, "", class: "fa fa-briefcase"
     primary.item :listings, 'Listings', '#listings-collapse', {
       link: {
         data: {
@@ -103,6 +106,7 @@ SimpleNavigation::Configuration.run do |navigation|
       listing.item :view_listings, 'View Listings', '#'
     end
 
+    primary.item :offers_icon, "", class: "fa fa-dollar"
     primary.item :offers, 'Offers', '#offers-collapse', {
       link: {
         data: {
@@ -118,6 +122,7 @@ SimpleNavigation::Configuration.run do |navigation|
       offer.item :view_offers, 'View Offers', '#'
     end
 
+    primary.item :tasks_icon, "", class: "fa fa-check-square-o"
     primary.item :tasks, 'Tasks', '#tasks-collapse', {
       link: {
         data: {
@@ -133,6 +138,7 @@ SimpleNavigation::Configuration.run do |navigation|
       task.item :view_tasks, 'View Tasks', tasks_path
     end
 
+    primary.item :opportunities_icon, "", class: "fa fa-thumbs-up"
     primary.item :opportunities, 'Opportunities', '#opportunities-collapse', {
       link: {
         data: {
@@ -147,9 +153,11 @@ SimpleNavigation::Configuration.run do |navigation|
       opportunity.item :create_opportunity, 'Create Opportunity', new_opportunity_path
       opportunity.item :view_opportunities, 'View Opportunities', opportunities_path
     end
-
+    primary.item :calendar_icon, "", class: "fa fa-calendar"
     primary.item :calendar, 'Calendar', calendar_index_path
-    primary.item :account_settings, 'Account Settings', settings_account_path(current_user.account)
+
+    primary.item :account_settings_icon, "", class: "fa fa-gears" if current_user
+    primary.item :account_settings, 'Account Settings', settings_account_path(current_user.account) if current_user
 
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
