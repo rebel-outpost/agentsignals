@@ -281,6 +281,11 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
+    simple-navigation (3.13.0)
+      activesupport (>= 2.3.2)
+    simple-navigation-bootstrap (1.0.0)
+      railties (>= 3.1)
+      simple-navigation (>= 3.7.0)
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -382,6 +387,8 @@ DEPENDENCIES
   sass (= 3.2.14)
   sass-rails (>= 3.2)
   selenium-webdriver
+  simple-navigation
+  simple-navigation-bootstrap
   simple_form
   stripe
   thinking-sphinx (= 3.0.0)

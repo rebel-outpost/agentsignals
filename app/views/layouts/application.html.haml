@@ -12,61 +12,13 @@
   %body
     .logo
       %h4
-        %a{href: "index.html"}
-          Agent
+        = link_to root_path do
+          Agent 
           %strong Signals
     %nav#sidebar.sidebar.nav-collapse.collapse
-      %ul#side-nav.side-nav
-        %li.active
-          %a{href: "index.html"}
-            %i.icon-home
-            %span.name Dashboard
-        %li
-          %a{href: "index.html"}
-            %i.eicon-suitcase
-            %span.name Leads
-        %li
-          %a{href: "index.html"}
-            %i.eicon-users
-            %span.name Contacts
-        %li
-          %a{href: "index.html"}
-            %i.eicon-suitcase
-            %span.name Accounts
-        %li
-          %a{href: "index.html"}
-            %i.eicon-suitcase
-            %span.name Campaigns
-        %li
-          %a{href: "index.html"}
-            %i.eicon-suitcase
-            %span.name Opportunities
-        %li
-          %a{href: "index.html"}
-            %i.icon-envelope-alt
-            %span.name Email
-        %li.panel
-          %a.accordion-toggle.collapsed{"data-parent" => "#side-nav", "data-toggle" => "collapse", href: "#stats-collapse"}
-            %i.eicon-chart-area
-            %span.name Statistics
-          %ul#stats-collapse.panel-collapse.collapse
-            %li
-              %a{href: "contact-stats.html"} Contacts
-            %li
-              %a{href: "listing-stats.html"} Listings
-            %li
-              %a{href: "deal-stats.html"} Accounts
-        %li
-          %a{href: "index.html"}
-            %i.icon-cog
-            %span.name Settings
-        %li.visible-xs
-          %a{href: "login.html"}
-            %i.icon-signout
-            %span.name Sign Out
-      #sidebar-settings.settings
-        %button.btn-icons.btn.btn-inverse.btn-sm{"data-value" => "icons", type: "button"} Icons
-        %button.btn-auto.btn.btn-inverse.btn-sm{"data-value" => "auto", type: "button"} Auto
+      = render_navigation expand_all: true
+
+
     .wrap
       %header.page-header
         .navbar
