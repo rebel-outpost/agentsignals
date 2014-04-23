@@ -1,37 +1,15 @@
-.container
-  #content-wrapper.row
-    .col-xs-12
-      .row
-        .col-sm-12
-          .page-header
-            %h1.pull-left
-              %i.icon-calendar
-              %span Calendar
-      .row
-        #events.col-sm-3
-          .box
-            .box-header
-              .title Draggable events
-            .box-content
-              .label.label-important.external-event{"data-event-class" => "label-important"} Jane meetup
-              .label.label-warning.external-event{"data-event-class" => "label-warning"} Shopping
-              .label.label-success.external-event{"data-event-class" => "label-success"} Dentist
-              %hr.hr-normal/
-              %label.checkbox
-                %input#calendar-remove-after-drop{type: "checkbox", value: "option1"}/
-                Remove after drop?
-              %hr.hr-normal/
-              %form#new-event{"accept-charset" => "UTF-8", action: "#", method: "post", style: "margin-bottom:0;"}
-                %input{name: "authenticity_token", type: "hidden"}/
-                .form-group
-                  %input#new-event-input.form-control{placeholder: "Event name", type: "text"}/
-                %button.btn.btn-primary.btn-block
-                  %i.icon-plus
-                  Create event
-        .col-sm-9
-          .box
-            .box-header
-              .title Home and work
-            .box-content
-              #calendar
+.row
+  .col-md-12
+    %h1 Calendar
+
+.row
+  .col-md-3
+    .box
+      .form-group
+        %input#new-event-input.form-control{placeholder: "Event name", type: "text"}/
+
+        = link_to "Create Event", "#", class: 'btn btn-primary'
+  .col-md-9
+    .box
+      #full-calendar
 

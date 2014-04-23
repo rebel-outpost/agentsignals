@@ -4,7 +4,7 @@
 //= require_tree .
 
 
-$(function() {
-  $(".chosen-select").select2();
-  $(".chosen-deselect").select2({ allowClear: true });
-});
+// $(function() {
+//   $(".chosen-select").select2();
+//   $(".chosen-deselect").select2({ allowClear: true });
+// });

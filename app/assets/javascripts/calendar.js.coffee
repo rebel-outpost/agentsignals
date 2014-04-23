@@ -5,7 +5,7 @@ $ ->
   m = date.getMonth()
   y = date.getFullYear()
 
-  $("#calendar").fullCalendar
+  $("#full-calendar").fullCalendar
     editable: true
     selectHelper: true
     selectable: true
