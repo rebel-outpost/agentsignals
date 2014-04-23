@@ -68,8 +68,8 @@
   background: whitesmoke;
   color: #666666;
 }
-.side-nav .panel-collapse li a {
-  padding: 4px 10px;
+.side-nav .panel-collapse li  {
+  
 }
 .side-nav .panel-collapse li a:hover, .side-nav .panel-collapse li a:focus {
   background: whitesmoke;
