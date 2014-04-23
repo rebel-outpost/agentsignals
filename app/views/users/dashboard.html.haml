@@ -1,11 +1,12 @@
-.content.container
-  .row
-    .col-md-12
-      %h2.page-title
-        Welcome to your Dashboard
 
-  .row
-    .col-md-10.col-md-offset-1
+.row
+  .col-md-12
+    %h2
+      Welcome to your Dashboard
+
+.row
+  .col-md-12
+    .content
       %section.widget
         %header
           %h4 Current Leads
@@ -34,11 +35,11 @@
                     %td
                       = lead.created_at.to_date
 
-%br
-%br
 
-  .row
-    .col-md-10.col-md-offset-1
+
+.row.clearfix
+  .col-md-12
+    .content
       %section.widget
         %header
           %h3 Assigned Tasks

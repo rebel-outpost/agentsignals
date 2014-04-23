@@ -9936,10 +9936,7 @@ input.parsley-error {
   -o-border-radius: 1px;
   border-radius: 1px;
   background: white;
-  position: absolute;
-  width: 160px;
   padding: 10px 0;
-  top: 0;
   color: gray;
   font-size: 12px;
   z-index: 1;

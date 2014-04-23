@@ -1,9 +1,32 @@
 /*
- *= require agent_signals/layout
  *= require font-awesome
+ *= require bootstrap_overrides
+ *= require sidebar
  *= require_self
  */
 
+
+html
+  min-height: 100%
+
+body
+  line-height: 20px
+  font-weight: normal
+  padding: 0 25px 100px 25px
+  background-color: rgba(74, 121, 147, 0.89)
+  background: radial-gradient(farthest-side ellipse at 10% 0, rgba(74, 121, 147, 0.89), rgba(226, 226, 226, 0.87), rgba(185, 135, 131, 0.87)), url("../img/bgnoise_lg_dark.png")
+  background: -webkit-radial-gradient(10% 0, farthest-side ellipse, rgba(74, 121, 147, 0.89), rgba(226, 226, 226, 0.87), rgba(185, 135, 131, 0.87)), url("../img/bgnoise_lg_dark.png")
+  background: -moz-radial-gradient(10% 0, farthest-side ellipse, rgba(74, 121, 147, 0.89), rgba(226, 226, 226, 0.87), rgba(185, 135, 131, 0.87)), url("../img/bgnoise_lg_dark.png")
+
+.content
+  background: #fff
+  padding: 25px
+
+.navbar-default 
+  background-color: transparent
+
+.clearfix
+  margin-top: 40px
 
 #sidebar
   li.fa 

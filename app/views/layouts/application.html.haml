@@ -10,141 +10,24 @@
     = csrf_meta_tags
 
   %body
-    .logo
-      %h4
-        = link_to root_path do
-          Agent 
-          %strong Signals
-    %nav#sidebar.sidebar.nav-collapse.collapse
-      = render_navigation expand_all: true
+    .row
+      .col-md-12
+        %nav.navbar-default{role: "navigation"}
+          .navbar-header
+            %button.navbar-toggle{"data-target" => "#sidebar", "data-toggle" => "collapse", type: "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            .navbar-brand
+              = link_to image_tag('agentsignals.png')
+
+    .row
+      .col-md-2
+        #sidebar.sidebar.nav-collapse.collapse.in
+          = render_navigation expand_all: true
     
 
-    .wrap
-      %header.page-header
-        .navbar
-          %ul.nav.navbar-nav.navbar-right.pull-right
-            %li.visible-phone-landscape
-              %a#search-toggle{href: "#"}
-                %i.icon-search
-            %li.dropdown
-              %a#messages.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: "Messages"}
-                %i.icon-comments
-              %ul#messages-menu.dropdown-menu.messages{role: "menu"}
-                %li{role: "presentation"}
-                  %a.message{href: "#"}
-                    %img{alt: "", src: "img/1.jpg"}/
-                    .details
-                      .sender Jane Hew
-                      .text
-                        Hey, John! How is it going? ...
-                %li{role: "presentation"}
-                  %a.message{href: "#"}
-                    %img{alt: "", src: "img/2.jpg"}/
-                    .details
-                      .sender Alies Rumiancau
-                      .text
-                        I'll definitely buy this CRM
-                %li{role: "presentation"}
-                  %a.message{href: "#"}
-                    %img{alt: "", src: "img/3.jpg"}/
-                    .details
-                      .sender Michal Rumiancau
-                      .text
-                        Is it really Lore ipsum? Lore ...
-                %li{role: "presentation"}
-                  %a.text-align-center.see-all{href: "#"}
-                    See all messages
-                    %i.icon-arrow-right
-            %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: "8 support tickets"}
-                %i.icon-group
-                %span.count 8
-              %ul#support-menu.dropdown-menu.support{role: "menu"}
-                %li{role: "presentation"}
-                  %a.support-ticket{href: "#"}
-                    .picture
-                      %span.label.label-important
-                        %i.icon-bell-alt
-                    .details
-                      Check out this awesome ticket
-                %li{role: "presentation"}
-                  %a.support-ticket{href: "#"}
-                    .picture
-                      %span.label.label-warning
-                        %i.icon-question-sign
-                    .details
-                      "What is the best way to get ...
-                %li{role: "presentation"}
-                  %a.support-ticket{href: "#"}
-                    .picture
-                      %span.label.label-success
-                        %i.icon-tag
-                    .details
-                      This is just a simple notification
-                %li{role: "presentation"}
-                  %a.support-ticket{href: "#"}
-                    .picture
-                      %span.label.label-info
-                        %i.icon-info-sign
-                    .details
-                      12 new orders has arrived today
-                %li{role: "presentation"}
-                  %a.support-ticket{href: "#"}
-                    .picture
-                      %span.label.label-important
-                        %i.icon-plus
-                    .details
-                      One more thing that just happened
-                %li{role: "presentation"}
-                  %a.text-align-center.see-all{href: "#"}
-                    See all tickets
-                    %i.icon-arrow-right
-            %li.divider
-            %li.hidden-xs
-              %a#settings{"data-placement" => "bottom", "data-toggle" => "popover", href: "#", title: "Settings"}
-                %i.icon-cog
-            %li.hidden-xs.dropdown
-              %a#account.dropdown-toggle{"data-toggle" => "dropdown", href: "#", title: "Account"}
-                %i.icon-user
-              %ul#account-menu.dropdown-menu.account{role: "menu"}
-                %li.account-picture{role: "presentation"}
-                  %img{alt: "", src: "img/2.jpg"}/
-                  Johnny Realtor
-                %li{role: "presentation"}
-                  %a.link{href: "form_account.html"}
-                    %i.icon-user
-                    Profile
-                %li{role: "presentation"}
-                  %a.link{href: "component_calendar.html"}
-                    %i.icon-calendar
-                    Calendar
-                %li{role: "presentation"}
-                  %a.link{href: "#"}
-                    %i.icon-inbox
-                    Inbox
-            %li.visible-xs
-              %a.btn-navbar{"data-target" => ".sidebar", "data-toggle" => "collapse", href: "#", title: ""}
-                %i.icon-reorder
-            %li.hidden-xs
-              %a{href: "login.html"}
-                %i.icon-signout
-          %form#search-form.navbar-form.pull-right{role: "search"}
-            %input.search-query{placeholder: "Search...", type: "search"}/
-          .notifications.pull-right
-            .alert.pull-right
-              %a.close{"data-dismiss" => "alert", href: "#"} ×
-              %i.icon-info-sign
-              Check out AgentSignals
-              %a#notification-link{href: "#"} settings
-              on the right!
-
-      - if current_user
-        .content.container
-          .row
-            .col-md-12
-              %h2.page-title
-                = render 'layouts/messages'
-                = yield
-      - else
+      .col-md-10
         = render 'layouts/messages'
         = yield
