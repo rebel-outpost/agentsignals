@@ -19,8 +19,22 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            .navbar-brand
-              = link_to image_tag('agentsignals.png')
+            .navbar-brand= link_to image_tag('agentsignals.png'), root_path
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav#top-navbar.pull-right
+              %li.drop-down
+                = link_to "#", html_options = {"data-toggle" => "dropdown"} do
+                  %i.fa.fa-gear
+                %ul.dropdown-menu
+                  %li= link_to "Account Settings", "#"
+              %li.drop-down
+                = link_to "#", html_options = {"data-toggle" => "dropdown"} do
+                  %i.fa.fa-user
+                %ul.dropdown-menu
+                  %li= link_to "hello bob", "#"
+              %li
+                = link_to destroy_user_session_path, method: :delete do
+                  %i.fa.fa-sign-out
 
     .row
       .col-md-2
