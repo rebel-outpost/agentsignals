@@ -9,3 +9,5 @@ test:
   adapter: mysql2
   encoding: utf8
   database: agent_signals_test
+
+asdfsda
