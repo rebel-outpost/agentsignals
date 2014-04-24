@@ -14,5 +14,6 @@
 /log/*.log
 /tmp
 
-
+# Ignore database.yml
+database.yml
 
