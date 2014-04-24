@@ -2,10 +2,6 @@ class TasksController < ApplicationController
 
   def index
     @tasks = current_user.tasks
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def new

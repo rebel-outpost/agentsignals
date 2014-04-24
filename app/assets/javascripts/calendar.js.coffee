@@ -24,7 +24,7 @@ $ ->
       return
 
     eventSources: [
-      url: "/tasks.json"
+      url: "/events.json"
       cache: true
     ]
     timeFormat:
@@ -40,7 +40,9 @@ $ ->
 
 
     eventClick: (event, jsEvent, view) ->
-
+      $.ajax
+        dataType: "script"
+        url: "/events/" + event.id
 
     eventMouseover: (event, jsEvent, view) -> 
 
