@@ -1,73 +1,70 @@
-.group-header
-  .row
-    .col-sm-6.col-sm-offset-2
-      .text-center
-        %h2 Welcome to your Dashboard
+
 .row
-  .col-sm-10
-    .box.bordered-box.blue-border{style: "margin-bottom:0;"}
-      .box-header.blue-background
-        .title
-          Current Leads
-      .box-content.box-no-padding
-        .responsive-table
-          .scrollable-area
-            %table.data-table.table.table-bordered.dataTable
-              %thead
-                %tr
-                  %th
-                    Name
-                  %th
-                    Company
-                  %th
-                    Status
-                  %th
-                    Created Date
-              %tbody
-                - if @leads.present?
-                  - @leads.each do |lead|
-                    %tr
-                      %td
-                        = link_to lead.full_name.titleize, lead_path(lead)
-                      %td
-                        = lead.company
-                      %td
-                        = lead.lead_status.to_s.capitalize
-                      %td
-                        = lead.created_at.to_date
-%br
-%br
-%br
+  .col-md-12
+    %h1
+      Welcome to your Dashboard
+
 .row
-  .col-sm-10
-    .box.bordered-box.blue-border{style: "margin-bottom:0;"}
-      .box-header.blue-background
-        .title
-          Assigned Tasks
-      .box-content.box-no-padding
-        .responsive-table
-          .scrollable-area
-            %table.data-table.table.table-bordered.dataTable
-              %thead
-                %tr
-                  %th
-                    Name
-                  %th
-                    Due Date
-                  %th
-                    Task Type
-                  %th
-                    Lead
-              %tbody
-                - if @tasks.present?
-                  - @tasks.sort_by(&:due_date).each do |task|
-                    %tr
-                      %td
-                        = link_to task.task_name.titleize, task_path(task)
-                      %td
-                        = task.due_date
-                      %td
-                        = task.task_type.titleize
-                      %td
-                        = task.lead_for_task
+  .col-md-12
+    .content
+      %section.widget
+        %header
+          %h4 Current Leads
+        .body
+          %table#datatable-table.table.table-striped
+            %thead
+              %tr
+                %th
+                  Name
+                %th
+                  Company
+                %th
+                  Status
+                %th
+                  Created Date
+            %tbody
+              - if @leads.present?
+                - @leads.each do |lead|
+                  %tr
+                    %td
+                      = link_to lead.full_name.titleize, lead_path(lead)
+                    %td
+                      = lead.company
+                    %td
+                      = lead.lead_status.to_s.capitalize
+                    %td
+                      = lead.created_at.to_date
+
+
+
+.row.clearfix
+  .col-md-12
+    .content
+      %section.widget
+        %header
+          %h3 Assigned Tasks
+        .body
+          %table#datatable-table.table.table-striped.dataTable
+            %thead
+              %tr
+                %th
+                  Name
+                %th
+                  Due Date
+                %th
+                  Task Type
+                %th
+                  Lead
+            %tbody
+              - if @tasks.present?
+                - @tasks.sort_by(&:due_date).each do |task|
+                  %tr
+                    %td
+                      = link_to task.task_name.titleize, task_path(task)
+                    %td
+                      = task.due_date
+                    %td
+                      = task.task_type.titleize
+                    %td
+                      = task.lead_for_task
 

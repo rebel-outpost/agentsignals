@@ -8,21 +8,16 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag 'https://js.stripe.com/v1/', "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body.contrast-blue.fixed-header
-    %header
-      = render 'layouts/navigation'
-    #wrapper
-      = render 'layouts/side_nav' unless current_user.nil?
 
-      - if current_user
-        %section#content
-          .container
-            #content-wrapper.row
-              .col-xs-12
-                = render 'layouts/messages'
-                = yield
+  %body
+    = render 'layouts/header'
+    .row
+      .col-md-2
+        - if current_user
+          #sidebar.sidebar.nav-collapse.collapse.in
+            = render_navigation expand_all: true
+    
 
-      - else
+      .col-md-10
         = render 'layouts/messages'
         = yield
-

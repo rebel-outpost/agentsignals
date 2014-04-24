@@ -1,17 +1,12 @@
-.group-header
-  .row
-    / .col-sm-6.col-sm-offset-2
-    /   .text-center
-    /     %h2 Contacts
+.row
+  .col-md-6
+    %h1 Current Contacts
+  .col-md-6.text-right
+    = link_to 'New Contact', new_contact_path, class: 'btn btn-default'
 
 .row
-  .col-sm-12
-    .box.bordered-box.blue-border{style: "margin-bottom:0;"}
-      .box-header.blue-background
-        .title
-          Current Contacts
-        .add-new
-          = link_to 'New Contact', new_contact_path, class: 'btn'
+  .col-md-12
+    .content
       .box-content.box-no-padding
         .responsive-table
           .scrollable-area

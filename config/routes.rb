@@ -27,6 +27,8 @@ AgentSignals::Application.routes.draw do
   resources :after_signup
 
   resources :calendar
+  resources :events
+  resources :listings
 
   resources :users
   resources :leads do

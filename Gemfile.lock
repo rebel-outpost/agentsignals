@@ -124,6 +124,9 @@ GEM
     ffi (1.9.3)
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
+    fontello-rails (0.2.0)
+      railties (>= 3.2)
+      sass-rails (>= 3.2)
     formatador (0.2.4)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
@@ -281,6 +284,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
+    simple-navigation (3.13.0)
+      activesupport (>= 2.3.2)
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -357,6 +362,7 @@ DEPENDENCIES
   faker
   fakeweb
   font-awesome-rails
+  fontello-rails
   gibberish
   guard-rspec
   haml
@@ -382,6 +388,7 @@ DEPENDENCIES
   sass (= 3.2.14)
   sass-rails (>= 3.2)
   selenium-webdriver
+  simple-navigation
   simple_form
   stripe
   thinking-sphinx (= 3.0.0)

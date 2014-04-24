@@ -1,40 +1,40 @@
-%br
 .row
-  .col-sm-10
-    .box.bordered-box.blue-border
-      .box-header.blue-background
-        .title
-          #{@account.name} Settings
-      .box-content.box-double-padding
-        .form
-          = render partial: 'form'
+  .col-md-12
+    %h1= "#{@account.name} Settings"
 
-      .box-content.box-double-padding
-        %h3 Account Users
-        %p
-          = link_to 'Add a User', "#", class: 'btn add-user-to-account'
+.row
+  .col-md-12
+    .box
+      = render partial: 'form'
 
-        .new-user-add-form
-          = simple_form_for @account.users.new, url: add_user_account_path(@account) do |f|
-            = f.error_notification
-            .form-group
-              .controls
-                = f.input :first_name, required: true
-            .form-group
-              .controls
-                = f.input :last_name, required: true
-            .form-group
-              .controls
-                = f.input :email, required: true
-            .form-group
-              .controls
-                = f.input :password, required: true
-            .form-group
-              .controls
-                = f.input :password_confirmation, required: true
-            .form-group
-              .controls
-              %button.btn.btn-primary{type: "submit"} Add User
+.row.clearfix
+  .col-md-12
+    .box
+      %h3 Account Users
+      %p
+        = link_to 'Add a User', "#", class: 'btn add-user-to-account'
+
+      .new-user-add-form
+        = simple_form_for @account.users.new, url: add_user_account_path(@account) do |f|
+          = f.error_notification
+          .form-group
+            .controls
+              = f.input :first_name, required: true
+          .form-group
+            .controls
+              = f.input :last_name, required: true
+          .form-group
+            .controls
+              = f.input :email, required: true
+          .form-group
+            .controls
+              = f.input :password, required: true
+          .form-group
+            .controls
+              = f.input :password_confirmation, required: true
+          .form-group
+            .controls
+            %button.btn.btn-primary{type: "submit"} Add User
 
 :javascript
   $(document).ready(function() {

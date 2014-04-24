@@ -1,17 +1,12 @@
-.group-header
-  .row
-/     .col-sm-6.col-sm-offset-2
-/       .text-center
-/         %h2 Tasks
-
 .row
-  .col-sm-12
-    .box.bordered-box.blue-border{style: "margin-bottom:0;"}
-      .box-header.blue-background
-        .title
-          Current Tasks
-        .add-new
-          = link_to 'New Task', new_task_path, class: 'btn'
+  .col-md-6
+    %h1
+      Current Tasks
+  .col-md-6.text-right
+    = link_to 'New Task', new_task_path, class: 'btn btn-default'
+.row
+  .col-md-12
+    .content
       .box-content.box-no-padding
         .responsive-table
           .scrollable-area

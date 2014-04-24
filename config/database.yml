@@ -2,10 +2,11 @@ development:
   adapter: mysql2
   encoding: utf8
   database: agent_signals_development
-  pool: 15
+
 
 test:
   adapter: mysql2
   encoding: utf8
   database: agent_signals_test
-  pool: 15
+
+
