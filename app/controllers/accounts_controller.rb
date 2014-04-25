@@ -39,6 +39,7 @@ class AccountsController < ApplicationController
   end
 
   def settings
+    @user = current_user
     @account = Account.find params[:id]
   end
 
