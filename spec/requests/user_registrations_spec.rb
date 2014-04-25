@@ -5,7 +5,7 @@ describe "User Registrations" do
 
     it 'registers new user', js: true do
       visit root_path
-      click_link 'Register'
+      click_link 'Sign up'
       fill_in 'Email',                  with: 'bill@example.com'
       fill_in 'Password',               with: 'password'
       fill_in 'Password confirmation',  with: 'password'
@@ -17,13 +17,6 @@ describe "User Registrations" do
     describe 'new account creation' do
       before do
         @user = FactoryGirl.create :user
-      end
-
-      it 'has no sidebar for new account creation' do
-        login_as @user
-        current_path.should == new_account_path
-        page.should_not have_content 'Quick Links'
-        page.should_not have_content 'Leads'
       end
 
       it 'registers new account' do
