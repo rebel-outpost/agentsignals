@@ -102,8 +102,8 @@ SimpleNavigation::Configuration.run do |navigation|
     } do |listing|
       listing.dom_id = 'listings-collapse'
       listing.dom_class = 'panel-collapse collapse'
-      listing.item :create_listing, 'Create Listing', '#'
-      listing.item :view_listings, 'View Listings', '#'
+      listing.item :create_listing, 'Create Listing', new_listing_path
+      listing.item :view_listings, 'View Listings', listings_path
     end
 
     primary.item :offers_icon, "", class: "fa fa-dollar"
@@ -118,8 +118,8 @@ SimpleNavigation::Configuration.run do |navigation|
     } do |offer|
       offer.dom_id = 'offers-collapse'
       offer.dom_class = 'panel-collapse collapse'
-      offer.item :create_offer, 'Create Offer', '#'
-      offer.item :view_offers, 'View Offers', '#'
+      offer.item :create_offer, 'Create Offer', new_offer_path
+      offer.item :view_offers, 'View Offers', offers_path
     end
 
     primary.item :tasks_icon, "", class: "fa fa-check-square-o"
@@ -156,8 +156,9 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :calendar_icon, "", class: "fa fa-calendar"
     primary.item :calendar, 'Calendar', calendar_index_path
 
-    primary.item :account_settings_icon, "", class: "fa fa-gears" if current_user
-    primary.item :account_settings, 'Account Settings', settings_account_path(current_user.account) if current_user
+    # Already in top nav bar
+    # primary.item :account_settings_icon, "", class: "fa fa-gears" if current_user
+    # primary.item :account_settings, 'Account Settings', settings_account_path(current_user.account) if current_user
 
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.

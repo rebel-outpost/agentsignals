@@ -15,6 +15,10 @@ gem "compass-rails", "1.1.2"
 gem 'simple-navigation'
 gem 'fontello-rails'
 
+# Inline Email CSS Styling
+gem 'premailer-rails'
+gem 'hpricot'
+
 gem 'rails3-generators'
 gem 'simple_form'
 gem 'haml'
@@ -42,7 +46,6 @@ gem 'wicked'
 
 group :development do
   gem 'unicorn'
-  gem 'hpricot'
   gem 'pry-rails'
   gem 'guard-rspec', require: false
   gem 'rails_layout'

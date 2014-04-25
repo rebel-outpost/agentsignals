@@ -24,12 +24,16 @@ AgentSignals::Application.routes.draw do
   get 'contact_us' => 'contact_forms#new', as: 'contact_us'
   get 'pricing' => 'pages#pricing', as: 'pricing'
 
+  # Wizards
   resources :after_signup
 
+  resources :listings
+  resources :offers
+  resources :opportunities
+  resources :tasks
   resources :calendar
   resources :events
-  resources :listings
-
+  
   resources :users
   resources :leads do
     resources :notes
@@ -49,7 +53,7 @@ AgentSignals::Application.routes.draw do
   resources :organizations
 
   resources :contact_forms
-  resources :tasks
+  
   resources :contacts
   resources :accounts do
     member do
@@ -58,6 +62,6 @@ AgentSignals::Application.routes.draw do
     end
   end
 
-  resources :opportunities
+  
 end
 

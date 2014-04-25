@@ -1,4 +1,4 @@
-.row
+.row#navigation-bar
   .col-md-12
     %nav.navbar-default{role: "navigation"}
       .navbar-header
@@ -8,7 +8,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-        .navbar-brand= link_to image_tag('agentsignals.png'), root_path
+        .navbar-brand= link_to image_tag('agentsignals-white.png'), root_path
       - if current_user
         .collapse.navbar-collapse
           %ul.nav.navbar-nav#top-navbar.pull-right
