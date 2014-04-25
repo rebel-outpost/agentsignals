@@ -26,3 +26,11 @@
               = link_to destroy_user_session_path, method: :delete do
                 %i.fa.fa-sign-out
 
+      - else
+        %ul.nav.navbar-nav#top-navbar.pull-right
+          %li
+            = link_to 'Login', :login
+          %li
+            = link_to 'Sign up', :signup
+
+
