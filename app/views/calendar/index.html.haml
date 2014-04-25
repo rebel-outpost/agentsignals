@@ -3,9 +3,9 @@
     .modal-content
       .modal-header
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-        %h4.modal-title 
+        %h4.modal-title
       .modal-body
-        %p 
+        %p
       .modal-footer
         %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
 
@@ -15,13 +15,14 @@
     %h1 Calendar
 
 .row
+  .col-md-9
+    .box
+      #full-calendar
+
   .col-md-3
     .box
       .form-group
         %input#new-event-input.form-control{placeholder: "Event name", type: "text"}/
 
         = link_to "Create Event", "#", class: 'btn btn-primary'
-  .col-md-9
-    .box
-      #full-calendar
 

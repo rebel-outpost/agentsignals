@@ -1,53 +1,48 @@
-.group-header
-  .row
-/     .col-sm-6.col-sm-offset-2
-/       .text-center
-/         %h2 Leads
+.row
+  .col-md-6
+    %h1 Current Leads
+  .col-md-6
+    = link_to 'New Lead', new_lead_path, class: 'btn btn-default'
 
 .row
-  .col-sm-12
-    .box.bordered-box.blue-border{style: "margin-bottom:0;"}
-      .box-header.blue-background
-        .title
-          Current Leads
-        .add-new
-          = link_to 'New Lead', new_lead_path, class: 'btn'
-      .box-content.box-no-padding
-        .responsive-table
-          .scrollable-area
-            %table.data-table.table.table-bordered.dataTable
-              %thead
+  .col-sm-10
+    .box.box-content.box-no-padding
+      .responsive-table
+        .scrollable-area
+          %table#datatable.table.table-bordered
+            %thead
+              %tr
+                %th
+                  Name
+                %th
+                  Company
+                %th
+                  Phone
+                %th
+                  Status
+                %th
+                  Assigned to
+                %th
+                  Created Date
+                %th
+                  Actions
+            %tbody
+              - @leads.each do |lead|
                 %tr
-                  %th
-                    Name
-                  %th
-                    Company
-                  %th
-                    Phone
-                  %th
-                    Status
-                  %th
-                    Assigned to
-                  %th
-                    Created Date
-                  %th
-                    Actions
-              %tbody
-                - @leads.each do |lead|
-                  %tr
-                    %td
-                      = lead.full_name
-                    %td
-                      = lead.company
-                    %td
-                      = lead.phone
-                    %td
-                      = lead.lead_status.to_s.capitalize
-                    %td
-                      = lead.lead_owner
-                    %td
-                      = lead.created_at.to_date
-                    %td
-                      = link_to '', lead_path(lead), class: 'icon-edit', id: 'edit'
-
-                      = link_to '', lead_path(lead), method: 'delete', class: 'icon-trash', data: {confirm: 'Are you sure that you want to delete this lead?'}, id: 'delete'
+                  %td
+                    = lead.full_name
+                  %td
+                    = lead.company
+                  %td
+                    = lead.phone
+                  %td
+                    = lead.lead_status.to_s.capitalize
+                  %td
+                    = lead.lead_owner
+                  %td
+                    = lead.created_at.to_date
+                  %td
+                    = link_to lead_path(lead), id: 'edit' do
+                      %i.fa.fa-edit
+                    = link_to lead_path(lead), data: {confirm: 'Are you sure that you want to delete this lead?'}, method: :delete, id: 'delete' do
+                      %i.fa.fa-trash-o

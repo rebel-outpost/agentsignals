@@ -37,12 +37,14 @@ gem 'turbolinks'
 gem 'jbuilder'
 
 gem 'capistrano',  '2.15.5'
-gem "unicorn-rails"
+gem "unicorn-rails", '1.1.0'
 gem "american_date"
 gem 'stripe'
 gem 'thinking-sphinx', '3.0.0'
 gem 'acts-as-taggable-on'
 gem 'wicked'
+gem "select2-rails"
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 group :development do
   gem 'unicorn'
