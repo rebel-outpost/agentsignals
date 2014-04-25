@@ -1,0 +1,11 @@
+!!!
+%html{lang: "en"}
+  %head
+    %style{type:"text/css"}=Rails.application.assets.find_asset('emails').to_s
+      
+  %body
+    %table
+      %tr#logo
+        %td
+          %img{src: attachments['logo.png'].url}
+    = yield
