@@ -1,14 +1,14 @@
 .row
-  .col-md-12
+  .col-sm-10
     %h1= "#{@account.name} Settings"
 
 .row
-  .col-md-12
+  .col-sm-10
     .box
       = render partial: 'form'
 
 .row.clearfix
-  .col-md-12
+  .col-sm-10
     .box
       %h3 Account Users
       %p
@@ -35,6 +35,7 @@
           .form-group
             .controls
             %button.btn.btn-primary{type: "submit"} Add User
+
 
 :javascript
   $(document).ready(function() {

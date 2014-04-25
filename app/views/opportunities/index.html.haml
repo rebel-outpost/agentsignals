@@ -42,5 +42,7 @@
                   %td
                     = opportunity.closing_date
                   %td
-                    = link_to '', opportunity_path(opportunity), class: 'icon-edit', id: 'edit'
-                    = link_to '', opportunity_path(opportunity), method: 'delete', class: 'icon-trash', data: {confirm: 'Are you sure that you want to delete this opportunity?'}, id: 'delete'
+                    = link_to opportunity_path(opportunity), id: 'edit' do
+                      %i.fa.fa-edit
+                    = link_to opportunity_path(opportunity), data: {confirm: 'Are you sure that you want to delete this opportunity?'}, method: :delete, id: 'delete' do
+                      %i.fa.fa-trash-o

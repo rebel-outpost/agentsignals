@@ -33,7 +33,7 @@ AgentSignals::Application.routes.draw do
   resources :tasks
   resources :calendar
   resources :events
-  
+
   resources :users
   resources :leads do
     resources :notes
@@ -53,7 +53,7 @@ AgentSignals::Application.routes.draw do
   resources :organizations
 
   resources :contact_forms
-  
+
   resources :contacts
   resources :accounts do
     member do
@@ -62,6 +62,6 @@ AgentSignals::Application.routes.draw do
     end
   end
 
-  
+
 end
 

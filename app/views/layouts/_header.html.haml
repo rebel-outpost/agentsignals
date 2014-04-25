@@ -16,7 +16,7 @@
               = link_to "#", html_options = {"data-toggle" => "dropdown"} do
                 %i.fa.fa-gear
               %ul.dropdown-menu
-                %li= link_to "Account Settings", "#"
+                %li= link_to "Account Settings", settings_account_path(current_user.account)
             %li.drop-down
               = link_to "#", html_options = {"data-toggle" => "dropdown"} do
                 %i.fa.fa-user
