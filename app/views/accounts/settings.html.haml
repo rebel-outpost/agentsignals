@@ -36,8 +36,24 @@
             .controls
             %button.btn.btn-primary{type: "submit"} Add User
 
+.row.clearfix
+  .col-md-12
+    .content
+      %h3 Change Background
+
+      = simple_form_for @user, url: user_path, method: :put do |f|
+        = f.input :background, collection: background_options, input_html: {class: 'background-picker'}
+        = f.submit "Update Background", class: 'btn btn-primary'
+
 :javascript
   $(document).ready(function() {
+
+    $('.background-picker').change(function() {
+      var background = this.value;
+      $('body').removeClass();
+      $('body').addClass(background);
+    });
+
     $('.add-user-to-account').on('click', function(e){
       e.preventDefault();
       $(this).hide()

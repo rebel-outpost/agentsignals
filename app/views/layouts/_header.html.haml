@@ -16,12 +16,12 @@
               = link_to "#", html_options = {"data-toggle" => "dropdown"} do
                 %i.fa.fa-gear
               %ul.dropdown-menu
-                %li= link_to "Account Settings", "#"
+                %li= link_to "Account Settings", settings_account_path(current_user.account)
             %li.drop-down
               = link_to "#", html_options = {"data-toggle" => "dropdown"} do
                 %i.fa.fa-user
               %ul.dropdown-menu
-                %li= link_to "hello bob", "#"
+                %li= link_to "hello bob", settings_account_path(current_user.account)
             %li
               = link_to destroy_user_session_path, method: :delete do
                 %i.fa.fa-sign-out

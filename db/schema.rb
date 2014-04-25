@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412021346) do
+ActiveRecord::Schema.define(version: 20140425200642) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20140412021346) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "contacts", force: true do |t|
-    t.string   "first_name",                   null: false
-    t.string   "last_name",                    null: false
+    t.string   "first_name",             null: false
+    t.string   "last_name",              null: false
     t.string   "company"
-    t.string   "email",                        null: false
+    t.string   "email",                  null: false
     t.string   "phone"
     t.string   "address"
     t.string   "city"
@@ -77,15 +77,8 @@ ActiveRecord::Schema.define(version: 20140412021346) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
-    t.string   "lead_type"
-    t.string   "comments"
-    t.string   "lead_status"
-    t.string   "lead_source"
-    t.string   "account_name"
-    t.string   "opportunity_name"
-    t.string   "opportunity_owner"
     t.string   "lead_owner"
-    t.string   "uid",               limit: 40
+    t.string   "uid",         limit: 40
     t.integer  "account_id"
     t.integer  "assignee_id"
     t.integer  "user_id"
@@ -189,12 +182,12 @@ ActiveRecord::Schema.define(version: 20140412021346) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                             default: "", null: false
-    t.string   "encrypted_password",                default: "", null: false
+    t.string   "email",                             default: "",                   null: false
+    t.string   "encrypted_password",                default: "",                   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                     default: 0,  null: false
+    t.integer  "sign_in_count",                     default: 0,                    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -208,6 +201,7 @@ ActiveRecord::Schema.define(version: 20140412021346) do
     t.string   "account_role"
     t.string   "uid",                    limit: 40
     t.integer  "account_id"
+    t.string   "background",                        default: "default-background"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
