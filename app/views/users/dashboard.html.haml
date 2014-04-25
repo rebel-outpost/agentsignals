@@ -11,7 +11,7 @@
         %header
           %h4 Current Leads
         .body
-          %table#datatable-table.table.table-striped
+          %table#datatable.table.table-striped
             %thead
               %tr
                 %th
@@ -42,9 +42,9 @@
     .content
       %section.widget
         %header
-          %h3 Assigned Tasks
+          %h4 Assigned Tasks
         .body
-          %table#datatable-table.table.table-striped.dataTable
+          %table#datatable.table.table-striped
             %thead
               %tr
                 %th
@@ -67,4 +67,5 @@
                       = task.task_type.titleize
                     %td
                       = task.lead_for_task
+
 

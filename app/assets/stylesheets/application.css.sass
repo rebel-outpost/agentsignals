@@ -3,6 +3,10 @@
  *= require bootstrap_overrides
  *= require fullcalendar
  *= require sidebar
+ *= require screen
+ *= require select2
+ *= require select2-bootstrap
+ *= require dataTables/jquery.dataTables.bootstrap3
  *= require_self
  */
 
@@ -23,7 +27,7 @@ h1
   margin-top: 0
   text-shadow: 2px 2px #777
 
-ul 
+ul
   margin: 0
   padding: 0
 
@@ -37,24 +41,24 @@ ul
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus
   background: transparent
 
-#top-navbar 
+#top-navbar
   a
     color: #fff
     font-size: 20px
-  .dropdown-menu 
+  .dropdown-menu
     a
       color: #666 !important
       font-size: 14px
 
 
-.navbar-default 
+.navbar-default
   background-color: transparent
 
 .clearfix
   margin-top: 40px
 
 #sidebar
-  li.fa 
+  li.fa
     float: right
     padding: 8px 15px 8px 0
     font-size: 15px

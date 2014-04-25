@@ -1,43 +1,42 @@
 .row
   .col-md-6
-    %h1
-      Current Tasks
-  .col-md-6.text-right
+    %h1 Current Tasks
+  .col-md-6
     = link_to 'New Task', new_task_path, class: 'btn btn-default'
+
 .row
-  .col-md-12
-    .content
-      .box-content.box-no-padding
-        .responsive-table
-          .scrollable-area
-            %table.data-table.table.table-bordered.dataTable
-              %thead
+  .col-sm-10
+    .box.box-content.box-no-padding
+      .responsive-table
+        .scrollable-area
+          %table#datatable.table.table-bordered
+            %thead
+              %tr
+                %th
+                  Task Name
+                %th
+                  Due Date
+                %th
+                  Assigned To
+                %th
+                  Task Type
+                %th
+                  Name of Lead
+                %th
+                  Actions
+            %tbody
+              - @tasks.each do |task|
                 %tr
-                  %th
-                    Task Name
-                  %th
-                    Due Date
-                  %th
-                    Assigned To
-                  %th
-                    Task Type
-                  %th
-                    Name of Lead
-                  %th
-                    Actions
-              %tbody
-                - @tasks.each do |task|
-                  %tr
-                    %td
-                      = task.task_name
-                    %td
-                      = task.due_date.to_s.capitalize
-                    %td
-                      = task.assigned_to
-                    %td
-                      = task.task_type.to_s.capitalize
-                    %td
-                      = task.lead_for_task
-                    %td
-                      = link_to '', task_path(task), class: 'icon-edit', id: 'edit'
-                      = link_to '', task_path(task), method: 'delete', class: 'icon-trash', data: { confirm: 'Are you sure that you want to delete this task?'}, id: 'delete'
+                  %td
+                    = task.task_name
+                  %td
+                    = task.due_date.to_s.capitalize
+                  %td
+                    = task.assigned_to
+                  %td
+                    = task.task_type.to_s.capitalize
+                  %td
+                    = task.lead_for_task
+                  %td
+                    = link_to '', task_path(task), class: 'icon-edit', id: 'edit'
+                    = link_to '', task_path(task), method: 'delete', class: 'icon-trash', data: { confirm: 'Are you sure that you want to delete this task?'}, id: 'delete'
