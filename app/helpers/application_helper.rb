@@ -8,4 +8,13 @@ module ApplicationHelper
       ['dark', 'dark-background']
     ]
   end
+
+  def background
+    if current_user
+      current_user.background
+    else
+      "default-background"
+    end
+  end
+  
 end

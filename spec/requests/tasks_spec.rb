@@ -19,7 +19,7 @@ describe 'Tasks' do
     select  "#{@user2.email}",       from: 'Assigned to'
     select  'Call',                  from: 'Type'
     select  "#{@lead.email}",        from: 'For Lead'
-    fill_in "task_task_name",       with: 'test task'
+    fill_in "task_name",       with: 'test task'
     click_button 'Create Task'
     Task.count.should == 1
     expect(page).to have_content 'New Task Created'
@@ -40,7 +40,7 @@ describe 'Tasks' do
   it 'notifies the user they have been assigned to a task' do
     click_link 'Tasks'
     click_link 'Create Task'
-    fill_in "task_task_name",       with: 'another test task'
+    fill_in "task_name",       with: 'another test task'
     fill_in 'task_due_date',        with: '09/11/2012'
     select  "#{@user2.email}",       from: 'Assigned to'
     select  'Call',                  from: 'Type'
@@ -62,7 +62,7 @@ describe 'Tasks' do
       within '.table' do
         click_link 'edit'
       end
-      fill_in "task_task_name",         with: 'test task 2 updated'
+      fill_in "task_name",         with: 'test task 2 updated'
       fill_in 'task_due_date',          with: '09/11/2012'
       select  "#{@user2.email}",         from: 'Assigned to'
       select  'Email',                   from: 'Type'
@@ -80,7 +80,7 @@ describe 'Tasks' do
       within '.table' do
         click_link 'edit'
       end
-      fill_in "task_task_name",         with: 'test task 2 updated'
+      fill_in "task_name",         with: 'test task 2 updated'
       fill_in 'task_due_date',          with: '09/11/2012'
       select  "#{@user2.email}",         from: 'Assigned to'
       select  'Email',                   from: 'Type'

@@ -35,9 +35,10 @@ $ ->
     dragOpacity: "0.5"
 
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
+      updateEvent(event)
 
     eventResize: (event, dayDelta, minuteDelta, revertFunc) ->
-
+      revertFunc()
 
     eventClick: (event, jsEvent, view) ->
       $.ajax
@@ -47,3 +48,21 @@ $ ->
     eventMouseover: (event, jsEvent, view) -> 
 
     select: (start, end, allDay) ->
+
+
+  updateEvent = (event) ->
+
+    $.ajax
+      type: "PUT"
+      url: "/events/" + event.id
+      dataType: "json"
+      data:
+        event:
+          name: event.title
+          due_date: event.start
+          ends_at: event.end
+          type: event.type
+
+
+
+

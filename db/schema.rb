@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425200642) do
+ActiveRecord::Schema.define(version: 20140426055101) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 20140425200642) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "tasks", force: true do |t|
-    t.string   "task_name",                  null: false
+    t.string   "name",                       null: false
     t.datetime "due_date",                   null: false
     t.string   "assigned_to",                null: false
     t.string   "task_type",                  null: false
