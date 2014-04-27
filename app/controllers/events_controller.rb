@@ -19,8 +19,10 @@ class EventsController < ApplicationController
   def update
     if params[:event][:type] == "Task"
       @task = Task.find params[:id]
-      # binding.pry
       @task.update_attributes task_params
+      respond_to do |format|
+        format.json {render json: {status: 200}}
+      end
     end
   end
 

@@ -51,7 +51,8 @@ $ ->
 
 
   updateEvent = (event) ->
-
+    start = $.fullCalendar.formatDate(event.start, "MMM dd yyyy h:mm tt u")
+    end = $.fullCalendar.formatDate(event.end, "MMM dd yyyy h:mm tt u")
     $.ajax
       type: "PUT"
       url: "/events/" + event.id
@@ -59,8 +60,8 @@ $ ->
       data:
         event:
           name: event.title
-          due_date: event.start
-          ends_at: event.end
+          due_date: start
+          ends_at: end
           type: event.type
 
 
