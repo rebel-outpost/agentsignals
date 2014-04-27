@@ -1,3 +1,3 @@
 $('#event-modal').modal('show');
-$('.modal-title').html("<%= @event.task_name %>");
+$('.modal-title').html("<%= @event.name %>");
 $('.modal-body p').html("<%= j render 'events/show' %>");

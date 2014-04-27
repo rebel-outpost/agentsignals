@@ -60,7 +60,7 @@
                 - @tasks.sort_by(&:due_date).each do |task|
                   %tr
                     %td
-                      = link_to task.task_name.titleize, task_path(task)
+                      = link_to task.name.titleize, task_path(task)
                     %td
                       = task.due_date
                     %td

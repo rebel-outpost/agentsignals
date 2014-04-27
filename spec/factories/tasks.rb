@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :task do
     association :user
-  	task_name					'Call Lead'
+  	name	    				'Call Lead'
   	due_date					'2014-02-19'
   	task_type					'call'
     assigned_to       :user
