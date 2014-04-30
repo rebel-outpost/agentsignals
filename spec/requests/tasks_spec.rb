@@ -71,7 +71,7 @@ describe 'Tasks' do
       click_button 'Update Task'
       expect(page).to have_content 'Task Updated'
       @task.reload
-      @task.task_name.should == 'test task 2 updated'
+      @task.name.should == 'test task 2 updated'
     end
 
 

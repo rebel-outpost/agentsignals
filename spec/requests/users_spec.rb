@@ -63,7 +63,7 @@ describe "User Dashboard" do
   end
 
   it 'shows tasks assigned' do
-    expect(page).to have_content @task.task_name.titleize
+    expect(page).to have_content @task.name.titleize
     expect(page).to have_content @task.due_date
     expect(page).to have_content @task.task_type.titleize
     expect(page).to have_content @task.lead_for_task.titleize
