@@ -32,7 +32,7 @@ describe "Admin" do
 
     # TODO Make the role a selection
     it 'creates an account admin' do
-      @test_account = FactoryGirl.create :account
+      @account = create :account
       click_link 'Users'
       click_link 'New User'
       fill_in 'Email', with: 'newadmin@example.com'
@@ -40,16 +40,30 @@ describe "Admin" do
       fill_in 'Password confirmation', with: 'password'
       fill_in 'First name', with: 'New'
       fill_in 'Last name', with: 'Admin'
-      select @test_account.name, from: 'Account'
+      select @account.name, from: 'Account'
       fill_in 'Phone', with: '9991231234'
       fill_in 'Account role', with: 'Admin'
       click_button 'Create User'
       expect(page).to have_content 'User was successfully created.'
     end
 
-    it 'cancels account'
-    it 'bans user'
+    it 'cancels account' do
+      #new-test
+      @account2 = create :account
+      click_link 'Accounts'
+      select 'Inactive', from: 'Account Status'
+      expect(@acount2.status).to eq('inactive')
+    end
+
+    it 'bans user' do
+      #new-test
+      @account2 = create :account
+      @user     =  create :user, account: @account2
+      click_link 'Users'
+      click_link @user.full_name
+      click_button 'Delete User'
+      expect(@account2.users).to_not include(@user)
+    end
 
   end
-
 end

@@ -44,7 +44,19 @@ describe 'Account' do
       expect(account).to have(1).errors_on(:max_users)
     end
 
-    it 'has an account admin'
+    it 'has an account admin' do
+      #new-test
+      account = build(:account)
+      expect(account).to have(1).users
+      expect(account.users.first.role).to eq('admin')
+    end
+
+    it 'requires account admin' do
+      #new-test
+      account = build(:account)
+      account.users = []
+      expect(account).to_not be_valid
+    end
 
   end
 end
