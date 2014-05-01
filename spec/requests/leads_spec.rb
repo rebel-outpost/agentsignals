@@ -132,7 +132,6 @@ describe "Leads" do
     end
 
     it 'converts a lead' do
-      pending 'need to fix this test'
       visit lead_path @lead
       click_link 'Convert Lead'
       select  "#{@account.name}", from: 'Account name'

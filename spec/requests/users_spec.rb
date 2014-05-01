@@ -49,7 +49,6 @@ describe "User Dashboard" do
   end
 
   it 'links to new offer' do
-    pending 'come to after the model is done'
     click_link 'Offers'
     click_link 'Create Offer'
     expect(page).to have_content 'Create New Offer'
