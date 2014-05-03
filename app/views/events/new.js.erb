@@ -1,0 +1,4 @@
+$('#event-modal').modal('show');
+$('.modal-footer').remove();
+$('.modal-title').html("New Event");
+$('.modal-body p').html("<%= j render 'events/form' %>");

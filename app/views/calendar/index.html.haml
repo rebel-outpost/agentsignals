@@ -11,20 +11,15 @@
 
 
 .row
-  .col-md-12
+  .col-sm-11
     %h1 Calendar
 
 .row
-  .col-md-9
+  .col-sm-11
     .box
       #full-calendar
         #loading
           = image_tag('loading.gif')
 
-  .col-md-3
-    .box
-      .form-group
-        %input#new-event-input.form-control{placeholder: "Event name", type: "text"}/
 
-        = link_to "Create Event", "#", class: 'btn btn-primary'
 

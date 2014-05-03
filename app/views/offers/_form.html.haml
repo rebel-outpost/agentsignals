@@ -1,0 +1,10 @@
+= simple_form_for @offer do |f|
+  = f.input :contact_id
+  = f.input :listing_id
+  = f.input :agent_id
+  = f.input :offer_amount
+  = f.input :offer_sent_at
+  = f.input :offer_expiration
+  = f.input :counter_offer_amount
+  = f.input :counter_offer_received_at
+  = f.submit class: 'btn btn-primary'

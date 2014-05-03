@@ -9,8 +9,21 @@ class EventsController < ApplicationController
     end
   end
 
+  def new
+    @task = Task.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @event = Task.find params[:id]
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def create
     respond_to do |format|
       format.js
     end
@@ -27,7 +40,9 @@ class EventsController < ApplicationController
   end
 
   def destroy
-
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

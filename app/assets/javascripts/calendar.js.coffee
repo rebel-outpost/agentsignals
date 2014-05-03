@@ -48,7 +48,9 @@ $ ->
     eventMouseover: (event, jsEvent, view) -> 
 
     select: (start, end, allDay) ->
-
+      $.ajax
+        dataType: "script"
+        url: "/events/new"
 
   updateEvent = (event) ->
     start = $.fullCalendar.formatDate(event.start, "MMM dd yyyy h:mm tt u")
