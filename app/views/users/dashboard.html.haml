@@ -5,67 +5,80 @@
       Welcome to your Dashboard
 
 .row
-  .col-md-12
-    .content
-      %section.widget
-        %header
-          %h4 Current Leads
-        .body
-          %table#datatable.table.table-striped
-            %thead
-              %tr
-                %th
-                  Name
-                %th
-                  Company
-                %th
-                  Status
-                %th
-                  Created Date
-            %tbody
-              - if @leads.present?
-                - @leads.each do |lead|
+  .col-md-8
+    .row
+      .col-sm-12
+        .content
+          %h2 Events
+          %ul.nav.nav-tabs
+            %li.active
+              %a{"data-toggle" => "tab", href: "#dashboard-tasks"} Tasks
+            %li
+              %a{"data-toggle" => "tab", href: "#appointments"} Appointments
+            %li
+              %a{"data-toggle" => "tab", href: "#showings"} Showings
+
+          .tab-content
+            #dashboard-tasks.tab-pane.fade.in.active
+              %table#datatable2.table.table-striped
+                %thead
                   %tr
-                    %td
-                      = link_to lead.full_name.titleize, lead_path(lead)
-                    %td
-                      = lead.company
-                    %td
-                      = lead.lead_status.to_s.capitalize
-                    %td
-                      = lead.created_at.to_date
+                    %th Name
+                    %th Due Date
+                    %th Task Type
+                    %th Lead
+                %tbody
+                  - if @tasks.present?
+                    - @tasks.sort_by(&:due_date).each do |task|
+                      %tr
+                        %td= link_to task.name.titleize, task_path(task)
+                        %td= task.due_date
+                        %td= task.task_type.titleize
+                        %td= task.lead_for_task
 
+            #appointments.tab-pane.fade ...
+            #showings.tab-pane.fade ...
 
-
-.row.clearfix
-  .col-md-12
-    .content
-      %section.widget
-        %header
-          %h4 Assigned Tasks
-        .body
-          %table#datatable2.table.table-striped
-            %thead
-              %tr
-                %th
-                  Name
-                %th
-                  Due Date
-                %th
-                  Task Type
-                %th
-                  Lead
-            %tbody
-              - if @tasks.present?
-                - @tasks.sort_by(&:due_date).each do |task|
+    .row
+      .col-sm-12
+        .content
+          %section.widget
+            %header
+              %h4 Current Leads
+            .body
+              %table#datatable.table.table-striped
+                %thead
                   %tr
-                    %td
-                      = link_to task.name.titleize, task_path(task)
-                    %td
-                      = task.due_date
-                    %td
-                      = task.task_type.titleize
-                    %td
-                      = task.lead_for_task
+                    %th
+                      Name
+                    %th
+                      Company
+                    %th
+                      Status
+                    %th
+                      Created Date
+                %tbody
+                  - if @leads.present?
+                    - @leads.each do |lead|
+                      %tr
+                        %td
+                          = link_to lead.full_name.titleize, lead_path(lead)
+                        %td
+                          = lead.company
+                        %td
+                          = lead.lead_status.to_s.capitalize
+                        %td
+                          = lead.created_at.to_date
+
+
+  .col-md-4
+    .content
+      %h2 Clients
+
+
+
+
+
+
 
 

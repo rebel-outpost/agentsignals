@@ -1,3 +1,5 @@
-class Showing < Task
+class Showing < Event
+
+  
   
 end

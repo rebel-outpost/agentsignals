@@ -16,6 +16,27 @@ class EventsController < ApplicationController
     end
   end
 
+  def new_task
+    @task = Task.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def new_appointment
+    @appointment = Appointment.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def new_showing
+    @showing = Showing.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     @event = Task.find params[:id]
     respond_to do |format|

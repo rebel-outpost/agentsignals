@@ -32,7 +32,11 @@ AgentSignals::Application.routes.draw do
   resources :opportunities
   resources :tasks
   resources :calendar
-  resources :events
+  resources :events do 
+    get :new_task,          on: :collection
+    get :new_appointment,   on: :collection
+    get :new_showing,       on: :collection
+  end 
 
   resources :users
   resources :leads do

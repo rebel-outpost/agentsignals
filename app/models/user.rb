@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :leads
-  has_many :tasks
+  has_many :events
 
   has_one  :subscription
   has_one  :plan, :through => :subscription

@@ -1,0 +1,7 @@
+= simple_form_for @appointment, url: events_path, method: :post do |f|
+  = f.input :name
+  = f.input :due_date, label: "Starts"
+  = f.input :ends
+  .modal-footer
+    = f.submit class: 'btn btn-primary'
+    %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Cancel

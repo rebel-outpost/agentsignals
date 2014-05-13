@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :showing do
+  factory :event do
     association :user
     name              'Call Lead'
     due_date          '2014-02-19'
