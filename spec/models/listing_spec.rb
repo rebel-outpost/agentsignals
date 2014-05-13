@@ -64,41 +64,24 @@ describe 'Listing' do
     end
 
     it 'is valid with a listing number' do
-      #new-test
       listing = build(:listing)
       expect(listing).to have(0).errors_on(:listing_number)
     end
 
     it 'is invalid without a listing number' do
-      #new-test
       listing = build(:listing, listing_number: nil)
       expect(listing).to have(1).errors_on(:listing_number)
     end
 
     it 'is valid with a listing owner' do
-      #new-test
       listing = build(:listing)
       expect(listing).to have(0).errors_on(:listing_owner)
     end
 
     it 'is valid with a listing owner' do
-      #new-test
       listing = build(:listing, listing_owner: nil)
       expect(listing).to have(1).errors_on(:listing_owner)
     end
-
-    it 'has a contact' do
-      #new-test
-      listing = build(:listing)
-      expect(listing).to have(1).contact
-    end
-
-    it 'requires contact' do
-      #new-test
-      listing = build(:listing, contact: nil)
-      expect(listing).to have(1).errors_on(:contact)
-    end
-
 
   end
 end
