@@ -10,5 +10,7 @@ FactoryGirl.define do
     offer_expiration ""
     counter_offer_amount "MyString"
     counter_offer_received_at ""
+    seller_name { Faker::Name.name }
+    price "90000"
   end
 end

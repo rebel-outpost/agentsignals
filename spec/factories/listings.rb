@@ -7,5 +7,6 @@ FactoryGirl.define do
     street_name     { Faker::Address.street_name }
     city_name       { Faker::Address.city }
     zipcode         { Faker::Address.postcode }
+    listing_owner   { Faker::Name.name }
   end
 end

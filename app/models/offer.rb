@@ -12,4 +12,6 @@ class Offer < ActiveRecord::Base
   # index :contact_id
   # index :listing_id
   # index :agent_id
+
+  validates_presence_of :price, :seller_name
 end

@@ -55,6 +55,8 @@ group :development do
   gem 'puma'
   gem "letter_opener"
   gem 'capistrano-unicorn', :require => false
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test, :development do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513024118) do
+ActiveRecord::Schema.define(version: 20140513231920) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20140513024118) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "contacts", force: true do |t|
-    t.string   "first_name",             null: false
-    t.string   "last_name",              null: false
+    t.string   "first_name",                   null: false
+    t.string   "last_name",                    null: false
     t.string   "company"
-    t.string   "email",                  null: false
+    t.string   "email",                        null: false
     t.string   "phone"
     t.string   "address"
     t.string   "city"
@@ -77,8 +77,15 @@ ActiveRecord::Schema.define(version: 20140513024118) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
+    t.string   "lead_type"
+    t.string   "comments"
+    t.string   "lead_status"
+    t.string   "lead_source"
+    t.string   "account_name"
+    t.string   "opportunity_name"
+    t.string   "opportunity_owner"
     t.string   "lead_owner"
-    t.string   "uid",         limit: 40
+    t.string   "uid",               limit: 40
     t.integer  "account_id"
     t.integer  "assignee_id"
     t.integer  "user_id"
@@ -139,6 +146,8 @@ ActiveRecord::Schema.define(version: 20140513024118) do
     t.datetime "counter_offer_received_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price",                     precision: 10, scale: 0
+    t.string   "seller_name"
   end
 
   add_index "offers", ["agent_id"], name: "index_offers_on_agent_id", using: :btree
