@@ -1,0 +1,28 @@
+.fieldset
+  = simple_form_for @listing, html: { class: 'form-horizontal' } do |f|
+    .col-sm-4
+      .form-group
+        = f.input :listing_number
+      .form-group
+        = f.input :title
+      .form-group
+        = f.input :price, as: :integer, label: 'Asking price'
+      .form-group
+        = f.input :house_number
+      .form-group
+        = f.input :street_name
+      .form-group
+        = f.input :city_name, label: 'City'
+      .form-group
+        = f.input :state, collection: (us_states)
+      .form-group
+        = f.input :zipcode
+    .col-sm-4.col-sm-offset-1
+      .form-group
+        = f.input :listing_owner, collection: (@account_contacts), label: "Owners name"
+      .form-group
+        = f.input :creating_agent, collection: (@account_users), label: 'Creating agent'
+    .row
+      .col-sm-8
+        = f.submit class: 'btn btn-primary'
+        = link_to 'Cancel', listings_path, class: "btn btn-danger"
