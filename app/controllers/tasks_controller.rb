@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
 
   def index
+    # binding.pry
     @tasks = current_user.tasks
   end
 
