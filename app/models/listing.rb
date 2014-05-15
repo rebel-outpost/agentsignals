@@ -14,4 +14,9 @@ class Listing < ActiveRecord::Base
                         :zipcode, :listing_number, :listing_owner
 
   belongs_to :account
+
+  def street_address
+    house_number.to_s +  ' ' + street_name
+  end
+
 end

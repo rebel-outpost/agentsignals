@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 
   def index
-
+    @listings = current_user.account.listings
   end
 
   def new
@@ -34,7 +34,12 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-
+    @listing = Listing.find params[:id]
+    if @listing.destroy
+      redirect_to :back, flash: { notice: 'Listing successfully deleted'}
+    else
+      redirect_to :back, flash: { notice: 'Unable to delete listing'}
+    end
   end
 
   def listings_params

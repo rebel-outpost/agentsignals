@@ -13,38 +13,38 @@
             %thead
               %tr
                 %th
-                  First
+                  Title
                 %th
-                  Last
-                %th
-                  Company
-                %th
-                  E-mail
-                %th
-                  Phone
+                  Price
                 %th
                   Address
+                %th
+                  City
+                %th
+                  State
+                %th
+                  Zip
                 %th
                   Actions
 
             %tbody
               - if @listings.present?
                 - @listings.each do |f|
-                  / %tr
-                  /   %td
-                  /     = f.first_name
-                  /   %td
-                  /     = f.last_name
-                  /   %td
-                  /     = f.company
-                  /   %td
-                  /     =f.email
-                  /   %td
-                  /     =f.phone
-                  /   %td
-                  /     =f.address
-                  /   %td
-                  /     = link_to contact_path(f), id: 'edit' do
-                  /       %i.fa.fa-edit
-                  /     = link_to contact_path(f), data: {confirm: 'Are you sure that you want to delete this contact?'}, method: :delete, id: 'delete' do
-                  /       %i.fa.fa-trash-o
+                  %tr
+                    %td
+                      = f.title
+                    %td
+                      = f.price
+                    %td
+                      = f.street_address
+                    %td
+                      =f.city_name
+                    %td
+                      =f.state
+                    %td
+                      =f.zipcode
+                    %td
+                      = link_to listing_path(f), id: 'edit' do
+                        %i.fa.fa-edit
+                      = link_to listing_path(f), data: {confirm: 'Are you sure that you want to delete this listing?'}, method: :delete, id: 'delete' do
+                        %i.fa.fa-trash-o
