@@ -11,10 +11,10 @@ AgentSignals::Application.routes.draw do
 
   devise_scope :user do
     root to: "devise/sessions#new"
-    get "logout" => "devise/sessions#destroy", as: "logout"
-    get "login" => "devise/sessions#new", as: "login"
-    get "signup" => "devise/registrations#new", as: "signup"
-    get "dashboard" => "users#dashboard", as: "dashboard"
+    get "logout",     to: "devise/sessions#destroy",    as: "logout"
+    get "login",      to: "devise/sessions#new",        as: "login"
+    get "signup",     to: "devise/registrations#new",   as: "signup"
+    get "dashboard",  to: "users#dashboard",            as: "dashboard"
   end
 
   get "web_to_lead" => "leads#new_web_lead", as: "web_to_lead"

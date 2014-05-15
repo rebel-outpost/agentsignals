@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :leads
   has_many :events
+  has_many :tasks
+  has_many :showings
+  has_many :appointments
 
   has_one  :subscription
   has_one  :plan, :through => :subscription
