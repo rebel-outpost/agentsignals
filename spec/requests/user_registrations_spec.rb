@@ -16,7 +16,7 @@ describe "User Registrations" do
 
     describe 'new account creation' do
       before do
-        @user = FactoryGirl.create :user
+        @user = create :user
       end
 
       it 'registers new account' do

@@ -27,6 +27,7 @@ describe "Accounts" do
         before do
           @account = create :account, max_users: 3
           @admin_user = create :account_admin, account: @account
+          @user1 = create :user, account: @account
           login_as @admin_user
           visit settings_account_path(@account)
         end
@@ -41,18 +42,17 @@ describe "Accounts" do
           click_button 'Add User'
           expect(page).to have_content 'User successfully added'
           #one for admin and one for user
-          expect(@account.users.count).to eq(2)
+          expect(@account.users.count).to eq(3)
         end
 
         it 'lists existing users' do
-          #new-test
-          @user1 = create :user, account: @account
+          expect(page).to have_content(@admin_user.full_name)
+          expect(page).to have_content(@admin_user.email)
           expect(page).to have_content(@user1.full_name)
           expect(page).to have_content(@user1.email)
         end
 
         it "cannot add more than max allowed users" do
-          #new-test
           expect(@account.users.count).to eq(3)
           click_link 'Add a User'
           fill_in 'First name',             with: 'Bill'

@@ -1,0 +1,23 @@
+.account-new-user-section
+  = simple_form_for @account.users.new, url: add_user_account_path(@account) do |f|
+    = f.error_notification
+    .col-sm-4
+      .form-group
+        .controls
+          = f.input :first_name, required: true
+      .form-group
+        .controls
+          = f.input :last_name, required: true
+      .form-group
+        .controls
+          = f.input :email, required: true
+    .col-sm-4.col-sm-offset-1
+      .form-group
+        .controls
+          = f.input :password, required: true
+      .form-group
+        .controls
+          = f.input :password_confirmation, required: true
+      .form-group
+        .controls{style: 'margin-top:35px;margin-bottom:40px;'}
+          = f.submit 'Add User', class: 'btn btn-primary'

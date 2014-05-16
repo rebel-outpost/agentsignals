@@ -12,29 +12,13 @@
     .box
       %h3 Account Users
       %p
-        = link_to 'Add a User', "#", class: 'btn add-user-to-account'
+        = link_to 'Add a User', "#", class: 'btn btn-primary', id: 'add-user-to-account'
 
       .new-user-add-form
-        = simple_form_for @account.users.new, url: add_user_account_path(@account) do |f|
-          = f.error_notification
-          .form-group
-            .controls
-              = f.input :first_name, required: true
-          .form-group
-            .controls
-              = f.input :last_name, required: true
-          .form-group
-            .controls
-              = f.input :email, required: true
-          .form-group
-            .controls
-              = f.input :password, required: true
-          .form-group
-            .controls
-              = f.input :password_confirmation, required: true
-          .form-group
-            .controls
-            %button.btn.btn-primary{type: "submit"} Add User
+        = render 'add_user'
+
+      = render 'users'
+
 
 
 .row.clearfix
@@ -43,8 +27,12 @@
       %h3 Change Background
 
       = simple_form_for @user, url: user_path, method: :put do |f|
-        = f.input :background, collection: background_options, input_html: {class: 'background-picker'}
-        = f.submit "Update Background", class: 'btn btn-primary'
+        .form-group
+          .controls
+            = f.input :background, collection: background_options, input_html: {class: 'background-picker'}
+        .form-group
+          .controls
+            = f.submit "Update Background", class: 'btn btn-primary'
 
 
 :javascript
@@ -54,11 +42,5 @@
       var background = this.value;
       $('body').removeClass();
       $('body').addClass(background);
-    });
-
-    $('.add-user-to-account').on('click', function(e){
-      e.preventDefault();
-      $(this).hide()
-      $(this).parent().siblings('.new-user-add-form').show();
     });
   });

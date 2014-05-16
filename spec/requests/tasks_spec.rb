@@ -3,10 +3,10 @@ require 'spec_helper'
 describe 'Tasks' do
 
   before do
-    @user   = FactoryGirl.create :user
-    @user2  = FactoryGirl.create :user, email: 'test2@example.com', first_name: 'Jim'
-    @lead   = FactoryGirl.create :lead, email: 'test@test.com', first_name: 'Jenny', last_name: 'Smith'
-    @account = FactoryGirl.create :account
+    @user   = create :user
+    @user2  = create :user, email: 'test2@example.com', first_name: 'Jim'
+    @lead   = create :lead, email: 'test@test.com', first_name: 'Jenny', last_name: 'Smith'
+    @account = create :account
     @account.users << @user
     @account.users << @user2
     login_as @user
@@ -63,10 +63,10 @@ describe 'Tasks' do
         click_link 'edit'
       end
       fill_in "task_name",         with: 'test task 2 updated'
-      fill_in 'task_due_date',          with: '09/11/2012'
-      select  "#{@user2.email}",         from: 'Assigned to'
-      select  'Email',                   from: 'Type'
-      select  "#{@lead.email}",          from: 'For Lead'
+      fill_in 'task_due_date',     with: '09/11/2012'
+      select  "#{@user2.email}",   from: 'Assigned to'
+      select  'Email',             from: 'Type'
+      select  "#{@lead.email}",    from: 'For Lead'
       sleep 2
       click_button 'Update Task'
       expect(page).to have_content 'Task Updated'
@@ -81,10 +81,10 @@ describe 'Tasks' do
         click_link 'edit'
       end
       fill_in "task_name",         with: 'test task 2 updated'
-      fill_in 'task_due_date',          with: '09/11/2012'
-      select  "#{@user2.email}",         from: 'Assigned to'
-      select  'Email',                   from: 'Type'
-      select  "#{@lead.email}",          from: 'For Lead'
+      fill_in 'task_due_date',     with: '09/11/2012'
+      select  "#{@user2.email}",   from: 'Assigned to'
+      select  'Email',             from: 'Type'
+      select  "#{@lead.email}",    from: 'For Lead'
       sleep 2
       click_button 'Update Task'
       ActionMailer::Base.deliveries.last.to.should include @user2.email
@@ -95,7 +95,7 @@ describe 'Tasks' do
 
   context 'delete' do
     before do
-      @task   = create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
+      @task = create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
     end
 
     it 'deletes task', js: true do
