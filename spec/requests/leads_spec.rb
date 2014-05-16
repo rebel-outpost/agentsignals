@@ -9,6 +9,7 @@ describe "Leads" do
     @account = create :account
     @account.users << @user
     @account.users << @user2
+    @contact = create :contact, account: @account
     login_as @user
   end
 
@@ -68,7 +69,7 @@ describe "Leads" do
     sleep 1
     click_button 'Create Lead'
     ActionMailer::Base.deliveries.last.to.should include @user2.email
-    ActionMailer::Base.deliveries.last.body.should include 'new lead'
+    ActionMailer::Base.deliveries.last.subject.should include "A new lead has been assigned to you on SimpleCRM"
   end
 
   context 'with created lead' do
@@ -134,7 +135,6 @@ describe "Leads" do
     it 'converts a lead' do
       visit lead_path @lead
       click_link 'Convert Lead'
-      select  "#{@account.name}", from: 'Account name'
       fill_in 'Opportunity name', with: 'New Opportunity'
       select  "#{@user.email}", from: 'Opportunity owner'
       count_before = Opportunity.count

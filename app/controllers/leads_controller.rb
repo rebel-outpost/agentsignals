@@ -64,21 +64,20 @@ class LeadsController < ApplicationController
 
   def convert
     @lead               = current_user.account.leads.find params[:id]
-    @accounts           = current_user.account.accounts.to_a.map(&:name)
     @opportunity_owner  = current_user.account.users.map(&:email)
   end
 
   def convert_lead
     @lead = current_user.account.leads.find params[:id]
     @lead.update_attributes(leads_params)
-    @account = current_user.account.accounts.where(name: params['account_name']).first
+    @account = current_user.account
     @contacts = current_user.account.contacts.to_a.map(&:email)
     unless @contacts.include? @lead.email
-      @contact = current_user.account.contact.create params['lead']
+      @contact = current_user.account.contacts.create params['lead']
     end
     @opportunities = current_user.account.opportunities.to_a.map(&:opportunity_name)
     unless @opportunities.include? @lead.opportunity_name
-      @opportunity = current_user.account.opportunities.create(opportunity_name: @lead.opportunity_name, account_name: @lead.account_name, owner: @lead.opportunity_owner)
+      @opportunity = current_user.account.opportunities.create(opportunity_name: @lead.opportunity_name, owner: @lead.opportunity_owner)
     end
     flash[:notice] = 'Lead has been converted'
     redirect_to opportunity_path(@opportunity)
