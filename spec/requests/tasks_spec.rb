@@ -49,13 +49,12 @@ describe 'Tasks' do
     click_button 'Create Task'
     expect(page).to have_content 'New Task Created'
     ActionMailer::Base.deliveries.last.to.should include @user2.email
-    ActionMailer::Base.deliveries.last.body.should include 'call' && @lead.email
+    ActionMailer::Base.deliveries.last.subject.should include 'A new task has been assigned to you on SimpleCRM'
   end
 
   context 'edit' do
     before do
-
-      @task = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
+      @task = create :task, lead_for_task: @lead.first_name, user: @user, assigned_to: @user.email
     end
 
     it 'edits task' do
@@ -89,7 +88,7 @@ describe 'Tasks' do
       sleep 2
       click_button 'Update Task'
       ActionMailer::Base.deliveries.last.to.should include @user2.email
-      ActionMailer::Base.deliveries.last.body.should include 'test task 2 updated' && @lead.email
+      ActionMailer::Base.deliveries.last.subject.should include 'A task you have been assigned to on SimpleCRM has been updated'
     end
 
   end

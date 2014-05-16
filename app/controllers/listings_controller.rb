@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = current_user.account.listings.new
-    @account_contacts = current_user.account.contacts.all.map(&:full_name)
+    @account_contacts = current_user.account.contacts.map(&:full_name)
     @account_users    = current_user.account.users.map(&:full_name)
   end
 
