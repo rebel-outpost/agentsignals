@@ -2,6 +2,10 @@ class ListingsController < ApplicationController
 
   def index
     @listings = current_user.account.listings
+    @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+    end
   end
 
   def new

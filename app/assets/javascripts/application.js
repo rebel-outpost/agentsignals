@@ -7,6 +7,8 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require bootstrap
+//= require underscore-min
+//= require gmaps/google
 //= require select2
 //= require_tree .
 
@@ -14,5 +16,4 @@
 $(function() {
   $(".chosen-select").select2();
   $(".chosen-deselect").select2({ allowClear: true });
-
 });

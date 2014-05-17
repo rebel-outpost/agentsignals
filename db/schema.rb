@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513231920) do
+ActiveRecord::Schema.define(version: 20140517011837) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -120,6 +120,9 @@ ActiveRecord::Schema.define(version: 20140513231920) do
     t.string   "state"
     t.string   "creating_agent"
     t.integer  "account_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "full_address"
   end
 
   add_index "listings", ["price"], name: "index_listings_on_price", using: :btree

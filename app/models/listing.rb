@@ -15,8 +15,15 @@ class Listing < ActiveRecord::Base
 
   belongs_to :account
 
+  geocoded_by :listing_full_address
+  after_validation :geocode
+
   def street_address
     house_number.to_s +  ' ' + street_name
+  end
+
+  def listing_full_address
+    street_address + ', ' + city_name + ' ' + state + ', ' +  zipcode
   end
 
 end

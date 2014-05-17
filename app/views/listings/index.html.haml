@@ -1,8 +1,18 @@
+= javascript_include_tag  "//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry"
+= javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"
+= javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"
+
 .row
   .col-md-6
     %h1 Listings
   .col-md-6
     = link_to 'New Listing', new_listing_path, class: 'btn btn-default'
+    = link_to 'Hide Map', "#", class: 'btn btn-default', id: 'display-map'
+
+
+.row
+  .col-sm-10.col-sm-offset-1
+    #listings-map
 
 .row
   .col-sm-10
@@ -48,3 +58,19 @@
                         %i.fa.fa-edit
                       = link_to listing_path(f), data: {confirm: 'Are you sure that you want to delete this listing?'}, method: :delete, id: 'delete' do
                         %i.fa.fa-trash-o
+
+:javascript
+
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'listings-map'}}, function(){
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+
+  $('#display-map').click(function(e){
+    e.preventDefault();
+    $("body").find("#listings-map").slideToggle();
+  })
+
+
