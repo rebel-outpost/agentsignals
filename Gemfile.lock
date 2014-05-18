@@ -313,6 +313,9 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
+    seed_dump (3.1.0)
+      activerecord
+      activesupport
     select2-rails (3.5.7)
       thor (~> 0.14)
     selenium-webdriver (2.41.0)
@@ -432,6 +435,7 @@ DEPENDENCIES
   rspec-rails
   sass
   sass-rails (= 4.0.3)
+  seed_dump
   select2-rails
   selenium-webdriver
   simple-navigation
