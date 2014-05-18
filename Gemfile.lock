@@ -71,6 +71,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bootsy (2.0.9)
+      carrierwave (~> 0.10.0)
+      mini_magick (~> 3.7.0)
+      remotipart (~> 1.2.1)
     bourbon (3.2.1)
       sass (~> 3.2)
       thor
@@ -90,6 +94,11 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     childprocess (0.5.3)
@@ -208,6 +217,8 @@ GEM
     method_source (0.8.2)
     middleware (0.1.0)
     mime-types (1.25.1)
+    mini_magick (3.7.0)
+      subexec (~> 0.2.1)
     mini_portile (0.6.0)
     minitest (5.3.4)
     multi_json (1.10.0)
@@ -277,6 +288,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.4)
       ffi (>= 0.5.0)
+    remotipart (1.2.1)
     responders (1.0.0)
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
@@ -331,6 +343,7 @@ GEM
       json (~> 1.8.1)
       mime-types (~> 1.25)
       rest-client (~> 1.4)
+    subexec (0.2.3)
     thinking-sphinx (3.1.1)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
@@ -380,6 +393,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  bootsy
   capistrano
   capistrano-unicorn
   capybara (= 1.1.4)

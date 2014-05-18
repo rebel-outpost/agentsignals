@@ -1,5 +1,6 @@
 AgentSignals::Application.routes.draw do
 
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   get "contact_form/new"
   get "contact_form/create"
 

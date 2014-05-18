@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@listings.viewable_on_map) do |listing, marker|
       marker.lat listing.latitude
       marker.lng listing.longitude
-      marker.infowindow listing.title
+      marker.infowindow listing.description
       marker.json({ title: listing.title })
       marker.picture({
         "url" => "mapicons/house.png",
@@ -36,7 +36,7 @@ class ListingsController < ApplicationController
       marker.lat listing.latitude
       marker.lng listing.longitude
       marker.infowindow listing.title
-      marker.json({ title: listing.title })
+      marker.json({ title: listing.description })
       marker.picture({
         "url" => "/mapicons/house.png",
         "width" => 32,

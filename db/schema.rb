@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517011837) do
+ActiveRecord::Schema.define(version: 20140518014313) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -64,6 +64,20 @@ ActiveRecord::Schema.define(version: 20140517011837) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "bootsy_image_galleries", force: true do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: true do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "contacts", force: true do |t|
     t.string   "first_name",                   null: false
     t.string   "last_name",                    null: false
@@ -108,7 +122,7 @@ ActiveRecord::Schema.define(version: 20140517011837) do
 
   create_table "listings", force: true do |t|
     t.string   "title"
-    t.decimal  "price",          precision: 10, scale: 0
+    t.decimal  "price",          precision: 8, scale: 2
     t.integer  "house_number"
     t.string   "street_name"
     t.string   "city_name"
@@ -123,6 +137,7 @@ ActiveRecord::Schema.define(version: 20140517011837) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "full_address"
+    t.text     "description"
   end
 
   add_index "listings", ["price"], name: "index_listings_on_price", using: :btree

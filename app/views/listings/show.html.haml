@@ -56,8 +56,14 @@
         %p
           = @listing.creating_agent
 
-        #single-listing-map
+        %hr
+        .listings-label
+          Description:
+        %p
+          = raw @listing.description
 
+
+        #single-listing-map
 
 :javascript
   buildShowMap(#{raw @hash.to_json});

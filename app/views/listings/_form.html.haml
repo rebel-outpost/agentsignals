@@ -6,7 +6,7 @@
       .form-group
         = f.input :title
       .form-group
-        = f.input :price, as: :integer, label: 'Asking price'
+        = f.input :price, as: :decimal, label: 'Asking price'
       .form-group
         = f.input :house_number
       .form-group
@@ -22,6 +22,9 @@
         = f.input :listing_owner, collection: (@account_contacts), label: "Owners name"
       .form-group
         = f.input :creating_agent, collection: (@account_users), label: 'Creating agent'
+    .row
+      .col-sm-8
+        = f.input :description, as: :bootsy
     .row
       .col-sm-8
         = f.submit class: 'btn btn-primary'

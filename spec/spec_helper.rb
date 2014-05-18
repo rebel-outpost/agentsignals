@@ -7,6 +7,7 @@ require 'database_cleaner'
 require 'capybara/rspec'
 
 # Capybara.default_driver = :selenium
+ActiveRecord::Migration.maintain_test_schema!
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.

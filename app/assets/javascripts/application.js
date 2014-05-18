@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require bootsy
 //= require jquery.ui.core
 //= require jquery.ui.widget
 //= require jquery.ui.mouse

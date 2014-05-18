@@ -47,6 +47,7 @@ gem "select2-rails"
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'bootsy'
 # gem 'spark_api', git: 'git@github.com:brobertsaz/spark_api.git'
 
 group :development do
