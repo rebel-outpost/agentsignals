@@ -40,7 +40,7 @@ gem 'capistrano'
 gem "unicorn-rails", '1.1.0'
 gem "american_date"
 gem 'stripe'
-gem 'thinking-sphinx'
+gem 'tire'
 gem 'acts-as-taggable-on'
 gem 'wicked'
 gem "select2-rails"

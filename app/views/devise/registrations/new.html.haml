@@ -17,7 +17,13 @@
                 = f.error_notification
                 .form-group
                   .controls
-                    = f.input :email, required: true, autofocus: true
+                    = f.input :first_name, required: true, autofocus: true
+                .form-group
+                  .controls
+                    = f.input :last_name, required: true
+                .form-group
+                  .controls
+                    = f.input :email, required: true
                 .form-group
                   .controls
                     = f.input :password, required: true

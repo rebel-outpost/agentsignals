@@ -101,3 +101,12 @@
   float: right;
   margin: -30px 0 20px 0;
 }
+
+#search-listings {
+  margin-right: 3px;
+  float: left;
+  input {
+    border-radius: 5px;
+    height: 30px;
+  }
+}

@@ -1,5 +1,7 @@
 AgentSignals::Application.routes.draw do
 
+  get 'searches/show'
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   get "contact_form/new"
   get "contact_form/create"
@@ -33,11 +35,11 @@ AgentSignals::Application.routes.draw do
   resources :opportunities
   resources :tasks
   resources :calendar
-  resources :events do 
+  resources :events do
     get :new_task,          on: :collection
     get :new_appointment,   on: :collection
     get :new_showing,       on: :collection
-  end 
+  end
 
   resources :users
   resources :leads do

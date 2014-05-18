@@ -18,6 +18,9 @@ class Listing < ActiveRecord::Base
   geocoded_by :listing_full_address
   after_validation :geocode
 
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
+
   scope :viewable_on_map, -> { where.not(latitude: nil) }
 
   def street_address
