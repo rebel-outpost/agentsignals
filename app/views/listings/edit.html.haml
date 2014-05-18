@@ -5,6 +5,7 @@
       .box-header.blue-background
         .title
           Edit Listing
+        = link_to 'View Listing', listing_path(@listing), class: 'btn btn-primary', id: 'view-listing-button'
       .box-content.box-double-padding
         .form
           = render partial: 'form'

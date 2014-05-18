@@ -6,63 +6,70 @@
 %br
 .row
   .col-sm-10
-    .box.bordered-box.blue-border
-      .box-header.blue-background
-        .title
-          View Listing
-      .box-content.box-double-padding
-        .listings-label
-          Listing number
+    .content{style: 'overflow:auto;'}
+      .title
+        View Listing
+
+      .left-column
+        %p Listing number
+        %p Title:
+        %p Price:
+        %p Address:
+        %p City:
+        %p State:
+        %p Zip:
+        %p Bedrooms:
+        %p Bathrooms
+        %p House size:
+        %p Property type:
+        %p Stories:
+        %p Lot size:
+        %p Year built
+        %p Garage:
+        %p Listing owner:
+        %p Listing agent:
+        %p Description:
+
+      .middle-column
         %p
           = @listing.listing_number
-
-        .listings-label
-          Title:
         %p
           = @listing.title
-
-        .listings-label
-          Price:
         %p
           = number_to_currency @listing.price
-
-        .listings-label
-          Address:
         %p
           = @listing.street_address
-
-        .listings-label
-          City:
         %p
           = @listing.city_name
-
-        .listings-label
-          State:
         %p
           = @listing.state
-
-        .listings-label
-          Zip:
         %p
           = @listing.zipcode
-
-        .listings-label
-          Listing owner:
+        %p
+          = @listing.beds.present? ? @listing.beds : "N/A"
+        %p
+          = @listing.baths.present? ? @listing.baths : "N/A"
+        %p
+          = @listing.house_size.present? ? @listing.house_size : "N/A"
+        %p
+          = @listing.property_type.present? ? @listing.property_type : "N/A"
+        %p
+          = @listing.stories.present? ? @listing.stories : "N/A"
+        %p
+          = @listing.lot_size.present? ? @listing.lot_size : "N/A"
+        %p
+          = @listing.year_built.present? ? @listing.year_built : "N/A"
+        %p
+          = @listing.garage.present? ? @listing.garage : "N/A"
         %p
           = @listing.listing_owner
-
-        .listings-label
-          Listing creating agent:
         %p
           = @listing.creating_agent
-
-        %hr
-        .listings-label
-          Description:
         %p
           = raw @listing.description
 
-
+      .right-column{style: "float:right;width:550px;"}
+        = link_to 'Edit Listing', edit_listing_path(@listing), class: 'btn btn-primary', id: 'edit-listing-button'
         #single-listing-map
 
 :javascript

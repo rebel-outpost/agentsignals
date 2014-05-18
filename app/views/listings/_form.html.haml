@@ -17,11 +17,27 @@
         = f.input :state, collection: (us_states)
       .form-group
         = f.input :zipcode
-    .col-sm-4.col-sm-offset-1
       .form-group
         = f.input :listing_owner, collection: (@account_contacts), label: "Owners name"
       .form-group
         = f.input :creating_agent, collection: (@account_users), label: 'Creating agent'
+    .col-sm-4.col-sm-offset-1
+      .form-group
+        = f.input :beds
+      .form-group
+        = f.input :baths
+      .form-group
+        = f.input :house_size
+      .form-group
+        = f.input :property_type
+      .form-group
+        = f.input :stories
+      .form-group
+        = f.input :lot_size
+      .form-group
+        = f.input :year_built
+      .form-group
+        = f.input :garage
     .row
       .col-sm-8
         = f.input :description, as: :bootsy
