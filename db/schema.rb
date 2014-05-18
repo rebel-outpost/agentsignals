@@ -79,10 +79,10 @@ ActiveRecord::Schema.define(version: 20140518034003) do
   end
 
   create_table "contacts", force: true do |t|
-    t.string   "first_name",                   null: false
-    t.string   "last_name",                    null: false
+    t.string   "first_name",             null: false
+    t.string   "last_name",              null: false
     t.string   "company"
-    t.string   "email",                        null: false
+    t.string   "email",                  null: false
     t.string   "phone"
     t.string   "address"
     t.string   "city"
@@ -91,15 +91,8 @@ ActiveRecord::Schema.define(version: 20140518034003) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"
-    t.string   "lead_type"
-    t.string   "comments"
-    t.string   "lead_status"
-    t.string   "lead_source"
-    t.string   "account_name"
-    t.string   "opportunity_name"
-    t.string   "opportunity_owner"
     t.string   "lead_owner"
-    t.string   "uid",               limit: 40
+    t.string   "uid",         limit: 40
     t.integer  "account_id"
     t.integer  "assignee_id"
     t.integer  "user_id"

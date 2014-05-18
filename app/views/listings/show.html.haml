@@ -5,72 +5,72 @@
 
 %br
 .row
-  .col-sm-10
+  .col-sm-12
     .content{style: 'overflow:auto;'}
       .title
         View Listing
+      .row
+        .col-sm-2
 
-      .left-column
-        %p Listing number
-        %p Title:
-        %p Price:
-        %p Address:
-        %p City:
-        %p State:
-        %p Zip:
-        %p Bedrooms:
-        %p Bathrooms
-        %p House size:
-        %p Property type:
-        %p Stories:
-        %p Lot size:
-        %p Year built
-        %p Garage:
-        %p Listing owner:
-        %p Listing agent:
-        %p Description:
+          %p Listing number
+          %p Title:
+          %p Price:
+          %p Address:
+          %p City:
+          %p State:
+          %p Zip:
+          %p Bedrooms:
+          %p Bathrooms
+          %p House size:
+          %p Property type:
+          %p Stories:
+          %p Lot size:
+          %p Year built
+          %p Garage:
+          %p Listing owner:
+          %p Listing agent:
+          %p Description:
 
-      .middle-column
-        %p
-          = @listing.listing_number
-        %p
-          = @listing.title
-        %p
-          = number_to_currency @listing.price
-        %p
-          = @listing.street_address
-        %p
-          = @listing.city_name
-        %p
-          = @listing.state
-        %p
-          = @listing.zipcode
-        %p
-          = @listing.beds.present? ? @listing.beds : "N/A"
-        %p
-          = @listing.baths.present? ? @listing.baths : "N/A"
-        %p
-          = @listing.house_size.present? ? @listing.house_size : "N/A"
-        %p
-          = @listing.property_type.present? ? @listing.property_type : "N/A"
-        %p
-          = @listing.stories.present? ? @listing.stories : "N/A"
-        %p
-          = @listing.lot_size.present? ? @listing.lot_size : "N/A"
-        %p
-          = @listing.year_built.present? ? @listing.year_built : "N/A"
-        %p
-          = @listing.garage.present? ? @listing.garage : "N/A"
-        %p
-          = @listing.listing_owner
-        %p
-          = @listing.creating_agent
-        %p
-          = raw @listing.description
-
-      .right-column{style: "float:right;width:550px;"}
-        = link_to 'Edit Listing', edit_listing_path(@listing), class: 'btn btn-primary', id: 'edit-listing-button'
-        #single-listing-map
+        .col-sm-4
+          %p
+            = @listing.listing_number
+          %p
+            = @listing.title
+          %p
+            = number_to_currency @listing.price
+          %p
+            = @listing.street_address
+          %p
+            = @listing.city_name
+          %p
+            = @listing.state
+          %p
+            = @listing.zipcode
+          %p
+            = @listing.beds.present? ? @listing.beds : "N/A"
+          %p
+            = @listing.baths.present? ? @listing.baths : "N/A"
+          %p
+            = @listing.house_size.present? ? @listing.house_size : "N/A"
+          %p
+            = @listing.property_type.present? ? @listing.property_type : "N/A"
+          %p
+            = @listing.stories.present? ? @listing.stories : "N/A"
+          %p
+            = @listing.lot_size.present? ? @listing.lot_size : "N/A"
+          %p
+            = @listing.year_built.present? ? @listing.year_built : "N/A"
+          %p
+            = @listing.garage.present? ? @listing.garage : "N/A"
+          %p
+            = @listing.listing_owner
+          %p
+            = @listing.creating_agent
+          %p
+            = raw @listing.description
+        .col-sm-6
+          = link_to 'Edit Listing', edit_listing_path(@listing), class: 'btn btn-primary', id: 'edit-listing-button'
+          #single-listing-map
 
 :javascript
   buildShowMap(#{raw @hash.to_json});
