@@ -1,35 +1,26 @@
-%section#content
-  .container
-    #content-wrapper.row
-      .col-xs-12
-        .row
-          .col-sm-9.col-sm-offset-1
-            .page-header
-              %h1.pull-left
-                %i.icon-user
-                %span New User Registration
+.row
+  .col-sm-8.col-offset-2
+    %h1 New User Registration
 
-        .row.login-container
-          .col-sm-3.col-sm-offset-3
-            %h2.text-center.title Create User
-            .new-registration-form
-              = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-                = f.error_notification
-                .form-group
-                  .controls
-                    = f.input :first_name, required: true, autofocus: true
-                .form-group
-                  .controls
-                    = f.input :last_name, required: true
-                .form-group
-                  .controls
-                    = f.input :email, required: true
-                .form-group
-                  .controls
-                    = f.input :password, required: true
-                .form-group
-                  .controls
-                    = f.input :password_confirmation, required: true
-                .form-group
-                  .controls
-                  %button.btn.btn-block.btn-primary{type: "submit"} Sign up
+.row
+  .col-sm-8.col-offset-2
+    .content
+      .new-registration-form
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = f.error_notification
+          .row
+            .col-sm-6
+              = f.input :first_name, required: true, autofocus: true
+            .col-sm-6
+              = f.input :last_name, required: true
+          .row
+            .col-sm-12
+              = f.input :email, required: true
+          .row
+            .col-sm-6
+              = f.input :password, required: true
+            .col-sm-6
+              = f.input :password_confirmation, required: true
+          .row
+            .col-sm-12
+              = f.submit "Sign up", class: 'btn btn-primary'

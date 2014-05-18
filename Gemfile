@@ -60,6 +60,7 @@ group :development do
   gem 'capistrano-unicorn', :require => false
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'seed_dump'
 end
 
 group :test, :development do

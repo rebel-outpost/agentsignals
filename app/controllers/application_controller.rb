@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :set_current_user
+  before_filter :configure_devise_params, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
     if resource.class == AdminUser
@@ -15,12 +15,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # def after_sign_in_path_for(resource)
+  #   request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+  # end
 
-private
-
-  def set_current_user
-    return true unless session[:user_id]
-    @current_user ||= User.find(session[:user_id])
+  def configure_devise_params
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
   end
 
 end
