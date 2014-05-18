@@ -8,7 +8,7 @@
     %h1 Listings
   .col-md-6
     = link_to 'New Listing', new_listing_path, class: 'btn btn-default'
-    = link_to 'Hide Map', "#", class: 'btn btn-default', id: 'display-map'
+    = link_to 'Toggle Map', "#", class: 'btn btn-default', id: 'display-map'
 
 
 .row
@@ -45,7 +45,7 @@
                     %td
                       = link_to f.title, f
                     %td
-                      = f.price
+                      = number_to_currency(f.price)
                     %td
                       = f.street_address
                     %td
@@ -55,6 +55,8 @@
                     %td
                       =f.zipcode
                     %td
+                      = link_to listing_path(f) do
+                        %i.fa.fa-info-circle
                       = link_to edit_listing_path(f), id: 'edit' do
                         %i.fa.fa-edit
                       = link_to listing_path(f), data: {confirm: 'Are you sure that you want to delete this listing?'}, method: :delete, id: 'delete' do

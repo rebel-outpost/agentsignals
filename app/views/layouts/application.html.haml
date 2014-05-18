@@ -15,7 +15,7 @@
     = render 'layouts/header'
     .row
       .col-md-2
-        - if current_user
+        - if current_user && current_user.account
           #sidebar.sidebar.nav-collapse.collapse.in
             = render_navigation expand_all: true
 

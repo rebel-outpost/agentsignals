@@ -24,7 +24,7 @@
         .listings-label
           Price:
         %p
-          = @listing.price
+          = number_to_currency @listing.price
 
         .listings-label
           Address:
