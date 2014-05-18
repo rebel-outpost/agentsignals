@@ -18,12 +18,18 @@ class Listing < ActiveRecord::Base
   geocoded_by :listing_full_address
   after_validation :geocode
 
+  scope :viewable_on_map, -> { where.not(latitude: nil) }
+
   def street_address
-    house_number.to_s +  ' ' + street_name
+    if house_number && street_name
+      house_number.to_s +  ' ' + street_name
+    end
   end
 
   def listing_full_address
-    street_address + ', ' + city_name + ' ' + state + ', ' +  zipcode
+    if street_address && city_name && state && zipcode
+      street_address + ', ' + city_name + ' ' + state + ', ' +  zipcode
+    end
   end
 
 end

@@ -7,7 +7,7 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require bootstrap
-//= require underscore-min
+//= require underscore
 //= require gmaps/google
 //= require select2
 //= require_tree .

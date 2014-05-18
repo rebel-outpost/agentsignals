@@ -12,6 +12,11 @@
   width: 300px;
 }
 
+.title {
+  font-size:24px;
+  padding-bottom: 10px;
+}
+
 .form, .form-group {
   input[type='text'], input[type='email'], input[type='tel'] {
     width: 300px;
@@ -36,5 +41,25 @@
   margin-bottom: 20px;
   border:12px solid #ededed;
 }
+
+#single-listing-map {
+  width: 550px;
+  height: 400px;
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  border:12px solid #ededed;
+}
+
+.listings-label {
+  font-weight: bold;
+  font-family: Oswald;
+  font-size: 13px;
+  color: #666666;
+  padding-bottom: 3px;
+}
+
+
+
 
 

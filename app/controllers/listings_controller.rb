@@ -2,9 +2,16 @@ class ListingsController < ApplicationController
 
   def index
     @listings = current_user.account.listings
-    @hash = Gmaps4rails.build_markers(@listings) do |listing, marker|
+    @hash = Gmaps4rails.build_markers(@listings.viewable_on_map) do |listing, marker|
       marker.lat listing.latitude
       marker.lng listing.longitude
+      marker.infowindow listing.title
+      marker.json({ title: listing.title })
+      marker.picture({
+        "url" => "mapicons/house.png",
+        "width" => 32,
+        "height" => 32
+        })
     end
   end
 
@@ -24,6 +31,21 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listing = Listing.find params[:id]
+    @hash = Gmaps4rails.build_markers(@listing) do |listing, marker|
+      marker.lat listing.latitude
+      marker.lng listing.longitude
+      marker.infowindow listing.title
+      marker.json({ title: listing.title })
+      marker.picture({
+        "url" => "/mapicons/house.png",
+        "width" => 32,
+        "height" => 32
+        })
+    end
+  end
+
+  def edit
     @listing = Listing.find params[:id]
   end
 
