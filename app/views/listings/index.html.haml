@@ -25,6 +25,10 @@
                 %th
                   Title
                 %th
+                  Bedrooms
+                %th
+                  Bathrooms
+                %th
                   Price
                 %th
                   Address
@@ -43,6 +47,10 @@
                   %tr
                     %td
                       = link_to f.title, f
+                    %td
+                      = f.beds
+                    %td
+                      =f.baths
                     %td
                       = number_to_currency(f.price)
                     %td

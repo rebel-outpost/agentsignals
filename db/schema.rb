@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518023055) do
+ActiveRecord::Schema.define(version: 20140518034003) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -138,14 +138,14 @@ ActiveRecord::Schema.define(version: 20140518023055) do
     t.float    "longitude"
     t.string   "full_address"
     t.text     "description"
-    t.string   "beds"
-    t.string   "baths"
-    t.string   "house_size"
-    t.string   "property_type"
-    t.integer  "stories"
-    t.string   "lot_size"
-    t.string   "year_built"
-    t.string   "garage"
+    t.string   "beds",                                   default: "N/A"
+    t.string   "baths",                                  default: "N/A"
+    t.string   "house_size",                             default: "N/A"
+    t.string   "property_type",                          default: "N/A"
+    t.integer  "stories",                                default: 0
+    t.string   "lot_size",                               default: "N/A"
+    t.string   "year_built",                             default: "N/A"
+    t.string   "garage",                                 default: "N/A"
   end
 
   add_index "listings", ["price"], name: "index_listings_on_price", using: :btree
