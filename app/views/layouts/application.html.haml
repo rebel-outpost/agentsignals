@@ -16,9 +16,18 @@
     = render 'layouts/messages'
     .row
       .col-md-2
-        - if current_user && current_user.account
-          #sidebar.sidebar.nav-collapse.collapse.in
-            = render_navigation expand_all: true
+        .row
+          .col-sm-12
+            - if current_user && current_user.account
+              #sidebar.sidebar.nav-collapse.collapse.in
+                = render_navigation expand_all: true
+
+        - if content_for :clients
+          .row
+            .col-sm-12
+              .box
+                %h3 Clients
+                = yield :clients
 
       .col-md-10
         

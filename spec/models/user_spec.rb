@@ -1,6 +1,32 @@
 require "spec_helper"
 
 describe 'User' do
+
+  describe :clients do
+    before do
+      @user = FactoryGirl.create :user 
+      @client = FactoryGirl.create :client, assignee_id: @user.id
+    end
+
+    it {@user.clients =~ [@client]}
+  end
+
+  describe :leads do
+    before do
+      @user = FactoryGirl.create :user 
+      @client = FactoryGirl.create :lead, assignee_id: @user.id
+    end
+
+    it {@user.leads =~ [@client]}
+  end
+
+  describe :full_name do
+    before {@user = FactoryGirl.create :user, first_name: "James", last_name: "Bond"}
+
+    it {@user.full_name.should eq "James Bond"}
+
+  end
+
   context 'Validation' do
 
     it "is valid with a firstname, lastname and email" do

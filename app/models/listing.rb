@@ -14,12 +14,16 @@ class Listing < ActiveRecord::Base
                         :zipcode, :listing_number, :listing_owner
 
   belongs_to :account
+  belongs_to :agent
+
+  has_many :client_listings, foreign_key: :user_id
+  has_many :clients, through: :client_listings, source: :client
 
   geocoded_by :listing_full_address
   after_validation :geocode
 
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
+  # include Tire::Model::Search
+  # include Tire::Model::Callbacks
 
   scope :viewable_on_map, -> { where.not(latitude: nil) }
 

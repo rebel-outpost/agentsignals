@@ -48,9 +48,12 @@ AgentSignals::Application.routes.draw do
 
   resources :leads do
     member do
+      post :convert_to_client
       get :convert
     end
   end
+
+  resources :clients
 
   namespace :admin do
     resources :users
