@@ -1,4 +1,7 @@
-
+- content_for :clients do
+  %ul
+    - @clients.each do |client|
+      %li= link_to "#{client.first_name} #{client.last_name}", client
 .row
   .col-md-12
     %h1

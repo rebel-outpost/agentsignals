@@ -10,13 +10,16 @@ class User < ActiveRecord::Base
   has_many :showings
   has_many :appointments
 
+  has_many :clients, foreign_key: :assignee_id
+  has_many :leads, foreign_key: :assignee_id
+
   has_one  :subscription
-  has_one  :plan, :through => :subscription
+  has_one  :plan, through: :subscription
 
   belongs_to :account
 
   def full_name
-    first_name + " " + last_name
+    "#{first_name} #{last_name}"
   end
 
 end

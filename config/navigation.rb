@@ -73,6 +73,9 @@ SimpleNavigation::Configuration.run do |navigation|
       lead.item :create_web_to_lead, 'Create Web-to-Lead', web_to_lead_path
     end
 
+    primary.item :clients_icon, "", class: "fa fa-users"
+    primary.item :clients, 'Clients', clients_path
+
 
     primary.item :contacts_icon, "", class: "fa fa-user"
     primary.item :contacts, 'Contacts', '#contacts-collapse', {

@@ -20,11 +20,9 @@ class Contact < ActiveRecord::Base
 
   belongs_to :account
 
+  has_many :notes
+
   def full_name
-    if self.last_name != nil
-      self.first_name + " " + self.last_name
-    elsif
-      self.first_name
-    end
+    "#{first_name} #{last_name}"
   end
 end

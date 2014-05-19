@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
-
+  before_filter :authenticate_user!
+  
   def index
     @contacts = current_user.account.contacts
   end

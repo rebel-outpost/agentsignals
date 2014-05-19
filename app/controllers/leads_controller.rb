@@ -26,11 +26,18 @@ class LeadsController < ApplicationController
   end
 
   def show
-    @lead           = current_user.account.leads.find params[:id]
-    @lead_owner     = current_user.account.users.map(&:email)
-    @lead_status    = Lead.status
-    @lead_sources   = Lead.sources
-    @lead_interests = Lead.interests
+    @lead = Lead.find params[:id]
+    @lead_owner = current_user.account.users.map(&:email)
+  end
+
+  def convert_to_client
+    @lead = Lead.find params[:id]
+    if @lead.update_attributes type: "Client"
+      redirect_to :back, notice: "Congratulations! Lead has been converted to a Client."
+    else
+      redirect_to :back
+      flash[:error] = "Something went wrong."
+    end
   end
 
   def edit
