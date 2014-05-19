@@ -6,6 +6,8 @@ describe "User Registrations" do
     it 'registers new user', js: true do
       visit root_path
       click_link 'Sign up'
+      fill_in 'First name',             with: 'bill'
+      fill_in 'Last name',              with: 'gates'
       fill_in 'Email',                  with: 'bill@example.com'
       fill_in 'Password',               with: 'password'
       fill_in 'Password confirmation',  with: 'password'
