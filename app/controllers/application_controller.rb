@@ -4,17 +4,14 @@ class ApplicationController < ActionController::Base
   before_filter :configure_devise_params, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    if resource.class == AdminUser
-      admin_root_path
+    if resource.account
+      dashboard_path
     else
-      if resource.account
-        dashboard_path
-      else
-        new_account_path
-      end
+      new_account_path
     end
   end
 
+  # Need to refactor to this
   # def after_sign_in_path_for(resource)
   #   request.env['omniauth.origin'] || stored_location_for(resource) || root_path
   # end

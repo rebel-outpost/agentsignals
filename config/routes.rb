@@ -17,8 +17,12 @@ AgentSignals::Application.routes.draw do
     get "logout",     to: "devise/sessions#destroy",    as: "logout"
     get "login",      to: "devise/sessions#new",        as: "login"
     get "signup",     to: "devise/registrations#new",   as: "signup"
-    get "dashboard",  to: "users#dashboard",            as: "dashboard"
   end
+
+
+
+  resources :users
+  get "dashboard",  to: "users#dashboard"
 
   get "web_to_lead" => "leads#new_web_lead", as: "web_to_lead"
   put "create_web_lead" => "leads#create_web_lead", as: "create_web_lead"

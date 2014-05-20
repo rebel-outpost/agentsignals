@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-
+  before_filter :authenticate_user!
+  
   def index
-    # binding.pry
     @tasks = current_user.tasks
   end
 

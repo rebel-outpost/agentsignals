@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
-
+  before_filter :authenticate_user!
+  
   def index
     if params[:query]
       @listings = Listing.tire.search params[:query]
