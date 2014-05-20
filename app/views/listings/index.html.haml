@@ -3,18 +3,19 @@
 = javascript_include_tag "https://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"
 = javascript_include_tag "//google-maps-utility-library-v3.googlecode.com/svn/trunk/richmarker/src/richmarker-compiled.js"
 
-.row
-  .col-md-4
-    %h1 Listings
-  .col-md-6
-    / = link_to 'Clear Search', listings_path, class: 'btn btn-default'
-    = link_to 'Toggle Map', "#", class: 'btn btn-default', id: 'display-map'
-    = link_to 'New Listing', new_listing_path, class: 'btn btn-default'
+- content_for :subnav do
+  .row
+    .col-sm-12
+      %h1 Listings
+      / .col-md-6
+      / = link_to 'Clear Search', listings_path, class: 'btn btn-default'
+      / = link_to 'Toggle Map', "#", class: 'btn btn-default', id: 'display-map'
+      / = link_to 'New Listing', new_listing_path, class: 'btn btn-default'
 
-    / #search-listings
-    /   %form.form-search{:url => "/listings", :method => "GET"}
-    /     %input.input-medium.search-query{:name => "query", :type => "text"}
-    /       %button.btn.btn-default{:type => "submit"} Search Listings
+      / #search-listings
+      /   %form.form-search{:url => "/listings", :method => "GET"}
+      /     %input.input-medium.search-query{:name => "query", :type => "text"}
+      /       %button.btn.btn-default{:type => "submit"} Search Listings
 
 .row
   .col-sm-10.col-sm-offset-1

@@ -20,7 +20,7 @@
           .col-sm-12
             - if current_user && current_user.account
               #sidebar.sidebar.nav-collapse.collapse.in
-                = render_navigation expand_all: true
+                = render_navigation level: 1
 
         - if content_for :clients
           .row
@@ -30,5 +30,20 @@
                 = yield :clients
 
       .col-md-10
-        
-        = yield
+
+        - if content_for :subnav
+          .row
+            .col-sm-12
+              = yield :subnav
+
+          .row.clearfix
+            .col-sm-12
+              = render_navigation level: 2..3
+                
+
+          .row
+            .col-sm-12
+              = yield
+
+        - else
+          = yield

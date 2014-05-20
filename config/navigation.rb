@@ -57,105 +57,89 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :dashboard, 'Dashboard', dashboard_path
 
     primary.item :leads_icon, "", class: "fa fa-users"
-    primary.item :leads, 'Leads', '#leads-collapse', {
-      link: {
-        data: {
-          toggle: 'collapse',
-          parent: "#side-nav"
-        },
-        class: 'accordion-toggle collapsed'
-      }
-    } do |lead|
-      lead.dom_id = 'leads-collapse'
-      lead.dom_class = 'panel-collapse collapse'
-      lead.item :create_lead, 'Create Lead', new_lead_path
-      lead.item :view_leads, 'View Leads', leads_path
+    primary.item :leads, 'Leads', leads_path do |lead|
+      lead.dom_class = 'nav nav-pills'
+      lead.item :view_leads, 'Leads', leads_path
+      lead.item :new_lead, 'New Lead', new_lead_path
       lead.item :create_web_to_lead, 'Create Web-to-Lead', web_to_lead_path
     end
 
     primary.item :clients_icon, "", class: "fa fa-users"
-    primary.item :clients, 'Clients', clients_path
-
-
-    primary.item :contacts_icon, "", class: "fa fa-user"
-    primary.item :contacts, 'Contacts', '#contacts-collapse', {
-      link: {
-        data: {
-          toggle: 'collapse',
-          parent: "#side-nav"
-        },
-        class: 'accordion-toggle collapsed'
-      }
-    } do |contact|
-      contact.dom_id = 'contacts-collapse'
-      contact.dom_class = 'panel-collapse collapse'
-      contact.item :create_contact, 'Create Contact', new_contact_path
-      contact.item :view_contacts, 'View Contacts', contacts_path
+    primary.item :clients, 'Clients', clients_path do |client|
+      client.dom_class = 'nav nav-pills'
+      client.item :View_clients, 'Clients', clients_path
+      client.item :add_listing, 'Add Listing', '#'
     end
 
+    primary.item :agents_icon, "", class: "fa fa-users"
+    primary.item :agents, 'Agents', agents_path do |agent|
+      agent.dom_class = 'nav nav-pills'
+      agent.item :view_agents, 'Agents', agents_path
+      agent.item :new_agent, 'Add Agent Contact', new_agent_path
+    end
+
+
+    # primary.item :contacts_icon, "", class: "fa fa-user"
+    # primary.item :contacts, 'Contacts', '#contacts-collapse', {
+    #   link: {
+    #     data: {
+    #       toggle: 'collapse',
+    #       parent: "#side-nav"
+    #     },
+    #     class: 'accordion-toggle collapsed'
+    #   }
+    # } do |contact|
+    #   contact.dom_id = 'contacts-collapse'
+    #   contact.dom_class = 'panel-collapse collapse'
+    #   contact.item :create_contact, 'Create Contact', new_contact_path
+    #   contact.item :view_contacts, 'View Contacts', contacts_path
+    # end
+
     primary.item :listings_icon, "", class: "fa fa-briefcase"
-    primary.item :listings, 'Listings', '#listings-collapse', {
-      link: {
-        data: {
-          toggle: 'collapse',
-          parent: "#side-nav"
-        },
-        class: 'accordion-toggle collapsed'
-      }
-    } do |listing|
-      listing.dom_id = 'listings-collapse'
-      listing.dom_class = 'panel-collapse collapse'
-      listing.item :create_listing, 'Create Listing', new_listing_path
+    primary.item :listings, 'Listings', listings_path do |listing|
+      listing.dom_class = 'nav nav-pills'
       listing.item :view_listings, 'View Listings', listings_path
+      listing.item :create_listing, 'Create Listing', new_listing_path
     end
 
     primary.item :offers_icon, "", class: "fa fa-dollar"
-    primary.item :offers, 'Offers', '#offers-collapse', {
-      link: {
-        data: {
-          toggle: 'collapse',
-          parent: "#side-nav"
-        },
-        class: 'accordion-toggle collapsed'
-      }
-    } do |offer|
-      offer.dom_id = 'offers-collapse'
-      offer.dom_class = 'panel-collapse collapse'
+    primary.item :offers, 'Offers', offers_path do |offer|
+      offer.dom_class = 'nav nav-pills'
+      offer.item :view_offers, 'Offers', offers_path
       offer.item :create_offer, 'Create Offer', new_offer_path
-      offer.item :view_offers, 'View Offers', offers_path
     end
 
     primary.item :tasks_icon, "", class: "fa fa-check-square-o"
-    primary.item :tasks, 'Tasks', '#tasks-collapse', {
-      link: {
-        data: {
-          toggle: 'collapse',
-          parent: "#side-nav"
-        },
-        class: 'accordion-toggle collapsed'
-      }
-    } do |task|
-      task.dom_id = 'tasks-collapse'
-      task.dom_class = 'panel-collapse collapse'
+    primary.item :tasks, 'Tasks', tasks_path do |task|
+      task.dom_class = 'nav nav-pills'
+      task.item :view_tasks, 'Tasks', tasks_path
       task.item :create_task, 'Create Task', new_task_path
-      task.item :view_tasks, 'View Tasks', tasks_path
     end
 
-    primary.item :opportunities_icon, "", class: "fa fa-thumbs-up"
-    primary.item :opportunities, 'Opportunities', '#opportunities-collapse', {
-      link: {
-        data: {
-          toggle: 'collapse',
-          parent: "#side-nav"
-        },
-        class: 'accordion-toggle collapsed'
-      }
-    } do |opportunity|
-      opportunity.dom_id = 'opportunities-collapse'
-      opportunity.dom_class = 'panel-collapse collapse'
-      opportunity.item :create_opportunity, 'Create Opportunity', new_opportunity_path
-      opportunity.item :view_opportunities, 'View Opportunities', opportunities_path
-    end
+    primary.item :appointment_icon, "", class: "fa fa-bell"
+    primary.item :appointments, 'Appointments', '#'
+
+    primary.item :showing_icon, "", class: "fa fa-car"
+    primary.item :showings, 'Showings', '#'
+
+
+
+    # primary.item :opportunities_icon, "", class: "fa fa-thumbs-up"
+    # primary.item :opportunities, 'Opportunities', '#opportunities-collapse', {
+    #   link: {
+    #     data: {
+    #       toggle: 'collapse',
+    #       parent: "#side-nav"
+    #     },
+    #     class: 'accordion-toggle collapsed'
+    #   }
+    # } do |opportunity|
+    #   opportunity.dom_id = 'opportunities-collapse'
+    #   opportunity.dom_class = 'panel-collapse collapse'
+    #   opportunity.item :create_opportunity, 'Create Opportunity', new_opportunity_path
+    #   opportunity.item :view_opportunities, 'View Opportunities', opportunities_path
+    # end
+
     primary.item :calendar_icon, "", class: "fa fa-calendar"
     primary.item :calendar, 'Calendar', calendar_index_path
 

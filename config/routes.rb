@@ -30,6 +30,7 @@ AgentSignals::Application.routes.draw do
   # Wizards
   resources :after_signup
 
+  resources :agents
   resources :listings
   resources :offers
   resources :opportunities

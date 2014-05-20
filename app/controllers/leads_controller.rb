@@ -4,9 +4,9 @@ class LeadsController < ApplicationController
   def new
     @lead           = current_user.account.leads.new
     @lead_owner     = current_user.account.users.map(&:email)
-    @lead_status    = Lead.status
-    @lead_sources   = Lead.sources
-    @lead_interests = Lead.interests
+    # @lead_status    = Lead.status
+    # @lead_sources   = Lead.sources
+    # @lead_interests = Lead.interests
   end
 
   def create
