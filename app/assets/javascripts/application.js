@@ -8,7 +8,6 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require bootstrap
-//= require datetimepicker
 //= require underscore
 //= require gmaps/google
 //= require select2

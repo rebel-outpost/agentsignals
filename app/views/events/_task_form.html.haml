@@ -1,9 +1,9 @@
 = simple_form_for @task, url: events_path, method: :post do |f|
-  = f.input :name
-  = f.input :due_date
-  = f.input :ends
-  = f.input :task_type
+  .clearfix
+    = f.input :name
+  .clearfix
+    = f.input :due_date, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
   .modal-footer
     = f.submit class: 'btn btn-primary'
-    %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Cancel
+
     

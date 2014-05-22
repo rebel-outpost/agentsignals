@@ -17,9 +17,9 @@
             %li.active
               %a{"data-toggle" => "tab", href: "#dashboard-tasks"} Tasks
             %li
-              %a{"data-toggle" => "tab", href: "#appointments"} Appointments
+              %a{"data-toggle" => "tab", href: "#dashboard-appointments"} Appointments
             %li
-              %a{"data-toggle" => "tab", href: "#showings"} Showings
+              %a{"data-toggle" => "tab", href: "#dashboard-showings"} Showings
 
           .tab-content
             #dashboard-tasks.tab-pane.fade.in.active
@@ -36,7 +36,7 @@
                       %tr
                         %td= link_to task.name.titleize, task_path(task)
                         %td= task.due_date
-                        %td= task.task_type.titleize
+                        %td= task.task_type
                         %td= task.lead_for_task
 
             #appointments.tab-pane.fade ...

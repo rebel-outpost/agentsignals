@@ -1,13 +1,5 @@
 AgentSignals::Application.routes.draw do
 
-  get 'searches/show'
-
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  get "contact_form/new"
-  get "contact_form/create"
-
-  # root to: "pages#index"
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -19,7 +11,11 @@ AgentSignals::Application.routes.draw do
     get "signup",     to: "devise/registrations#new",   as: "signup"
   end
 
+  get 'searches/show'
 
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  get "contact_form/new"
+  get "contact_form/create"
 
   resources :users
   get "dashboard",  to: "users#dashboard"
@@ -64,8 +60,6 @@ AgentSignals::Application.routes.draw do
     resources :users
     resources :organizations
   end
-
-  resources :organizations
 
   resources :contact_forms
 

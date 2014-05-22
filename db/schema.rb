@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518195147) do
+ActiveRecord::Schema.define(version: 20140522194033) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -113,11 +113,11 @@ ActiveRecord::Schema.define(version: 20140518195147) do
   end
 
   create_table "events", force: true do |t|
-    t.string   "name",                       null: false
-    t.datetime "due_date",                   null: false
-    t.string   "assigned_to",                null: false
-    t.string   "task_type",                  null: false
-    t.string   "lead_for_task",              null: false
+    t.string   "name"
+    t.datetime "due_date"
+    t.string   "assigned_to"
+    t.string   "task_type"
+    t.string   "lead_for_task"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20140518195147) do
     t.integer  "organization_id"
     t.string   "type"
     t.datetime "ends"
+    t.boolean  "all_day",                    default: false
   end
 
   create_table "listings", force: true do |t|
@@ -268,6 +269,9 @@ ActiveRecord::Schema.define(version: 20140518195147) do
     t.string   "uid",                    limit: 40
     t.integer  "account_id"
     t.string   "background",                        default: "default-background"
+    t.string   "task_color",                        default: "#428bca"
+    t.string   "appointment_color",                 default: "#5cb85c"
+    t.string   "showing_color",                     default: "#d9534f"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

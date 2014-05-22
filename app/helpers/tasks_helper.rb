@@ -1,6 +1,6 @@
 module TasksHelper
 
-  def TASK_TYPES
+  def task_type_options
     [
       ['Call','call'], 
       ['Email','email'], 

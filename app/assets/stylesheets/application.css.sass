@@ -13,6 +13,8 @@
  *= require_self
  */
 
+$red: #d9534f
+
 html
   min-height: 100%
 
@@ -106,5 +108,13 @@ input[type='text'], input[type='email'], input[type='tel'], input[type='password
     float: right
     padding: 8px 15px 8px 0
     font-size: 15px
+
+.error
+  label
+    color: $red
+  input, textarea
+    border: 2px solid $red
+  .help-inline
+    color: $red
 
 
