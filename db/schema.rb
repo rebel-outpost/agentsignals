@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522194033) do
+ActiveRecord::Schema.define(version: 20140522210608) do
 
   create_table "accounts", force: true do |t|
     t.string   "name",                                     null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20140522194033) do
     t.string   "type"
     t.datetime "ends"
     t.boolean  "all_day",                    default: false
+    t.integer  "contact_id"
   end
 
   create_table "listings", force: true do |t|

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @user = current_user
-    @events = current_user.tasks.all
+    @events = current_user.events
     respond_to do |format|
       format.html
       format.json
@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 
   def new_showing
     @showing = Showing.new
+    @clients = current_user.clients
   end
 
   def show
@@ -37,6 +38,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    @clients = current_user.clients
     @event = if params[:task]
       current_user.tasks.build task_params
     elsif params[:appointment]
@@ -44,7 +46,7 @@ class EventsController < ApplicationController
     elsif params[:showing]
       current_user.showings.build showing_params
     end
-    @task, @appointment, @showing = @event
+    @task, @appointment, @showing = @event, @event, @event
     respond_to do |format|
       if @event.save
         format.html {redirect_to calendar_index_path, notice: "Event added successfully"}
@@ -92,11 +94,11 @@ class EventsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:event).permit!
+    params.require(:appointment).permit!
   end
 
   def showing_params
-    params.require(:event).permit!
+    params.require(:showing).permit!
   end
 
 end
