@@ -1,6 +1,6 @@
 - ajax ||= false
 
-= simple_form_for @showing, url: params[:action] == "edit" ? event_path(@showing) : event_path, method: params[:action] == "edit" ? :put : :post, remote: false do |f|
+= simple_form_for @showing, url: params[:action] == "edit" ? event_path(@showing) : events_path, method: params[:action] == "edit" ? :put : :post, remote: false do |f|
   .clearfix
     = f.input :contact_id, collection: @clients.collect { |client| [client.full_name, client.id] }
   .row.clearfix

@@ -4,7 +4,9 @@
     = f.input :name
   .clearfix
     = f.input :due_date, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
-  .modal-footer
+  .clearfix
+    = f.input :notes, input_html: { rows: 5 }
+  .clearfix
     = f.submit class: 'btn btn-primary'
 
     
