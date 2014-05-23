@@ -1,2 +1,24 @@
-$('#event-modal').modal('hide');
-$('#full-calendar').fullCalendar( 'refetchEvents' )
+<% if @event.errors.present? %>
+  
+  <% if @event.type == "Task" %>
+    <% @task = @event %>
+    $('.modal-body p').html("<%= j render partial: 'events/task_form', locals: {ajax: true} %>");
+  <% elsif @event.type == "Appointment" %>
+    <% @appointment = @event %>
+    $('.modal-body p').html("<%= j render partial: 'events/appointment_form', locals: {ajax: true} %>");
+  <% elsif @event.type == "Showing" %>
+    <% @showing = @event %>
+    $('.modal-body p').html("<%= j render partial: 'events/showing_form', locals: {ajax: true} %>");
+  <% end %>
+
+  $('.datetime-picker').datetimepicker({
+    format: 'M d, Y h:i a', 
+    step: 30
+  });
+
+<% else %>
+
+  $('#event-modal').modal('hide');
+  $('#full-calendar').fullCalendar('refetchEvents');
+
+<% end %>

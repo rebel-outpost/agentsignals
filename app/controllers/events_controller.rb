@@ -80,9 +80,12 @@ class EventsController < ApplicationController
     elsif params[:event]
       event_params
     end
-    if @event.update parameters
-      respond_to do |format|
+    respond_to do |format|
+      if @event.update parameters
         format.html {redirect_to calendar_index_path, notice: "Event has been updated successfully"}
+        format.js
+      else
+        format.html {render :edit}
         format.js
       end
     end
