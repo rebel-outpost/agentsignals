@@ -3,7 +3,7 @@
   .clearfix
     = f.input :name
   .clearfix
-    = f.input :due_date, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
+    = f.input :due_date, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.due_date.present? ? localize(f.object.due_date, format: "%b %d, %Y %I:%M %P") : ""  }
   .clearfix
     = f.input :notes, input_html: { rows: 5 }
   .clearfix

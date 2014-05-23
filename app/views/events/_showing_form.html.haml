@@ -5,9 +5,9 @@
     = f.input :contact_id, collection: @clients.collect { |client| [client.full_name, client.id] }
   .row.clearfix
     .col-md-6
-      = f.input :due_date, label: "Starts", as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
+      = f.input :due_date, label: "Starts", as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.due_date.present? ? localize(f.object.due_date, format: "%b %d, %Y %I:%M %P") : "" }
     .col-md-6
-      = f.input :ends, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
+      = f.input :ends, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.ends.present? ? localize(f.object.ends, format: "%b %d, %Y %I:%M %P") : "" }
   .row.clearfix
     .col-sm-12
       = f.input :all_day
