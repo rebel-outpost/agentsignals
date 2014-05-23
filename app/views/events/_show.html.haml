@@ -1,8 +1,43 @@
-%p
-  Due Date: #{@event.due_date}
+- ajax ||= false
+.row.clearfix
+  .col-md-2
+    %strong #{@event.type}: 
+  .col-md-10
+    = @event.name
 
-%p
-  Assigned To: #{@event.assigned_to}
+.row.clearfix 
+  .col-md-2
+    - if @event.type == "Task"
+      %strong Due Date: 
+    - else
+      %strong Starts: 
+  .col-md-10
+    = @event.due_date.strftime("%B %d, %Y")
 
-%p
-  Name of Lead: #{@event.lead_for_task}
+- if @event.ends.present?
+  .row.clearfix
+    .col-md-2
+      %strong Ends: 
+    .col-md-10
+      = @event.ends.strftime("%B %d, %Y")
+
+.row.clearfix
+  .col-md-2
+    Assigned To: 
+  .col-md-10
+    = @event.assigned_to
+
+.row.clearfix
+  .col-sm-12
+    %strong Notes:
+    %p= @event.notes 
+
+- if @event.type == "Showing"
+  .row.clearfix
+    .col-sm-12
+      %h2 Listings to Show
+
+.row
+  .col-sm-12
+    = link_to "Edit", edit_event_path(@event), remote: ajax, class: 'btn btn-primary'
+    = link_to "Delete", event_path(@event), data: {confirm: "Are you sure?"}, method: :delete, remote: ajax, class: 'btn btn-danger'

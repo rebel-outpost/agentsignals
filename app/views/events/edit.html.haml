@@ -1,0 +1,16 @@
+.row
+  .col-sm-12
+    %h1 Edit #{@event.type}
+
+.row
+  .col-sm-12
+    .box
+      - if @event.type == "Task"
+        - @task = @event
+        = render "task_form"
+      - elsif @event.type == "Appointment"
+        - @appointment = @event
+        = render "appointment_form"
+      - elsif @event.type == "Showing"
+        - @showing = @event
+        = render "showing_form"

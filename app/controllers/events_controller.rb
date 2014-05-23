@@ -31,10 +31,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Task.find params[:id]
-    respond_to do |format|
-      format.js
-    end
+    @event = Event.find params[:id]
   end
 
   def create
@@ -66,7 +63,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @clients = current_user.clients
+    @event = Event.find params[:id]
+  end
+
   def update
+    @clients = current_user.clients
     @event = if params[:task]
       current_user.tasks.update task_params
     elsif params[:appointment]
@@ -82,7 +85,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find params[:id]
+    @event.destroy
     respond_to do |format|
+      format.html {redirect_to calendar_index_path, notice: "Event has been deleted successfully"}
       format.js
     end
   end

@@ -1,4 +1,4 @@
-class Appointment < Task
+class Appointment < Event
 
 
 end

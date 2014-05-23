@@ -1,14 +1,18 @@
-= simple_form_for @showing, url: events_path, method: :post do |f|
+- ajax ||= false
+= simple_form_for @showing, url: events_path, method: :post, remote: ajax do |f|
   .clearfix
     = f.input :contact_id, collection: @clients.collect { |client| [client.full_name, client.id] }
-  .clearfix
   .row.clearfix
     .col-md-6
       = f.input :due_date, label: "Starts", as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
     .col-md-6
       = f.input :ends, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
-  .row
+  .row.clearfix
     .col-sm-12
       = f.input :all_day
-  .modal-footer
-    = f.submit class: 'btn btn-primary'
+  .row.clearfix
+    .col-sm-12
+      = f.input :notes, input_html: { rows: 5 }
+  .row.clearfix
+    .col-sm-12
+      = f.submit class: 'btn btn-primary'

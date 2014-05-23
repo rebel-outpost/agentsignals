@@ -1,7 +1,14 @@
 = simple_form_for @appointment, url: events_path, method: :post do |f|
-  = f.input :name
-  = f.input :due_date, label: "Starts"
-  = f.input :ends
+  .clearfix
+    = f.input :name
+  .row.clearfix
+    .col-md-6.col-sm-12
+      = f.input :due_date, label: "Starts", as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
+    .col-md-6.col-sm-12
+      = f.input :ends, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker' }
+  .clearfix
+    = f.input :all_day
+  .clearfix
+    = f.input :notes, input_html: { rows: 5 }
   .modal-footer
     = f.submit class: 'btn btn-primary'
-    %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Cancel
