@@ -1,5 +1,8 @@
 $('.modal-footer').remove();
 $('.modal-title').html("New Appointment");
-$('.modal-body p').html("<%= j render 'events/appointment_form' %>");
+$('.modal-body p').html("<%= j render partial: 'events/appointment_form', locals: {ajax: true} %>");
 
-$('.datetime-picker').datetimepicker();
+$('.datetime-picker').datetimepicker({
+  format: 'M d, Y h:i a', 
+  step: 30
+});

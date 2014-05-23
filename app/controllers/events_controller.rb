@@ -69,17 +69,22 @@ class EventsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @clients = current_user.clients
-    @event = if params[:task]
-      current_user.tasks.update task_params
+    @event = Event.find params[:id]
+    parameters = if params[:task]
+      task_params
     elsif params[:appointment]
-      current_user.appointments.update appointment_params
+      appointment_params
     elsif params[:showing]
-      current_user.showings.update showing_params
+      showing_params
+    elsif params[:event]
+      event_params
     end
-    if @event.save
+    if @event.update parameters
       respond_to do |format|
-        format.json {render json: {status: 200}}
+        format.html {redirect_to calendar_index_path, notice: "Event has been updated successfully"}
+        format.js
       end
     end
   end
@@ -94,6 +99,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def event_params
+    params.require(:event).permit!
+  end
 
   def task_params
     params.require(:task).permit!

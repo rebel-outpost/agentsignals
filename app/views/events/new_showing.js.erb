@@ -1,4 +1,7 @@
 $('.modal-footer').remove();
 $('.modal-title').html("New Showing");
-$('.modal-body p').html("<%= j render 'events/showing_form' %>");
-$('.datetime-picker').datetimepicker();
+$('.modal-body p').html("<%= j render partial: 'events/showing_form', locals: {ajax: true} %>");
+$('.datetime-picker').datetimepicker({
+  format: 'M d, Y h:i a', 
+  step: 30
+});

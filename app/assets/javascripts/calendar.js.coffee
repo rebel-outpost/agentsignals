@@ -63,7 +63,7 @@ $ ->
         event:
           name: event.title
           due_date: start
-          ends_at: end
+          ends: end
           type: event.type
 
 

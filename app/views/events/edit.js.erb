@@ -13,3 +13,8 @@ $('.modal-title').html("Edit <%= @event.type %>");
   $('.modal-body p').html("<%= j render partial: 'events/showing_form', locals: {ajax: true} %>");
 
 <% end %>
+
+$('.datetime-picker').datetimepicker({
+  format: 'M d, Y h:i a', 
+  step: 30
+});

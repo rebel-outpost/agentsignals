@@ -1,4 +1,5 @@
-= simple_form_for @task, url: events_path, method: :post do |f|
+- ajax ||= false
+= simple_form_for @task, url: params[:action] == "edit" ? event_path(@task) : events_path, method: :post, remote: ajax do |f|
   .clearfix
     = f.input :name
   .clearfix
