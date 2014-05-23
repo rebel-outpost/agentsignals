@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def lazy_load_events(start_range, end_range)
+    self.events.where("due_date between ? and ? OR ends between ? and ?", start_range, end_range, start_range, end_range)
+  end
+
 end

@@ -2,6 +2,10 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+
+    start_range = Time.at params[:start].to_i
+
+    end_range = Time.at params[:end].to_i
     @user = current_user
     @events = current_user.events
     respond_to do |format|

@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :event do
     association :user
-    name              'Event Name'
+    name              {Faker::Lorem.word}
     due_date          DateTime.now
   end
 end

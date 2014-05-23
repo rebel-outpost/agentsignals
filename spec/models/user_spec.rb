@@ -1,6 +1,23 @@
 require "spec_helper"
 
 describe 'User' do
+  let(:user) {FactoryGirl.create :user}
+
+  describe :lazy_load_events do
+    let(:starts) {DateTime.now.beginning_of_month}
+    let(:ends) {DateTime.now.end_of_month}
+
+    before do
+      @event_with_start_date_before_params = FactoryGirl.create :event, due_date: DateTime.now - 1.month, user: user
+      @event_with_start_date_after_params = FactoryGirl.create :event, due_date: DateTime.now - 1.month, user: user
+      @event_with_end_date_inside_params = FactoryGirl.create :event, due_date: DateTime.now - 1.month, ends: DateTime.now, user: user
+      @event_with_start_date_inside_params = FactoryGirl.create :event, due_date: DateTime.now, user: user
+      @event_with_start_and_end_inside_params = FactoryGirl.create :event, due_date: DateTime.now, ends: DateTime.now + 10.minutes, user: user
+    end
+
+    it {user.lazy_load_events(starts, ends).should =~ [@event_with_end_date_inside_params, @event_with_start_date_inside_params, @event_with_start_and_end_inside_params]}
+    it {user.lazy_load_events(starts, ends).should_not =~ [@event_with_start_date_before_params, @event_with_start_date_after_params]}
+  end
 
   describe :clients do
     before do
