@@ -69,7 +69,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    # binding.pry
     @clients = current_user.clients
     @event = Event.find params[:id]
     parameters = if params[:task]
