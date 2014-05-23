@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @task = Task.new
     respond_to do |format|
       format.js

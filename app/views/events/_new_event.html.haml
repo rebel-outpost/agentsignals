@@ -1,7 +1,17 @@
+:scss
+  .btn-task {background-color: #{@user.task_color}; color: white;}
+  .btn-task:hover {background-color: darken(#{@user.task_color}, 5%); color: white;}
+
+  .btn-appointment {background-color: #{@user.appointment_color}; color: white;}
+  .btn-appointment:hover {background-color: darken(#{@user.appointment_color}, 5%); color: white;}
+
+  .btn-showing {background-color: #{@user.showing_color}; color: white;}
+  .btn-showing:hover {background-color: darken(#{@user.showing_color}, 5%); color: white;}
+
 .row
   .col-lg-4.text-center
-    = link_to "New Task", new_task_events_path, remote: true, class: 'btn-lg btn-primary btn-block'
+    = link_to "New Task", new_task_events_path, remote: true, class: "btn-lg btn-task btn-block"
   .col-lg-4.text-center
-    = link_to "New Appointment", new_appointment_events_path, remote: true, class: 'btn-lg btn-success btn-block'
+    = link_to "New Appointment", new_appointment_events_path, remote: true, class: 'btn-lg btn-appointment btn-block'
   .col-lg-4.text-center
-    = link_to "New Showing", new_showing_events_path, remote: true, class: 'btn-lg btn-info btn-block'
+    = link_to "New Showing", new_showing_events_path, remote: true, class: 'btn-lg btn-showing btn-block'
