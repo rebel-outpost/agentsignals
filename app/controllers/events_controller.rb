@@ -2,9 +2,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-
     start_range = Time.at params[:start].to_i
-
     end_range = Time.at params[:end].to_i
     @user = current_user
     @events = current_user.events
@@ -15,22 +13,31 @@ class EventsController < ApplicationController
   end
 
   def new
+    @start = params[:start]
+    @end = params[:end]
     @user = current_user
     @task = Task.new
     respond_to do |format|
+      format.html
       format.js
     end
   end
 
   def new_task
+    @start ||= DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P")
+    @end ||= DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P")
     @task = Task.new
   end
 
   def new_appointment
+    @start ||= DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P")
+    @end ||= DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P")
     @appointment = Appointment.new
   end
 
   def new_showing
+    @start ||= DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P")
+    @end ||= DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P")
     @showing = Showing.new
     @clients = current_user.clients
   end

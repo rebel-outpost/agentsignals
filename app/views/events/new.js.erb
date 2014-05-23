@@ -1,5 +1,5 @@
 $('#event-modal').modal('show');
 $('.modal-title').html("Select Type of Event to Create");
-$('.modal-body p').html("<%= j render 'events/new_event' %>");
+$('.modal-body p').html("<%= j render partial: 'events/new_event', locals: {ajax: true} %>");
 
 $('.datetime-picker').datetimepicker

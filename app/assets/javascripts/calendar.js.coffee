@@ -51,6 +51,9 @@ $ ->
       $.ajax
         dataType: "script"
         url: "/events/new"
+        data:
+          start: start
+          end: end
 
   updateEvent = (event) ->
     start = $.fullCalendar.formatDate(event.start, "MMM dd yyyy h:mm tt u")

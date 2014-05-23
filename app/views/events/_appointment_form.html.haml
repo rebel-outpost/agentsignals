@@ -1,12 +1,13 @@
 - ajax ||= false
+
 = simple_form_for @appointment, url: params[:action] == "edit" ? event_path(@appointment) : events_path, method: params[:action] == "edit" ? :put : :post, remote: ajax do |f|
   .clearfix
     = f.input :name
   .row.clearfix
     .col-md-6.col-sm-12
-      = f.input :due_date, label: "Starts", as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.due_date.present? ? localize(f.object.due_date, format: "%b %d, %Y %I:%M %P") : "" }
+      = f.input :due_date, label: "Starts", as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.due_date.present? ? localize(f.object.due_date, format: "%b %d, %Y %I:%M %P") : @start }
     .col-md-6.col-sm-12
-      = f.input :ends, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.ends.present? ? localize(f.object.ends, format: "%b %d, %Y %I:%M %P") : "" }
+      = f.input :ends, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.ends.present? ? localize(f.object.ends, format: "%b %d, %Y %I:%M %P") : @end }
   .clearfix
     = f.input :all_day
   .clearfix

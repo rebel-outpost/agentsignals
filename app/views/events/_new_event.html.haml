@@ -8,10 +8,12 @@
   .btn-showing {background-color: #{@user.showing_color}; color: white;}
   .btn-showing:hover {background-color: darken(#{@user.showing_color}, 5%); color: white;}
 
+- ajax ||= false
+
 .row
   .col-lg-4.text-center
-    = link_to "New Task", new_task_events_path, remote: true, class: "btn-lg btn-task btn-block"
+    = link_to "New Task", new_task_events_path(start: @start, end: @end), remote: ajax, class: "btn-lg btn-task btn-block"
   .col-lg-4.text-center
-    = link_to "New Appointment", new_appointment_events_path, remote: true, class: 'btn-lg btn-appointment btn-block'
+    = link_to "New Appointment", new_appointment_events_path(start: @start, end: @end), remote: ajax, class: 'btn-lg btn-appointment btn-block'
   .col-lg-4.text-center
-    = link_to "New Showing", new_showing_events_path, remote: true, class: 'btn-lg btn-showing btn-block'
+    = link_to "New Showing", new_showing_events_path(start: @start, end: @end), remote: ajax, class: 'btn-lg btn-showing btn-block'

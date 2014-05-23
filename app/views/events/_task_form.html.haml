@@ -1,9 +1,10 @@
 - ajax ||= false
+
 = simple_form_for @task, url: params[:action] == "edit" ? event_path(@task) : events_path, method: params[:action] == "edit" ? :put : :post, remote: ajax do |f|
   .clearfix
     = f.input :name
   .clearfix
-    = f.input :due_date, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.due_date.present? ? localize(f.object.due_date, format: "%b %d, %Y %I:%M %P") : ""  }
+    = f.input :due_date, as: :string, input_html: { autocomplete: "off", class: 'datetime-picker', value: f.object.due_date.present? ? localize(f.object.due_date, format: "%b %d, %Y %I:%M %P") : @start  }
   .clearfix
     = f.input :notes, input_html: { rows: 5 }
   .clearfix
