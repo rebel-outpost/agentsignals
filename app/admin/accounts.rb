@@ -9,7 +9,7 @@ ActiveAdmin.register Account do
     column :zip
     column :max_users
 
-    default_actions
+    # default_actions
   end
 
   filter :name

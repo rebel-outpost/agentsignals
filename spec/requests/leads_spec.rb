@@ -15,7 +15,7 @@ describe "Leads" do
 
   it 'should create new lead' do
     click_link 'Leads'
-    click_link 'Create Lead'
+    click_link 'New Lead'
     current_path.should == new_lead_path
     fill_in 'lead_first_name',  with: 'Bill'
     fill_in 'lead_last_name',   with: 'Gates'
@@ -34,7 +34,7 @@ describe "Leads" do
 
   it 'adds new lead to account on creation' do
     click_link 'Leads'
-    click_link 'Create Lead'
+    click_link 'New Lead'
     current_path.should == new_lead_path
 
     fill_in 'lead_first_name',  with: 'Billy'
@@ -55,7 +55,7 @@ describe "Leads" do
 
   it 'notifies new lead create' do
     click_link 'Leads'
-    click_link 'Create Lead'
+    click_link 'New Lead'
 
     fill_in 'lead_first_name',  with: 'Bill'
     fill_in 'lead_last_name',   with: 'Gates'

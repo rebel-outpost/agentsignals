@@ -13,7 +13,7 @@ describe "Opportunities" do
 
   it 'creates an opportunity' do
     click_link 'Opportunities'
-    click_link 'Create Opportunity'
+    click_link 'New Opportunity'
     fill_in 'opportunity_opportunity_name',   with: 'Next Big Deal'
     select @contact.full_name, 					      from: 'Contact name'
     select 'New Customer', 					          from: 'Opportunity type'

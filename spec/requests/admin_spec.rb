@@ -10,7 +10,7 @@ describe "Admin" do
     fill_in 'Email', with: @admin_user.email
     fill_in 'Password', with: @admin_user.password
     click_button 'Login'
-    current_path.should == admin_root_path
+    current_path.should == admin_dashboard_path
   end
 
   describe 'while logged in' do

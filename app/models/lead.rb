@@ -3,7 +3,7 @@ class Lead < Contact
 
   belongs_to :user
   belongs_to :account
-  
+
 
   accepts_nested_attributes_for :notes, allow_destroy: true
   validates_presence_of :lead_owner
@@ -13,17 +13,18 @@ class Lead < Contact
   INTERESTS   = [['Buyer', 'buyer'], ['Seller', 'seller'], ['Renter', 'renter'], ['Past Client', 'past_client']]
 
 
-  def status
-    STATUS
-  end
+  class << self
+    def status
+      STATUS
+    end
 
-  def sources
-    SOURCES
-  end
+    def sources
+      SOURCES
+    end
 
-  def interests
-    INTERESTS
+    def interests
+      INTERESTS
+    end
   end
-
 
 end

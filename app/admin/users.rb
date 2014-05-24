@@ -7,7 +7,7 @@ ActiveAdmin.register User do
     column :phone
     column :account_role
 
-    default_actions
+    # default_actions
   end
 
   filter :email

@@ -8,51 +8,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
   # Specify the class that will be applied to active navigation items.
   navigation.selected_class = 'active'
-
-  # Specify the class that will be applied to the current leaf of
-  # active navigation items. Defaults to 'simple-navigation-active-leaf'
-  # navigation.active_leaf_class = 'your_active_leaf_class'
-
-  # Item keys are normally added to list items as id.
-  # This setting turns that off
-  # navigation.autogenerate_item_ids = false
-
-  # You can override the default logic that is used to autogenerate the item ids.
-  # To do this, define a Proc which takes the key of the current item as argument.
-  # The example below would add a prefix to each key.
-  # navigation.id_generator = Proc.new {|key| "my-prefix-#{key}"}
-
-  # If you need to add custom html around item names, you can define a proc that
-  # will be called with the name you pass in to the navigation.
-  # The example below shows how to wrap items spans.
-  # navigation.name_generator = Proc.new {|name, item| "<span>#{name}</span>"}
-
-  # The auto highlight feature is turned on by default.
-  # This turns it off globally (for the whole plugin)
-  # navigation.auto_highlight = false
-  
-  # If this option is set to true, all item names will be considered as safe (passed through html_safe). Defaults to false.
-  # navigation.consider_item_names_as_safe = false
-
-  # Define the primary navigation
   navigation.items do |primary|
-    # Add an item to the primary navigation. The following params apply:
-    # key - a symbol which uniquely defines your navigation item in the scope of the primary_navigation
-    # name - will be displayed in the rendered navigation. This can also be a call to your I18n-framework.
-    # url - the address that the generated item links to. You can also use url_helpers (named routes, restful routes helper, url_for etc.)
-    # options - can be used to specify attributes that will be included in the rendered navigation item (e.g. id, class etc.)
-    #           some special options that can be set:
-    #           :if - Specifies a proc to call to determine if the item should
-    #                 be rendered (e.g. <tt>if: -> { current_user.admin? }</tt>). The
-    #                 proc should evaluate to a true or false value and is evaluated in the context of the view.
-    #           :unless - Specifies a proc to call to determine if the item should not
-    #                     be rendered (e.g. <tt>unless: -> { current_user.admin? }</tt>). The
-    #                     proc should evaluate to a true or false value and is evaluated in the context of the view.
-    #           :method - Specifies the http-method for the generated link - default is :get.
-    #           :highlights_on - if autohighlighting is turned off and/or you want to explicitly specify
-    #                            when the item should be highlighted, you can set a regexp which is matched
-    #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
-    #
+
     primary.item :dashboard_icon, "", class: "fa fa-home"
     primary.item :dashboard, 'Dashboard', dashboard_path
 
@@ -67,8 +24,8 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :clients_icon, "", class: "fa fa-users"
     primary.item :clients, 'Clients', clients_path do |client|
       client.dom_class = 'nav nav-pills'
-      client.item :View_clients, 'Clients', clients_path
-      client.item :add_listing, 'Add Listing', '#'
+      client.item :view_clients, 'Clients', clients_path
+      client.item :new_client_path, 'New Client', new_client_path
     end
 
     primary.item :agents_icon, "", class: "fa fa-users"
@@ -77,7 +34,6 @@ SimpleNavigation::Configuration.run do |navigation|
       agent.item :view_agents, 'Agents', agents_path
       agent.item :new_agent, 'Add Agent Contact', new_agent_path
     end
-
 
     # primary.item :contacts_icon, "", class: "fa fa-user"
     # primary.item :contacts, 'Contacts', '#contacts-collapse', {
@@ -106,14 +62,21 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :offers, 'Offers', offers_path do |offer|
       offer.dom_class = 'nav nav-pills'
       offer.item :view_offers, 'Offers', offers_path
-      offer.item :create_offer, 'Create Offer', new_offer_path
+      offer.item :create_offer, 'New Offer', new_offer_path
     end
 
     primary.item :tasks_icon, "", class: "fa fa-check-square-o"
     primary.item :tasks, 'Tasks', tasks_path do |task|
       task.dom_class = 'nav nav-pills'
       task.item :view_tasks, 'Tasks', tasks_path
-      task.item :create_task, 'Create Task', new_task_path
+      task.item :create_task, 'New Task', new_task_path
+    end
+
+    primary.item :opportunities_icon, "", class: "fa fa-thumbs-up"
+    primary.item :opportunities, 'Opportunities', opportunities_path do |opportunity|
+      opportunity.dom_class = 'nav nav-pills'
+      opportunity.item :view_opportunities, 'Opportunities', opportunities_path
+      opportunity.item :create_opportunity, 'New Opportunity', new_opportunity_path
     end
 
     primary.item :appointment_icon, "", class: "fa fa-bell"
@@ -122,23 +85,6 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :showing_icon, "", class: "fa fa-car"
     primary.item :showings, 'Showings', '#'
 
-
-
-    # primary.item :opportunities_icon, "", class: "fa fa-thumbs-up"
-    # primary.item :opportunities, 'Opportunities', '#opportunities-collapse', {
-    #   link: {
-    #     data: {
-    #       toggle: 'collapse',
-    #       parent: "#side-nav"
-    #     },
-    #     class: 'accordion-toggle collapsed'
-    #   }
-    # } do |opportunity|
-    #   opportunity.dom_id = 'opportunities-collapse'
-    #   opportunity.dom_class = 'panel-collapse collapse'
-    #   opportunity.item :create_opportunity, 'Create Opportunity', new_opportunity_path
-    #   opportunity.item :view_opportunities, 'View Opportunities', opportunities_path
-    # end
 
     primary.item :calendar_icon, "", class: "fa fa-calendar"
     primary.item :calendar, 'Calendar', calendar_index_path

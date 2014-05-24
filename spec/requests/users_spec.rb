@@ -16,18 +16,18 @@ describe "User Dashboard" do
   end
 
   it 'has quick links' do
-    expect(page).to have_content 'Create Lead'
-    expect(page).to have_content 'Create Task'
-    expect(page).to have_content 'Create Contact'
-    expect(page).to have_content 'Create Listing'
-    expect(page).to have_content 'Create Offer'
-    expect(page).to have_content 'Create Opportunity'
+    expect(page).to have_content 'Leads'
+    expect(page).to have_content 'Clients'
+    expect(page).to have_content 'Agents'
+    expect(page).to have_content 'Listings'
+    expect(page).to have_content 'Offers'
+    expect(page).to have_content 'Opportunities'
   end
 
   it 'links to new lead' do
     click_link 'Leads'
-    click_link 'Create Lead'
-    expect(page).to have_content 'Create New Lead'
+    click_link 'New Lead'
+    expect(page).to have_content 'New Lead'
   end
 
   it 'links to new task' do
@@ -36,22 +36,22 @@ describe "User Dashboard" do
     expect(page).to have_content 'Create New Task'
   end
 
-  it 'links to new contact' do
-    click_link 'Contacts'
-    click_link 'Create Contact'
-    expect(page).to have_content 'First name'
+  it 'links to new client' do
+    click_link 'Clients'
+    click_link 'New Client'
+    expect(page).to have_content 'Add Client Contact Info'
   end
 
   it 'links to new opportunity' do
     click_link 'Opportunities'
-    click_link 'Create Opportunity'
+    click_link 'New Opportunity'
     expect(page).to have_content 'Create New Opportunity'
   end
 
   it 'links to new offer' do
     click_link 'Offers'
-    click_link 'Create Offer'
-    expect(page).to have_content 'Create New Offer'
+    click_link 'New Offer'
+    expect(page).to have_content 'New Offer'
   end
 
   it 'shows leads assigned' do

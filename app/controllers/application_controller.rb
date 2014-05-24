@@ -4,10 +4,14 @@ class ApplicationController < ActionController::Base
   before_filter :configure_devise_params, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    if resource.account
-      dashboard_path
+    if resource.is_a?(AdminUser)
+      admin_dashboard_path
     else
-      new_account_path
+      if resource.account
+        dashboard_path
+      else
+        new_account_path
+      end
     end
   end
 
