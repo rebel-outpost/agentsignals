@@ -24,20 +24,20 @@ class EventsController < ApplicationController
   end
 
   def new_task
-    @start ||= DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P")
-    @end ||= DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P")
+    @start = params[:start] ? DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P") : nil
+    @end = params[:end] ? DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P") : nil
     @task = Task.new
   end
 
   def new_appointment
-    @start ||= DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P")
-    @end ||= DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P")
+    @start = params[:start] ? DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P") : nil
+    @end = params[:end] ? DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P") : nil
     @appointment = Appointment.new
   end
 
   def new_showing
-    @start ||= DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P")
-    @end ||= DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P")
+    @start = params[:start] ? DateTime.parse(params[:start]).strftime("%b %d, %Y %I:%M %P") : nil
+    @end = params[:end] ? DateTime.parse(params[:end]).strftime("%b %d, %Y %I:%M %P") : nil
     @showing = Showing.new
     @clients = current_user.clients
   end

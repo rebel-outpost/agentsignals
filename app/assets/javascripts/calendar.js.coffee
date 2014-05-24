@@ -38,7 +38,11 @@ $ ->
       updateEvent(event)
 
     eventResize: (event, dayDelta, minuteDelta, revertFunc) ->
-      revertFunc()
+      if event.type == "Task"
+        revertFunc()
+      else
+        updateEvent(event)
+      end
 
     eventClick: (event, jsEvent, view) ->
       $.ajax
