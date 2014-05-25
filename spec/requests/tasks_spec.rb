@@ -14,7 +14,7 @@ describe 'Tasks' do
 
   it 'creates a new task', js:true do
     click_link 'Tasks'
-    click_link 'Create Task'
+    click_link 'New Task'
     fill_in 'task_due_date',        with: '09/11/2012'
     select  "#{@user2.email}",       from: 'Assigned to'
     select  'Call',                  from: 'Type'
@@ -27,7 +27,7 @@ describe 'Tasks' do
 
   it 'has required fields' do
     click_link 'Tasks'
-    click_link 'Create Task'
+    click_link 'New Task'
     fill_in 'task_due_date',        with: '09/11/2012'
     select  "#{@user2.email}",       from: 'Assigned to'
     select  'Call',                  from: 'Type'
@@ -39,7 +39,7 @@ describe 'Tasks' do
 
   it 'notifies the user they have been assigned to a task' do
     click_link 'Tasks'
-    click_link 'Create Task'
+    click_link 'New Task'
     fill_in "task_name",       with: 'another test task'
     fill_in 'task_due_date',        with: '09/11/2012'
     select  "#{@user2.email}",       from: 'Assigned to'

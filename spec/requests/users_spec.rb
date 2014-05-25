@@ -32,8 +32,8 @@ describe "User Dashboard" do
 
   it 'links to new task' do
     click_link 'Tasks'
-    click_link 'Create Task'
-    expect(page).to have_content 'Create New Task'
+    click_link 'New Task'
+    expect(page).to have_content 'New Task'
   end
 
   it 'links to new client' do

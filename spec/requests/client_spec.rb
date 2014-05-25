@@ -65,15 +65,16 @@ describe 'Clients' do
 
   context 'with multiple accounts' do
     before do
-      @client = create :client, account: @account
+      @client = create :client
+      @user.clients << @client
       @another_account = create :account
       @another_client = create :client, account: @another_account
     end
 
     it "should only show clients that belong to its account" do
       visit clients_path
-      expect(page).to have_content @client.email
-      page.should_not have_content @another_client.email
+      expect(page).to have_content @client.full_name
+      page.should_not have_content @another_client.full_name
     end
   end
 end

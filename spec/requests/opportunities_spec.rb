@@ -22,7 +22,7 @@ describe "Opportunities" do
     select "#{@user.email}",				          from: 'Owner'
     fill_in 'opportunity_closing_date',       with: '09/11/2012'
     fill_in 'opportunity_probability', 	      with: '50%'
-    fill_in 'opportunity_contact_person_name',	      with: 'Mister Smith'
+    fill_in 'opportunity_contact_person_name',with: 'Mister Smith'
     fill_in 'opportunity_comments', 		      with: 'Lets nail this one'
     click_button 'Create Opportunity'
     expect(page).to have_content 'New Opportunity Created'
