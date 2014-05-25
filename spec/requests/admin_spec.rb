@@ -48,7 +48,7 @@ describe "Admin" do
     end
 
     it 'cancels account' do
-      #new-test
+      pending "new-test"
       @account2 = create :account
       click_link 'Accounts'
       select 'Inactive', from: 'Account Status'
@@ -56,7 +56,7 @@ describe "Admin" do
     end
 
     it 'bans user' do
-      #new-test
+      pending "new-test"
       @account2 = create :account
       @user     =  create :user, account: @account2
       click_link 'Users'
