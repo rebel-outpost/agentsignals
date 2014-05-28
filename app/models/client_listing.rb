@@ -5,4 +5,8 @@ class ClientListing < ActiveRecord::Base
 
   validates :client, :listing, presence: true
   validates :client, uniqueness: {scope: :listing}
+
+  scope :renting, -> { where(renting: true) }
+  scope :selling, -> { where(selling: true) }
+  scope :looking, -> { where(selling: false, renting: false) }
 end

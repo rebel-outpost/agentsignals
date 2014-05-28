@@ -17,30 +17,41 @@
     = render 'layouts/modal'
     .row
       .col-md-2
-        .row
+        .row.clearfix
           .col-sm-12
             - if current_user && current_user.account
               #sidebar.sidebar.nav-collapse.collapse.in
                 = render_navigation level: 1
 
-        - if content_for :clients
+        - if current_user && current_user.account
           .row
             .col-sm-12
               .box
                 %h3 Clients
-                = yield :clients
+                %ul
+                  - @clients.each do |client|
+                    %li= link_to "#{client.first_name} #{client.last_name}", client
 
       .col-md-10
 
         - if content_for :subnav
+          
+          .row.clearfix
+            .col-sm-12
+              = render_navigation level: 2
+
           .row
             .col-sm-12
               = yield :subnav
 
-          .row.clearfix
+          .row
             .col-sm-12
-              = render_navigation level: 2..3
+              = yield
 
+        - elsif content_for :custom_subnav
+          .row
+            .col-sm-12
+              = yield :custom_subnav
 
           .row
             .col-sm-12

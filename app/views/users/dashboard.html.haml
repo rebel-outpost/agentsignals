@@ -1,53 +1,68 @@
-- content_for :clients do
-  %ul
-    - @clients.each do |client|
-      %li= link_to "#{client.first_name} #{client.last_name}", client
 .row
   .col-md-12
     %h1
       Welcome to your Dashboard
 
-.row
-  .col-md-10
-    .row
-      .col-sm-12
-        .content
-          %h3 Events
-          %ul.nav.nav-tabs
-            %li.active
-              %a{"data-toggle" => "tab", href: "#dashboard-tasks"} Tasks
-            %li
-              %a{"data-toggle" => "tab", href: "#dashboard-appointments"} Appointments
-            %li
-              %a{"data-toggle" => "tab", href: "#dashboard-showings"} Showings
+.row.clearfix
+  .col-md-12
+    .content
+      %h2 Events
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", href: "#dashboard-tasks"} Tasks
+        %li
+          %a{"data-toggle" => "tab", href: "#dashboard-appointments"} Appointments
+        %li
+          %a{"data-toggle" => "tab", href: "#dashboard-showings"} Showings
 
-          .tab-content
-            #dashboard-tasks.tab-pane.fade.in.active
-              %table#datatable2.table.table-striped
-                %thead
-                  %tr
-                    %th Name
-                    %th Due Date
-                    %th Task Type
-                    %th Lead
-                %tbody
-                  - if @tasks.present?
-                    - @tasks.sort_by(&:due_date).each do |task|
-                      %tr
-                        %td= link_to task.name.titleize, task_path(task)
-                        %td= task.due_date
-                        %td= task.task_type
-                        %td= task.lead_for_task
+      .tab-content
 
-            #appointments.tab-pane.fade ...
-            #showings.tab-pane.fade ...
+        #dashboard-tasks.tab-pane.fade.in.active
+          %table#datatable2.table.table-striped
+            %thead
+              %tr
+                %th Name
+                %th Due Date
+            %tbody
+              - @tasks.each do |task|
+                %tr
+                  %td= link_to task.name.titleize, task_path(task)
+                  %td= task.due_date.strftime("%b %d, %Y %I:%M %P") if task.due_date
 
-.row{style: 'margin-top:40px;'}
-  .col-sm-10
+        #dashboard-appointments.tab-pane.fade
+          %table#datatable2.table.table-striped
+            %thead
+              %tr
+                %th Name
+                %th Due Date
+            %tbody
+              - @appointments.each do |task|
+                %tr
+                  %td= link_to task.name.titleize, task_path(task)
+                  %td= task.due_date.strftime("%b %d, %Y %I:%M %P") if task.due_date
+                  %td= task.ends.strftime("%b %d, %Y %I:%M %P") if task.ends
+
+        #dashboard-showings.tab-pane.fade
+          %table#datatable2.table.table-striped
+            %thead
+              %tr
+                %th Name
+                %th Starts
+                %th Ends
+            %tbody
+              - @showings.each do |task|
+                %tr
+                  %td= link_to task.name.titleize, task_path(task)
+                  %td= task.due_date.strftime("%b %d, %Y %I:%M %P") if task.due_date
+                  %td= task.ends.strftime("%b %d, %Y %I:%M %P") if task.ends
+
+
+.row.clearfix
+  .col-sm-12
     .content
       %section.widget
         %header
-          %h3 Current Leads
+          %h2 Leads
         .body
           %table#datatable.table.table-striped
             %thead

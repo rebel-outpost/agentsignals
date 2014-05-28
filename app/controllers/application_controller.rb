@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :configure_devise_params, if: :devise_controller?
+  before_filter :clients
+
+  def clients
+    @clients = current_user.clients
+  end
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(AdminUser)

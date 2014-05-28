@@ -2,11 +2,12 @@ class AgentsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-
+    @user = current_user
+    @agents = @user.account.agents
   end
 
   def new
-
+    @agent = Agent.new
   end
 
   def create
@@ -14,7 +15,7 @@ class AgentsController < ApplicationController
   end
 
   def edit
-
+    @agent = Agent.find params[:id]
   end
 
   def update
@@ -28,7 +29,7 @@ class AgentsController < ApplicationController
   private
 
   def agent_params
-
+    params.require(:agent).permit!
   end
 
 end

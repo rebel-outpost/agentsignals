@@ -35,22 +35,6 @@ SimpleNavigation::Configuration.run do |navigation|
       agent.item :new_agent, 'Add Agent Contact', new_agent_path
     end
 
-    # primary.item :contacts_icon, "", class: "fa fa-user"
-    # primary.item :contacts, 'Contacts', '#contacts-collapse', {
-    #   link: {
-    #     data: {
-    #       toggle: 'collapse',
-    #       parent: "#side-nav"
-    #     },
-    #     class: 'accordion-toggle collapsed'
-    #   }
-    # } do |contact|
-    #   contact.dom_id = 'contacts-collapse'
-    #   contact.dom_class = 'panel-collapse collapse'
-    #   contact.item :create_contact, 'Create Contact', new_contact_path
-    #   contact.item :view_contacts, 'View Contacts', contacts_path
-    # end
-
     primary.item :listings_icon, "", class: "fa fa-briefcase"
     primary.item :listings, 'Listings', listings_path do |listing|
       listing.dom_class = 'nav nav-pills'

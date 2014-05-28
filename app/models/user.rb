@@ -19,7 +19,11 @@ class User < ActiveRecord::Base
   belongs_to :account
 
   def full_name
-    "#{first_name} #{last_name}"
+    if first_name.present? && last_name.present?
+      "#{first_name} #{last_name}"
+    else
+      email
+    end
   end
 
   def lazy_load_events(start_range, end_range)

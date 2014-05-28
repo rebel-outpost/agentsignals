@@ -1,38 +1,35 @@
 - content_for :subnav do
   .row
     .col-sm-12
-
-.row
-  .col-sm-12
-    .box
-      .responsive-table
-        .scrollable-area
-          %table#datatable.table.table-bordered
-            %thead
-              %tr
-                %th
-                  Name
-                %th
-                  Company
-                %th
-                  Phone
-                %th
-                  Created Date
-                %th
-                  Actions
-            %tbody
-              - @clients.each do |client|
+      .box
+        .responsive-table
+          .scrollable-area
+            %table#datatable.table.table-bordered
+              %thead
                 %tr
-                  %td
-                    = client.full_name
-                  %td
-                    = client.company
-                  %td
-                    = client.phone
-                  %td
-                    = client.created_at.to_date
-                  %td
-                    = link_to edit_client_path(client), id: 'edit' do
-                      %i.fa.fa-edit
-                    = link_to client_path(client), data: {confirm: 'Are you sure that you want to delete this client?'}, method: :delete, id: 'delete' do
-                      %i.fa.fa-trash-o
+                  %th
+                    Name
+                  %th
+                    Company
+                  %th
+                    Phone
+                  %th
+                    Created Date
+                  %th
+                    Actions
+              %tbody
+                - @clients.each do |client|
+                  %tr
+                    %td
+                      = link_to client.full_name, client
+                    %td
+                      = client.company
+                    %td
+                      = client.phone
+                    %td
+                      = client.created_at.to_date
+                    %td
+                      = link_to edit_client_path(client), id: 'edit' do
+                        %i.fa.fa-edit
+                      = link_to client_path(client), data: {confirm: 'Are you sure that you want to delete this client?'}, method: :delete, id: 'delete' do
+                        %i.fa.fa-trash-o

@@ -11,6 +11,15 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find params[:id]
+    @tasks = @client.tasks
+    @appointments = @client.appointments
+    @showings = @client.showings
+
+    @offers = @client.offers
+
+    @selling = @client.client_listings.selling
+    @renting = @client.client_listings.renting
+    @looking_at_listings = @client.client_listings.looking
   end
 
   def create

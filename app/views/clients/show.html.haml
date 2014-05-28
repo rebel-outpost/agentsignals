@@ -1,27 +1,99 @@
-.row
-  .col-sm-12
-    %h1= "#{@client.first_name} #{@client.last_name}"
+- content_for :custom_subnav do 
+  .row
+    .col-sm-12
+      %h1= "#{@client.first_name} #{@client.last_name}"
 
-.row
-  .col-sm-6
+
+  .row.clearfix
+    .col-sm-12
+      %ul.nav.nav-pills
+        %li.active= link_to "Details", client_path(@client)
+        %li= link_to "Add Property", '#'
+        %li= link_to "Add Offer", '#'
+
+.row.clearfix
+  .col-md-6.col-sm-12
     .box
       %h2 Contact Info:
+      .row
+        .col-sm-3
+          %strong Name: 
+        .col-sm-9
+          #{@client.first_name} #{@client.last_name}
+      .row
+        .col-sm-3
+          %strong Phone: 
+        .col-sm-9
+          = @client.phone
 
-  .col-sm-6
+      .row
+        .col-sm-3
+          %strong Email: 
+        .col-sm-9
+          = @client.email
+
+      .row
+        .col-sm-3
+          %strong Address: 
+        .col-sm-9
+          #{@client.address}
+          %br
+          #{@client.city}, #{@client.state} #{@client.zip}
+
+  .col-md-6.col-sm-12
     .box
       %h2 Events
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", href: "#dashboard-tasks"} Tasks
+        %li
+          %a{"data-toggle" => "tab", href: "#dashboard-showings"} Showings
 
-.row
-  .col-sm-12
-    .box
-      %h2 Showings
+      .tab-content
 
-.row
-  .col-sm-12
-    .box
-      %h2 Selling
+        #dashboard-tasks.tab-pane.fade.in.active
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Name
+                %th Due Date
+            %tbody
+              - @tasks.each do |task|
+                %tr
+                  %td= link_to task.name.titleize, task_path(task)
+                  %td= task.due_date.strftime("%b %d, %Y %I:%M %P") if task.due_date
 
-.row
-  .col-sm-12
-    .box
-      %h2 Offers
+        #dashboard-showings.tab-pane.fade
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Name
+                %th Starts
+            %tbody
+              - @showings.each do |task|
+                %tr
+                  %td= link_to task.name.titleize, task_path(task)
+                  %td= task.due_date.strftime("%b %d, %Y %I:%M %P") if task.due_date
+
+- if true # Todo if client has any offers
+  .row.clearfix
+    .col-sm-12
+      .box
+        %h2 Offers
+
+- if true # Todo if client is looking any properties
+  .row.clearfix
+    .col-sm-12
+      .box
+        %h2 Looking
+
+- if true # Todo if client is selling any properties
+  .row.clearfix
+    .col-sm-12
+      .box
+        %h2 Selling
+- if true # Todo if client is renting any properties
+  .row.clearfix
+    .col-sm-12
+      .box
+        %h2 Renting

@@ -20,6 +20,12 @@ class Contact < ActiveRecord::Base
 
   belongs_to :account
 
+  has_many :offers
+
+  has_many :tasks
+  has_many :appointments
+  has_many :showings
+  
   has_many :notes
 
   def full_name

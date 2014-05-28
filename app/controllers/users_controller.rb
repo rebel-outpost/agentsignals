@@ -2,13 +2,19 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   
   def dashboard
-    @leads = Lead.all.where(lead_owner: current_user.email).to_a
-    # @tasks = Task.all.where(assigned_to: current_user.email).to_a
-    @clients = current_user.clients.all
-    @tasks = Task.all
-    @appointments = Appointment.all
-    @showings = Showing.all
+    @user = current_user
+    @leads = @user.leads
+
+    @tasks = @user.tasks
+    @appointments = @user.appointments
+    @showings = @user.showings
+
+    # Todo - This is a hack
     flash.delete(:alert) if flash[:alert] == "You are already signed in."
+  end
+
+  def settings
+    @user = User.find params[:id]
   end
 
   def edit

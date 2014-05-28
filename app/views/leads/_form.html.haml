@@ -13,7 +13,7 @@
         = f.input :comments, as: :text, :input_html => {rows: 5}
     .col-sm-4.col-sm-offset-1
       .form-group
-        = f.input :lead_owner, collection:(@lead_owner)
+        = f.input :assignee_id, label: "Lead Assigned To", collection: @users.collect {|user| [user.full_name, user.id] }
       .form-group
         = f.input :lead_type, collection:(@lead_interests)
       .form-group

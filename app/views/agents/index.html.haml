@@ -1,7 +1,36 @@
 - content_for :subnav do
   .row
     .col-sm-12
+      .box
+        .responsive-table
+          .scrollable-area
+            %table#datatable.table.table-bordered
+              %thead
+                %tr
+                  %th
+                    Name
+                  %th
+                    Company
+                  %th
+                    Phone
+                  %th
+                    Created Date
+                  %th
+                    Actions
+              %tbody
+                - @agents.each do |agent|
+                  %tr
+                    %td
+                      = link_to agent.full_name, agent
+                    %td
+                      = agent.company
+                    %td
+                      = agent.phone
+                    %td
+                      = agent.created_at.to_date
+                    %td
+                      = link_to edit_agent_path(agent), id: 'edit' do
+                        %i.fa.fa-edit
+                      = link_to agent_path(client), data: {confirm: 'Are you sure that you want to delete this client?'}, method: :delete, id: 'delete' do
+                        %i.fa.fa-trash-o
 
-.row
-  .col-sm-12
-    .box

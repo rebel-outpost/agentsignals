@@ -1,0 +1,45 @@
+.row
+  .col-sm-10
+    %h1 Personal Settings
+
+.row.clearfix
+  .col-sm-10
+    .box
+      %h3
+        User Information
+      = simple_form_for @user do |f|
+        .clearfix
+          = f.input :first_name
+        .clearfix
+          = f.input :last_name
+        .clearfix
+          = f.input :email
+        .clearfix
+          = f.submit "Update User Information"
+
+.row.clearfix
+  .col-sm-10
+    .box
+      %h3 Change Background
+
+      = simple_form_for @user do |f|
+        .form-group
+          .controls
+            = f.input :background, collection: background_options, input_html: {class: 'background-picker'}
+        .form-group
+          .controls
+            = f.submit "Update Background", class: 'btn btn-primary'
+
+.row.clearfix
+  .col-sm-10
+    .box
+      %h3 Change Calendar Event Colors
+      = simple_form_for @user do |f|
+        .clearfix
+          = f.input :task_color, collection: event_color_options
+        .clearfix
+          = f.input :appointment_color, collection: event_color_options
+        .clearfix
+          = f.input :showing_color, collection: event_color_options
+        .clearfix
+          = f.submit "Update Event Colors", class: 'btn btn-primary'

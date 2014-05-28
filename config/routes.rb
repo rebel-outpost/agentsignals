@@ -42,7 +42,9 @@ AgentSignals::Application.routes.draw do
     get :new_showing,       on: :collection
   end
 
-  resources :users
+  resources :users do 
+    get :settings, on: :member
+  end
   resources :leads do
     resources :notes
   end
