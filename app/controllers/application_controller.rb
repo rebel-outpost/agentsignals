@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :clients
 
   def clients
-    # @clients = current_user.clients
+    @clients = current_user.clients if current_user && current_user.account
   end
 
   def after_sign_in_path_for(resource)
